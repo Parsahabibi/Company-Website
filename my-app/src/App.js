@@ -5,7 +5,7 @@ function App() {
     const theme = useTheme();
   return (
       <Grid>
-          <MobileHeader />
+          <MobileHeader id={1} />
       </Grid>
   );
 }
