@@ -1,0 +1,13 @@
+<svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="akar-icons:location" clip-path="url(#clip0_242_574)">
+<g id="Group">
+<path id="Vector" d="M12 16.3333C14.2091 16.3333 16 14.5424 16 12.3333C16 10.1241 14.2091 8.33325 12 8.33325C9.79086 8.33325 8 10.1241 8 12.3333C8 14.5424 9.79086 16.3333 12 16.3333Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M11.9999 1.66663C9.17094 1.66663 6.45783 2.79043 4.45745 4.79082C2.45706 6.79121 1.33325 9.50432 1.33325 12.3333C1.33325 14.856 1.86925 16.5066 3.33325 18.3333L11.9999 28.3333L20.6666 18.3333C22.1306 16.5066 22.6666 14.856 22.6666 12.3333C22.6666 9.50432 21.5428 6.79121 19.5424 4.79082C17.542 2.79043 14.8289 1.66663 11.9999 1.66663V1.66663Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_242_574">
+<rect width="24" height="30" fill="white"/>
+</clipPath>
+</defs>
+</svg>

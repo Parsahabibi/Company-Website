@@ -1,11 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {Grid, Typography, useTheme} from "@mui/material";
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import {styled, keyframes} from '@mui/system';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
+
 
 
 const MobileHeader = ({id}) => {

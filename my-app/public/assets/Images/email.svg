@@ -1,0 +1,10 @@
+<svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ic:outline-email" clip-path="url(#clip0_242_589)">
+<path id="Vector" d="M24 3.2999C24 1.9799 22.92 0.899902 21.6 0.899902H2.4C1.08 0.899902 0 1.9799 0 3.2999V17.6999C0 19.0199 1.08 20.0999 2.4 20.0999H21.6C22.92 20.0999 24 19.0199 24 17.6999V3.2999ZM21.6 3.2999L12 9.2999L2.4 3.2999H21.6ZM21.6 17.6999H2.4V5.6999L12 11.6999L21.6 5.6999V17.6999Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_242_589">
+<rect width="24" height="19.2" fill="white" transform="translate(0 0.899902)"/>
+</clipPath>
+</defs>
+</svg>

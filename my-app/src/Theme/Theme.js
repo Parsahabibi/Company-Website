@@ -7,9 +7,9 @@ const Theme = createTheme({
             styleOverrides: {
                 html: {
                     fontSize: "62.5%",
-                    padding:0,
-                    margin:0,
-                    boxSizing:"border-box",
+                    padding: 0,
+                    margin: 0,
+                    boxSizing: "border-box",
                 },
                 body: {
                     backgroundColor: "rgb(250,250,250)",
@@ -52,7 +52,7 @@ const Theme = createTheme({
                         color: "#333845",
                         borderRadius: "10px",
                         border: " 1px solid #444A5D",
-                        backgroundColor:'white',
+                        backgroundColor: 'white',
                         fontSize: "16px",
                         display: "flex",
                         justifyContent: "center",
@@ -61,7 +61,7 @@ const Theme = createTheme({
                         "&:hover": {
                             background: "rgba(255, 191, 63, 1)",
                             color: "#333845",
-                            border:'1px solid rgba(255, 191, 63, 1)'
+                            border: '1px solid rgba(255, 191, 63, 1)'
                         },
                     },
                 },
@@ -70,7 +70,7 @@ const Theme = createTheme({
     },
     palette: {
         primary: {
-            main:'rgba(255, 191, 63, 1)',
+            main: 'rgba(255, 191, 63, 1)',
             one: "rgba(255, 191, 63, 1)", //darkblue
             two: "rgba(255, 201, 92, 1)", //lightblue
             three: "rgba(255, 218, 143, 1)",
@@ -90,10 +90,21 @@ const Theme = createTheme({
             one: "rgba(57, 57, 58, 1)", //discountPrice(grey)
             two: "rgba(181, 181, 181, 1)",
             three: "rgba(237, 237, 237, 1)",
+            four:"rgba(51, 56, 69, 1)"
+        },
+    },
+    breakpoints: {
+        values: {
+            xs: 0,
+            xxs: 375,
+            sm:600,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
         },
     },
     typography: {
-        fontFamily: "IranSans",
+        fontFamily:'Yekan',
         h1: {
             fontSize: "30px",
             fontWeight: 900,
