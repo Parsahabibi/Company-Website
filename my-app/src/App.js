@@ -1,4 +1,4 @@
-import {Grid, useTheme} from "@mui/material";
+import {Grid} from "@mui/material";
 import MobileHeader from "./components/Header/MobileHeader";
 import MobileFooter from "./components/Footer/MobileFooter";
 function App() {

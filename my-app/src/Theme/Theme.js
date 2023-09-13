@@ -1,11 +1,12 @@
 import {createTheme} from "@mui/material/styles";
-
+import '../index.css'
 const Theme = createTheme({
     direction: "rtl",
     components: {
         MuiCssBaseline: {
             styleOverrides: {
                 html: {
+                    fontFamily: 'YekanBakh',
                     fontSize: "62.5%",
                     padding: 0,
                     margin: 0,
@@ -13,7 +14,6 @@ const Theme = createTheme({
                 },
                 body: {
                     backgroundColor: "rgb(250,250,250)",
-
                     a: {
                         textDecoration: "none",
                         fontSize: "1.3rem",
@@ -90,21 +90,21 @@ const Theme = createTheme({
             one: "rgba(57, 57, 58, 1)", //discountPrice(grey)
             two: "rgba(181, 181, 181, 1)",
             three: "rgba(237, 237, 237, 1)",
-            four:"rgba(51, 56, 69, 1)"
+            four: "rgba(51, 56, 69, 1)"
         },
     },
     breakpoints: {
         values: {
             xs: 0,
             xxs: 375,
-            sm:600,
+            sm: 600,
             md: 900,
             lg: 1200,
             xl: 1536,
         },
     },
     typography: {
-        fontFamily:'Yekan',
+        fontFamily:'YekanBakh',
         h1: {
             fontSize: "30px",
             fontWeight: 900,

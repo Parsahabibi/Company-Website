@@ -1,12 +1,11 @@
 @font-face {
   font-family: 'YekanBakh';
-  src: local('YekanBakh'), url('../public/assets/fonts/YekanBakh.ttf') format('ttf');
-  font-style: normal;
+  src:url('../public/assets/fonts/YekanBakh-Medium.ttf');
 }
 
 
 * , html , body {
-  font-family:'Yekan';
+  font-family:'YekanBakh';
 }
 
 
