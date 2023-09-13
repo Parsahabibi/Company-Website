@@ -121,6 +121,9 @@ const Theme = createTheme({
         subtitle2: {
             fontSize: "14px",
         },
+        h5:{
+            fontSize:"12px"
+        }
     },
 });
 
