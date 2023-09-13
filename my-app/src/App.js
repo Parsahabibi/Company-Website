@@ -2,10 +2,11 @@ import {Grid} from "@mui/material";
 import MobileHeader from "./components/Header/MobileHeader";
 import MobileFooter from "./components/Footer/MobileFooter";
 import DesktopFooter from "./components/Footer/DesktopFooter";
+import DesktopHeader from "./components/Header/DesktopHeader";
 function App() {
   return (
       <Grid>
-          <DesktopFooter />
+          <DesktopHeader id={1}/>
       </Grid>
   );
 }
