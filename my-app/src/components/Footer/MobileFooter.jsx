@@ -28,8 +28,8 @@ const MobileFooter = () => {
     const theme = useTheme();
 
     return (
-        <Grid position={'fixed'} right={0} bottom={0}  width={'100%'}>
-            <Grid px={'36px'} pt={'42px'} pb={'32px'}  bgcolor={theme.palette.secondary.one} >
+        <Grid style={{overflowY:'auto'}} position={{s: 'fixed'}} bottom={{s: '0'}}  width={'100%'}>
+            <Grid px={'22px'} pt={'42px'} pb={'32px'}  bgcolor={theme.palette.secondary.one} >
                 <Grid pb={'41px'} display={'flex'} flexWrap={'wrap'} alignItems={'center'} justifyContent={'space-between'} gap={'39px'} >
                     {
                         variableOriginal.map(
