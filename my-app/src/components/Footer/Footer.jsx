@@ -1,30 +1,20 @@
-import React, {useLayoutEffect, useState} from 'react'
+import React, {useEffect, useLayoutEffect, useState} from 'react'
 import MobileHeader from "../Header/MobileHeader";
 import DesktopHeader from "../Header/DesktopHeader";
-import {Grid} from "@mui/material";
+import {Grid, useMediaQuery} from "@mui/material";
 import DesktopFooter from "./DesktopFooter";
 import MobileFooter from "./MobileFooter";
 
 const Footer = () => {
+    var [ComponentToShow, setComponentToShow] = useState(<></>);
+    const matches = useMediaQuery('(min-width:900px)');
 
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        setComponentToShow(
+            matches ? <DesktopFooter/> : <MobileFooter/>
+        )
+    }, [matches])
 
-    useLayoutEffect(() => {
-        function handleResize() {
-            setWindowWidth(window.innerWidth);
-        }
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    let ComponentToShow;
-
-    if (windowWidth < 900) {
-        ComponentToShow = <MobileFooter/>;
-    } else if (windowWidth >= 900) {
-        ComponentToShow = <DesktopFooter/>;
-    }
 
     return (
         <Grid>
