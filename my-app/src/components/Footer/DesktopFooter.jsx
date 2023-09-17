@@ -23,7 +23,7 @@ const DesktopFooter = () => {
 
 
     return (
-       <Grid position={'fixed'} bottom={0} right={0} left={0}>
+       <Grid>
            <Grid display={'flex'} alignItems={'center'} justifyContent={'space-between'}  bgcolor={theme.palette.secondary.one} px={{md:'30px' , lg:'103px'}} py={'95px'}>
                <Grid display={'flex'} gap={'40px'} justifyContent={'start'}>
                    <Grid display={'flex'} flexDirection={'column'} gap={'40px'}>

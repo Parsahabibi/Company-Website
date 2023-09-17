@@ -11,10 +11,10 @@ import Theme from "./Theme/Theme";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-         <ThemeProvider theme={Theme}>
-            <CssBaseline/>
-             <App/>
-         </ThemeProvider>
+            <ThemeProvider theme={Theme}>
+                <CssBaseline/>
+                <App/>
+            </ThemeProvider>
      </React.StrictMode>
 );
 

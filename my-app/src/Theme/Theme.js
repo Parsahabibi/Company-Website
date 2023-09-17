@@ -79,7 +79,7 @@ const Theme = createTheme({
                         alignItems:'center',
                         width: "100%",
                         padding: "4px 10px",
-                        margin:'auto',
+                        // margin:'auto',
                         "&:hover": {
                             background: "rgba(255, 191, 63, 1)",
                             color: "#333845",

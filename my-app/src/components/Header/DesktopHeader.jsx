@@ -46,7 +46,7 @@ const DesktopHeader = ({id}) => {
     ]
 
     return (
-        <Grid position={'fixed'} top={0} left={0} right={0}>
+        <Grid position={'fixed'} top={0} left={0} right={0} zIndex={10}>
             <Grid position={'relative'} top={0} left={0} right={0} bgcolor={theme.palette.primary.one} width={'100%'}
                   py={'25px'} display={'flex'} alignItems={'center'} boxShadow={5}>
                 <Grid position={'absolute'} top={0} right={{md: '48px', lg: '128px'}}

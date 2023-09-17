@@ -74,7 +74,7 @@ const MobileHeader = ({id}) => {
 
 
     return (
-        <Grid bgcolor={theme.palette.primary.one} py={'21px'} px={'16px'} display={'flex'} alignItems={'center'}
+        <Grid position={'fixed'} top={0} left={0} right={0} zIndex={10}  bgcolor={theme.palette.primary.one} py={'21px'} px={'16px'} display={'flex'} alignItems={'center'}
               justifyContent={'space-between'}>
             <Grid>
                 <MenuIcon fontSize={'large'} style={{position: 'relative', top: 0, right: 0}} onClick={() => {
