@@ -6,7 +6,7 @@ import DesktopFooter from "./DesktopFooter";
 import MobileFooter from "./MobileFooter";
 
 const Footer = () => {
-    var [ComponentToShow, setComponentToShow] = useState(<></>);
+    let [ComponentToShow, setComponentToShow] = useState(<></>);
     const matches = useMediaQuery('(min-width:900px)');
 
     useEffect(() => {

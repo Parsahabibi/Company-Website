@@ -1,0 +1,48 @@
+.custom-card {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    transform: translateY(0);
+    transition: transform 0.3s ease, height 0.3s ease;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.custom-card:hover .card-description {
+    transform: translateY(0);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+}
+
+.read-more-button {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    padding-top: 0;
+}
+
+.custom-card:hover .read-more-button {
+    display: block;
+    padding-top: 125px;
+}
