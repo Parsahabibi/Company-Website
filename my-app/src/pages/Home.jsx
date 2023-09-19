@@ -107,7 +107,7 @@ const Home = () => {
                         {
                             data.map(
                                 item =>
-                                    <Cards title={item.title} des={item.des} images={item.image} width={{
+                                    <Cards state={false} title={item.title} des={item.des} images={item.image} width={{
                                         xs: '142px',
                                         xxs: '147px',
                                         md: '215px',
@@ -143,7 +143,7 @@ const Home = () => {
                     {
                         lastNews.map(
                             item =>
-                                <Cards images={item.image} title={item.title} width={{xs:'152px' , md:'304px'}} height={{xs:'212px' , md:'425px'}} variants={'h3'} font={500}/>
+                                <Cards images={item.image} title={item.title} width={{xs:'152px' , md:'304px'}} height={{xs:'212px' , md:'425px'}} variants={'h3'} font={500} state={true}/>
                         )
                     }
                 </Grid>

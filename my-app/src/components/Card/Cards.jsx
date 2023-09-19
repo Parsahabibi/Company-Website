@@ -1,11 +1,11 @@
 import React from 'react'
 import {Card, CardMedia, CardContent, Button, Grid, Typography} from '@mui/material';
 import './Card.css';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {hover} from "@testing-library/user-event/dist/hover";
 
-const Cards = ({images, title, des, width, height, font , variants}) => {
+const Cards = ({images, title, des, width, height, font, variants, state}) => {
 
     const theme = useTheme();
     const isXs = useMediaQuery(theme.breakpoints.down('xs'));
@@ -15,7 +15,7 @@ const Cards = ({images, title, des, width, height, font , variants}) => {
     let variant = 'subtitle1';
 
 
-    let variantSecond = 'h5' ;
+    let variantSecond = 'h5';
 
 
     if (isXs) {
@@ -33,7 +33,8 @@ const Cards = ({images, title, des, width, height, font , variants}) => {
             width: width,
             height: height,
             '&:hover .card-description .type': {
-                fontWeight: 900
+                fontWeight: 900,
+                paddingBottom:{xs:state ? '110px' : '160px' , md:'25px'}
             },
         }}>
             <CardMedia
@@ -43,15 +44,18 @@ const Cards = ({images, title, des, width, height, font , variants}) => {
                 image={images}
                 title="Image title"
             />
-            <CardContent  className="card-description" sx={{fontWeight: font , padding: {xs:'25px 10px 10px 10px' , md:'24px'}}}>
-                <Typography sx={{fontWeight: font}} variant={variant} className={'type'} width={'226px'} display={'flex'}>{title}</Typography>
+            <Grid className="card-description"
+                         sx={{fontWeight: font, padding: {xs: state ? '30px 10px' : '25px 10px', md: '24px'} , display:'flex' , alignItems:'center'}}>
+                <Typography sx={{fontWeight: font}} variant={state ? variantSecond : variant} className={'type'}
+                            width={'226px'} display={'flex'}>{title}</Typography>
                 <Grid className="read-more-button">
-                    <Typography textAlign={'justify'}  variant={variantSecond} fontWeight={300} pb={'20px'}>{des}</Typography>
-                    <Grid width={{xs:'76%' , md: '51%', l: '42%', lg: '36%'}}>
+                    <Typography textAlign={'justify'} variant={variantSecond} fontWeight={300}
+                                pb={'20px'}>{des}</Typography>
+                    <Grid width={{xs: state ? '87%' : '76%', md: '51%', l: '42%', lg: '36%'}}>
                         <Button variant={'outlinedTwo'}>بیشتر بخوانید</Button>
                     </Grid>
                 </Grid>
-            </CardContent>
+            </Grid>
         </Card>
     )
 }
