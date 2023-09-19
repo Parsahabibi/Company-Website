@@ -77,10 +77,9 @@ const MobileHeader = ({id}) => {
         <Grid position={'fixed'} top={0} left={0} right={0} zIndex={10}  bgcolor={theme.palette.primary.one} py={'21px'} px={'16px'} display={'flex'} alignItems={'center'}
               justifyContent={'space-between'}>
             <Grid>
-                <MenuIcon fontSize={'large'} style={{position: 'relative', top: 0, right: 0}} onClick={() => {
+                <MenuIcon fontSize={'large'} style={{position: 'relative', top: 0, right: 0 , cursor:'pointer'}} onClick={() => {
                     setClosing(false);
                     setOpen(true);
-
                 }}/>
                 {
                     open === true ?
@@ -104,21 +103,21 @@ const MobileHeader = ({id}) => {
                                             {
                                                 item.id === 6 ?
                                                     item.id === id ?
+                                                        <Typography  color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
+                                                                    justifyContent={'center'} py={'8px'}
+                                                                    variant={'subtitle1'}
+                                                                    fontWeight={900} style={{cursor:'pointer'}}>{item.title}</Typography> :
                                                         <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
                                                                     justifyContent={'center'} py={'8px'}
                                                                     variant={'subtitle1'}
-                                                                    fontWeight={900}>{item.title}</Typography> :
-                                                        <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
-                                                                    justifyContent={'center'} py={'8px'}
-                                                                    variant={'subtitle1'}
-                                                                    fontWeight={500}>{item.title}</Typography>
+                                                                    fontWeight={500} style={{cursor:'pointer'}}>{item.title}</Typography>
                                                     :
                                                     item.id === id ?
                                                         <>
                                                             <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
                                                                         justifyContent={'center'} py={'8px'}
                                                                         variant={'subtitle1'}
-                                                                        fontWeight={900}>{item.title}</Typography>
+                                                                        fontWeight={900} style={{cursor:'pointer'}}>{item.title}</Typography>
                                                             <Grid  bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
                                                                   height={'1px'}></Grid>
                                                         </>
@@ -127,8 +126,8 @@ const MobileHeader = ({id}) => {
                                                             <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
                                                                         justifyContent={'center'} py={'8px'}
                                                                         variant={'subtitle1'}
-                                                                        fontWeight={500}>{item.title}</Typography>
-                                                            <Grid  bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
+                                                                        fontWeight={500} style={{cursor:'pointer'}}>{item.title}</Typography>
+                                                            <Grid bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
                                                                   height={'1px'}></Grid>
                                                         </>
                                             }

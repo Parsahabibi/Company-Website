@@ -63,10 +63,10 @@ const DesktopHeader = ({id}) => {
                                 <Grid key={item.id}>
                                     {
                                         item.id === id ?
-                                            <Typography variant={'h3'} color={theme.palette.secondary.one}
+                                            <Typography style={{cursor:'pointer'}} variant={'h3'} color={theme.palette.secondary.one}
                                                         fontWeight={900}>{item.title}</Typography>
                                             :
-                                            <Typography variant={'h3'} color={theme.palette.secondary.one}
+                                            <Typography style={{cursor:'pointer'}} variant={'h3'} color={theme.palette.secondary.one}
                                                         fontWeight={500}>{item.title}</Typography>
                                     }
                                 </Grid>
