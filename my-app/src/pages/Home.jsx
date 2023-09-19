@@ -59,7 +59,10 @@ const Home = () => {
             <Header DesktopId={1} MobileId={1}/>
             <Grid bgcolor={'rgba(255, 251, 242, 1)'} mt={{xs: '83px', md: '73px'}}  width={'100%'}>
                 <Grid pb={'40px'}>
-                    <img width={'100%'} src={'assets/Images/HomePageImage.svg'} alt={''}/>
+                    {/*<img width={'100%'} src={'assets/Images/HomePageImage.svg'} alt={''}/>*/}
+                    <video width="100%" height="100%" autoPlay muted loop>
+                        <source src="/assets/Video/althin_webmotion_03.mp4" type="video/mp4" />
+                    </video>
                 </Grid>
                 <Grid px={{xs: '10px', xxs: '32px', md: '103px'}}>
                     <Typography variant={'subtitle1'} fontWeight={500} display={'flex'} alignItems={'center'}

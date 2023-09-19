@@ -44,11 +44,10 @@ const Cards = ({images, title, des, width, height, font , variants}) => {
                 title="Image title"
             />
             <CardContent  className="card-description" sx={{fontWeight: font , padding: {xs:'25px 10px 10px 10px' , md:'24px'}}}>
-                <Typography sx={{fontWeight: font}} variant={variant} className={'type'} width={'226px'} display={'flex'}
-                            lineHeight={'30px'}>{title}</Typography>
+                <Typography sx={{fontWeight: font}} variant={variant} className={'type'} width={'226px'} display={'flex'}>{title}</Typography>
                 <Grid className="read-more-button">
                     <Typography textAlign={'justify'}  variant={variantSecond} fontWeight={300} pb={'20px'}>{des}</Typography>
-                    <Grid width={{xs:'76%' , md: '51%', l: '42%', lg: '35%'}}>
+                    <Grid width={{xs:'76%' , md: '51%', l: '42%', lg: '36%'}}>
                         <Button variant={'outlinedTwo'}>بیشتر بخوانید</Button>
                     </Grid>
                 </Grid>
