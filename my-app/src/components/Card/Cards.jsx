@@ -60,4 +60,3 @@ const Cards = ({images, title, des, width, height, font, variants, state}) => {
     )
 }
 export default Cards
-

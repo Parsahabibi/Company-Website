@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Button, Grid, Typography, useTheme} from "@mui/material";
 import {textTransform} from "@mui/system";
+import {Link} from "react-router-dom";
 
 const DesktopHeader = ({id}) => {
 
@@ -30,12 +31,12 @@ const DesktopHeader = ({id}) => {
     const theme = useTheme()
 
     const variable = [
-        {id: 1, title: 'صفحه اصلی'},
-        {id: 2, title: 'خدمات'},
-        {id: 3, title: 'استعلام قیمت'},
-        {id: 4, title: 'اخبار'},
-        {id: 5, title: 'درباره ما'},
-        {id: 6, title: 'تماس با ما'},
+        {id: 1, title: 'صفحه اصلی' , link:'/'},
+        {id: 2, title: 'خدمات' , link:'/Services'},
+        {id: 3, title: 'استعلام قیمت' , link:''},
+        {id: 4, title: 'اخبار' , link:''},
+        {id: 5, title: 'درباره ما' , link:''},
+        {id: 6, title: 'تماس با ما' , link:''},
     ]
 
 
@@ -62,12 +63,20 @@ const DesktopHeader = ({id}) => {
                             item =>
                                 <Grid key={item.id}>
                                     {
-                                        item.id === id ?
+                                        item.id === id ?<Link to={item.link}>
                                             <Typography style={{cursor:'pointer'}} variant={'h3'} color={theme.palette.secondary.one}
-                                                        fontWeight={900}>{item.title}</Typography>
+                                                        fontWeight={900}>
+
+                                                    {item.title}
+
+                                            </Typography> </Link>
                                             :
-                                            <Typography style={{cursor:'pointer'}} variant={'h3'} color={theme.palette.secondary.one}
-                                                        fontWeight={500}>{item.title}</Typography>
+                                            <Link to={item.link}>
+                                                <Typography style={{cursor: 'pointer'}} variant={'h3'}
+                                                            color={theme.palette.secondary.one}
+                                                            fontWeight={500}>{item.title}</Typography>
+                                            </Link>
+
                                     }
                                 </Grid>
                         )
