@@ -11,47 +11,52 @@ const Services = () => {
 
     const train = 'assets/Images/ServicesImage.svg'
 
+    const trainMin = 'assets/Images/ServicesMin.svg'
+
     const des = 'لورم ای سوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد '
 
     const items = ['لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی']
-
 
 
     const NavBar = [
         {
             id: 1,
             component: <ServicesAltyn image={train} title={'سرویس حمل و نقل ریلی آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس حمل و نقل ریلی آلتن'} items={items}/>,
+                                      titleItem={'ظرفیت های سرویس حمل و نقل ریلی آلتن'} items={items}
+                                      imageMin={trainMin}/>,
             title: 'حمل و نقل ریلی'
         },
         {
             id: 2,
             component: <ServicesAltyn image={train} title={'سرویس حمل و نقل جاده ای آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس حمل و نقل جاده ای آلتن'} items={items}/>,
+                                      titleItem={'ظرفیت های سرویس حمل و نقل جاده ای آلتن'} items={items}
+                                      imageMin={trainMin}/>,
             title: 'حمل و نقل جاده ای'
         },
         {
             id: 3,
             component: <ServicesAltyn image={train} title={'سرویس حمل و نقل دریایی آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس حمل و نقل دریایی آلتن'} items={items}/>,
+                                      titleItem={'ظرفیت های سرویس حمل و نقل دریایی آلتن'} items={items}
+                                      imageMin={trainMin}/>,
             title: 'حمل و نقل دریایی'
         },
         {
             id: 4,
             component: <ServicesAltyn image={train} title={'سرویس حمل و نقل هوایی آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس حمل و نقل هوایی آلتن'} items={items}/>,
+                                      titleItem={'ظرفیت های سرویس حمل و نقل هوایی آلتن'} items={items}
+                                      imageMin={trainMin}/>,
             title: 'حمل و نقل هوایی'
         },
         {
             id: 5,
             component: <ServicesAltyn image={train} title={'واردات و صادرات آلتن'} dec={des}
-                                      titleItem={'ظرفیت های واردات و صادرات آلتن'} items={items}/>,
+                                      titleItem={'ظرفیت های واردات و صادرات آلتن'} items={items} imageMin={trainMin}/>,
             title: 'واردات و صادرات'
         },
         {
             id: 6,
             component: <ServicesAltyn image={train} title={'سرویس ترخیص کالا آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس ترخیص کالا آلتن'} items={items}/>,
+                                      titleItem={'ظرفیت های سرویس ترخیص کالا آلتن'} items={items} imageMin={trainMin}/>,
             title: 'ترخیص کالا'
         },
     ]
@@ -62,8 +67,34 @@ const Services = () => {
     return (
         <Grid>
             <Header DesktopId={2} MobileId={2}/>
-            <Grid mt={{xs: '', md: '184px'}} mb={'120px'} px={{xs: '', md: '50px', l: '50px', lg: '60px', xl: '108px'}}>
-                <Grid display={'flex'} alignItems={'center'} justifyContent={'center'}
+            <Grid mt={{xs: '83px'}} display={{xs: 'flex', md: 'none'}} alignItems={'center'}
+                  justifyContent={'space-between'} mb={{xs: '27px', md: '0px'}} width={'100%'}
+                  bgcolor={theme.palette.primary.one} style={{overflowX: 'scroll'}}
+                  p={'24px 16px 0px 16px'} gap={'16px'}
+                  sx={{
+                      '::-webkit-scrollbar': {
+                          display: 'none'
+                      },
+                      scrollbarWidth: 'none',
+                      msOverflowStyle: 'none'
+                  }}
+            >
+                {
+                    NavBar.map(
+                        item =>
+                            <Grid key={item.id} onClick={() => {
+                                setActive(item.id)
+                            }}>
+                                <Typography
+                                    fontWeight={active === item.id ? 900 : 500}
+                                    borderBottom={active === item.id ? '2px solid black' : '2px solid transparent'}
+                                    pb={'4px'} whiteSpace={'nowrap'}>{item.title}</Typography>
+                            </Grid>
+                    )
+                }
+            </Grid>
+            <Grid mt={{md: '184px'}} mb={'120px'} px={{xs: '16px', md: '50px', l: '50px', lg: '60px', xl: '108px'}}>
+                <Grid display={{xs: 'none', md: 'flex'}} alignItems={'center'} justifyContent={'center'}
                       bgcolor={theme.palette.secondary.one} borderRadius={"30px"}>
                     {
                         NavBar.map(

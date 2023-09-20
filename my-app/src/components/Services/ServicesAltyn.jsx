@@ -3,7 +3,7 @@ import {Grid, Typography} from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {useTheme} from "@mui/material/styles";
 
-const ServicesAltyn = ({image, title, dec, titleItem, items}) => {
+const ServicesAltyn = ({image, title, dec, titleItem, items, imageMin}) => {
 
     // fixme title : string , dec:string , titleItem: string  , items:[]
 
@@ -13,9 +13,9 @@ const ServicesAltyn = ({image, title, dec, titleItem, items}) => {
     const isMd = useMediaQuery(theme.breakpoints.up('md'));
 
 
-    let variant = '';
+    let variant = 'subtitle1';
 
-    let variantSecond = '';
+    let variantSecond = 'subtitle2';
 
     if (isXs) {
         variant = 'subtitle1';
@@ -27,20 +27,26 @@ const ServicesAltyn = ({image, title, dec, titleItem, items}) => {
 
 
     return (
-        <Grid pt={{xs: '', md: '89px'}}
-              style={{backgroundImage: '/assets/images/back.svg', backgroundPosition: 'center'}}>
-            <Grid display={'flex'} flexDirection={{xs: 'column', md: 'row-reverse'}} alignItems={'start'}
-                  gap={{xs: '', md: '25px'}}
-                  justifyContent={{xs: '', md: 'space-between'}} pb={{xs: '', md: '96px'}}>
+        <Grid pt={{md: '89px'}}>
+            <Grid display={'flex'} flexDirection={{xs: 'column', md: 'row-reverse'}}
+                  alignItems={{xs: 'center', md: 'start'}}
+                  gap={{xs: '0px', md: '25px'}}
+                  justifyContent={{xs: 'center', md: 'space-between'}} pb={{xs: '', md: '96px'}}>
                 <Grid>
-                    <Typography pb={{xs: '', md: '16px'}} fontWeight={900} variant={variant}>{title}</Typography>
+                    <Typography pb={{xs: '8px', md: '16px'}} fontWeight={900} variant={variant}>{title}</Typography>
                     <Typography textAlign={'justify'} variant={'subtitle1'} fontWeight={500}
-                                lineHeight={'25px'}>{dec}</Typography>
+                                lineHeight={'25px'} pb={{xs: '41px', md: '0px'}}>{dec}</Typography>
                 </Grid>
-                <img src={image} alt={''}/>
+                <Grid display={{xs: 'block', md: 'none'}} pb={{xs: '40px', md: '0px'}}>
+                    <img width={'100%'} src={imageMin} alt={''}/>
+                </Grid>
+                <Grid display={{xs: 'none', md: 'block'}} pb={{xs: '40px', md: '0px'}}>
+                    <img src={image} alt={''}/>
+                </Grid>
+
             </Grid>
             <Grid display={'flex'} flexDirection={'column'} alignItems={'start'}>
-                <Typography pb={{xs:'' , md:'16px'}} variant={variant} fontWeight={900}>{titleItem}</Typography>
+                <Typography pb={{xs: '18px', md: '16px'}} variant={variant} fontWeight={900}>{titleItem}</Typography>
                 <Grid display={'flex'} flexDirection={'column'} gap={'16px'}>
                     {
                         items.map(
