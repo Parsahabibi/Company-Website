@@ -3,20 +3,58 @@ import {Grid, Typography} from "@mui/material";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import {useTheme} from "@mui/material/styles";
+import ServicesAltyn from "../components/Services/ServicesAltyn";
 
 const Services = () => {
 
     const [active, setActive] = useState(1)
 
-    const NavBar = [
-        {id: 1, component: '', title: 'حمل و نقل ریلی'},
-        {id: 2, component: '', title: 'حمل و نقل جاده ای'},
-        {id: 3, component: '', title: 'حمل و نقل دریایی'},
-        {id: 4, component: '', title: 'حمل و نقل هوایی'},
-        {id: 5, component: '', title: 'واردات و صادرات'},
-        {id: 6, component: '', title: 'ترخیص کالا'},
-    ]
+    const train = 'assets/Images/ServicesImage.svg'
 
+    const des = 'لورم ای سوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد '
+
+    const items = ['لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی']
+
+
+
+    const NavBar = [
+        {
+            id: 1,
+            component: <ServicesAltyn image={train} title={'سرویس حمل و نقل ریلی آلتن'} dec={des}
+                                      titleItem={'ظرفیت های سرویس حمل و نقل ریلی آلتن'} items={items}/>,
+            title: 'حمل و نقل ریلی'
+        },
+        {
+            id: 2,
+            component: <ServicesAltyn image={train} title={'سرویس حمل و نقل جاده ای آلتن'} dec={des}
+                                      titleItem={'ظرفیت های سرویس حمل و نقل جاده ای آلتن'} items={items}/>,
+            title: 'حمل و نقل جاده ای'
+        },
+        {
+            id: 3,
+            component: <ServicesAltyn image={train} title={'سرویس حمل و نقل دریایی آلتن'} dec={des}
+                                      titleItem={'ظرفیت های سرویس حمل و نقل دریایی آلتن'} items={items}/>,
+            title: 'حمل و نقل دریایی'
+        },
+        {
+            id: 4,
+            component: <ServicesAltyn image={train} title={'سرویس حمل و نقل هوایی آلتن'} dec={des}
+                                      titleItem={'ظرفیت های سرویس حمل و نقل هوایی آلتن'} items={items}/>,
+            title: 'حمل و نقل هوایی'
+        },
+        {
+            id: 5,
+            component: <ServicesAltyn image={train} title={'واردات و صادرات آلتن'} dec={des}
+                                      titleItem={'ظرفیت های واردات و صادرات آلتن'} items={items}/>,
+            title: 'واردات و صادرات'
+        },
+        {
+            id: 6,
+            component: <ServicesAltyn image={train} title={'سرویس ترخیص کالا آلتن'} dec={des}
+                                      titleItem={'ظرفیت های سرویس ترخیص کالا آلتن'} items={items}/>,
+            title: 'ترخیص کالا'
+        },
+    ]
 
     const theme = useTheme();
 
@@ -24,7 +62,7 @@ const Services = () => {
     return (
         <Grid>
             <Header DesktopId={2} MobileId={2}/>
-            <Grid mt={{xs: '', md: '184px'}} mb={'120px'} px={{xs: '', md: '108px'}}>
+            <Grid mt={{xs: '', md: '184px'}} mb={'120px'} px={{xs: '', md: '50px', l: '50px', lg: '60px', xl: '108px'}}>
                 <Grid display={'flex'} alignItems={'center'} justifyContent={'center'}
                       bgcolor={theme.palette.secondary.one} borderRadius={"30px"}>
                     {
@@ -40,7 +78,13 @@ const Services = () => {
                                                 style={{cursor: 'pointer'}}
                                                 color={active === item.id ? theme.palette.info.one : 'white'}
                                                 variant={'subtitle1'} fontWeight={500}
-                                                px={{xs: '', md: item.id === 1 || item.id === 6 ? '62px' : '48px'}}
+                                                px={{
+                                                    xs: '',
+                                                    md: item.id === 1 || item.id === 6 ? '10px' : '0px',
+                                                    l: '',
+                                                    lg: item.id === 1 || item.id === 6 ? '44px' : '30px',
+                                                    xl: item.id === 1 || item.id === 6 ? '62px' : '48px'
+                                                }}
                                                 py={{xs: '', md: '5px'}}>
                                         {item.title}
                                     </Typography>
@@ -48,6 +92,7 @@ const Services = () => {
                         )
                     }
                 </Grid>
+                {NavBar.find(item => item.id === active)?.component}
             </Grid>
             <Footer/>
         </Grid>

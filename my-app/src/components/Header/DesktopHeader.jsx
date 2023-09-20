@@ -32,7 +32,7 @@ const DesktopHeader = ({id}) => {
 
     const variable = [
         {id: 1, title: 'صفحه اصلی' , link:'/'},
-        {id: 2, title: 'خدمات' , link:'/Services'},
+        {id: 2, title: 'خدمات' , link:'/ServicesAltyn'},
         {id: 3, title: 'استعلام قیمت' , link:''},
         {id: 4, title: 'اخبار' , link:''},
         {id: 5, title: 'درباره ما' , link:''},
