@@ -51,17 +51,12 @@ const Theme = createTheme({
                         background: "rgba(255, 191, 63, 1)",
                         color: "#333845",
                         borderRadius: "10px",
-                        border: " 1px solid #444A5D",
-                        backgroundColor: 'white',
                         fontSize: "16px",
                         display: "flex",
                         justifyContent: "center",
-                        width: "100%",
-                        padding: "10px 36px",
                         "&:hover": {
                             background: "rgba(255, 191, 63, 1)",
                             color: "#333845",
-                            border: '1px solid rgba(255, 191, 63, 1)'
                         },
                     },
                 },
