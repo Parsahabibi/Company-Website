@@ -28,6 +28,9 @@ const ServicesAltyn = ({image, title, dec, titleItem, items, imageMin}) => {
 
     return (
         <Grid pt={{md: '89px'}}>
+            <Grid position={'absolute'} top={{xs:'215%' , xxs:'195%' , s:'142%' , md:'120%' , lg:'90%'}} o right={0} zIndex={-1}>
+                <img width={'100%'} src={'assets/Images/back.svg'} alt={''}/>
+            </Grid>
             <Grid display={'flex'} flexDirection={{xs: 'column', md: 'row-reverse'}}
                   alignItems={{xs: 'center', md: 'start'}}
                   gap={{xs: '0px', md: '25px'}}
