@@ -10,6 +10,7 @@ import {
 import {useTheme} from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Select from 'react-select';
 
 const Price = () => {
 
@@ -21,7 +22,22 @@ const Price = () => {
 
     const dropdownRef = useRef(null);
 
-    const [value , setValue] = useState('')
+
+
+    const [inputValues, setInputValues] = useState({});
+
+    const handleDropdownClick = (id, value) => {
+        setInputValues(prevValues => ({
+            ...prevValues,
+            [id]: value
+        }));
+        console.log(inputValues)
+
+        setActiveInputId(null);
+    };
+
+
+
 
 
     const handleClick = (value) => {
@@ -206,6 +222,47 @@ const Price = () => {
                                                         top: '50%',
                                                         transform: 'translateY(-50%)'
                                                     }}>{item.icon}</Icon>
+
+                                                    {/*{*/}
+                                                    {/*    item.drop ? (*/}
+                                                    {/*            <Select*/}
+                                                    {/*                placeholder={item.placeHolder}*/}
+                                                    {/*                options={item.DropDown.map(drop => ({ value: drop.title, label: drop.title }))}*/}
+                                                    {/*                isSearchable={true}*/}
+                                                    {/*                onChange={selectedOption => setValue(selectedOption.label)}*/}
+                                                    {/*                styles={{*/}
+                                                    {/*                    control: (provided) => ({*/}
+                                                    {/*                        ...provided,*/}
+                                                    {/*                        backgroundColor: 'rgba(255, 245, 224, 1)',*/}
+                                                    {/*                        border: '1px solid rgba(255, 191, 63, 1)',*/}
+                                                    {/*                        paddingLeft:'10px',*/}
+                                                    {/*                        borderRadius: '5px',*/}
+                                                    {/*                        width: '100%',*/}
+                                                    {/*                        cursor: 'pointer',*/}
+                                                    {/*                    }),*/}
+                                                    {/*                    indicatorSeparator: () => ({}),*/}
+                                                    {/*                }}*/}
+                                                    {/*            />*/}
+                                                    {/*    ):*/}
+                                                    {/*        (*/}
+                                                    {/*            <input id={item.id} placeholder={item.placeHolder}*/}
+                                                    {/*                   readOnly={item.drop === true} onClick={() => {*/}
+                                                    {/*                if (activeInputId === item.id) {*/}
+                                                    {/*                    setActiveInputId(null);  // Close the dropdown if it's already open*/}
+                                                    {/*                } else {*/}
+                                                    {/*                    setActiveInputId(item.id);  // Set the active input's ID*/}
+                                                    {/*                }*/}
+                                                    {/*            }} style={{*/}
+                                                    {/*                backgroundColor: 'rgba(255, 245, 224, 1)',*/}
+                                                    {/*                border: '1px solid rgba(255, 191, 63, 1)',*/}
+                                                    {/*                padding: '5px',*/}
+                                                    {/*                borderRadius: '5px',*/}
+                                                    {/*                width: '100%',*/}
+                                                    {/*                cursor: item.drop === true ? 'pointer' : 'text',*/}
+                                                    {/*            }}/>*/}
+                                                    {/*        )*/}
+                                                    {/*}*/}
+
                                                     <input id={item.id} placeholder={item.placeHolder}
                                                            readOnly={item.drop === true} onClick={() => {
                                                         if (activeInputId === item.id) {
@@ -221,6 +278,7 @@ const Price = () => {
                                                         width: '100%',
                                                         cursor: item.drop === true ? 'pointer' : 'text',
                                                     }}/>
+
                                                     <Grid position={'absolute'} zIndex={10}
                                                           ref={dropdownRef}
                                                           bgcolor={'rgb(255, 245, 224)'}
@@ -234,6 +292,7 @@ const Price = () => {
                                                             item.DropDown.map(
                                                                 (drop , index) =>
                                                                     <Grid
+                                                                        onClick={() => handleDropdownClick(drop.id, drop.title)}
                                                                         key={item.id}
                                                                         style={{cursor: 'pointer'}}
                                                                         display={item.drop === true ? 'block' : 'none'}
@@ -250,7 +309,6 @@ const Price = () => {
                                                         }
                                                     </Grid>
                                                 </Grid>
-
                                             </Grid>
                                     )
                                 }
