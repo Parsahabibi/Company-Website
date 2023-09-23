@@ -1,17 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState , useEffect , useRef} from 'react'
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import {
     Button,
-    FormControl,
-    FormControlLabel,
     Grid,
     Icon,
-    InputAdornment,
-    Radio,
-    TextField,
     Typography,
-    withStyles
 } from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -21,22 +15,120 @@ const Price = () => {
 
     const [selected, setSelected] = useState(null);
 
+    const [activeInputId, setActiveInputId] = useState(null);
+
+    const [hoveredItem, setHoveredItem] = useState(null);
+
+    const dropdownRef = useRef(null);
+
+    const [value , setValue] = useState('')
+
+
     const handleClick = (value) => {
         setSelected(value);
     };
 
+
     const InputData = [
-        {id: 1, title: 'نام و نام خانوادگی', placeHolder: '', icon: ''},
-        {id: 2, title: 'شماره تماس', placeHolder: '', icon: ''},
-        {id: 3, title: 'ایمیل', placeHolder: '', icon: ''},
-        {id: 4, title: 'نام محموله', placeHolder: '', icon: ''},
-        {id: 5, title: 'HS Code', placeHolder: '', icon: ''},
-        {id: 6, title: 'تناژ محموله', placeHolder: '', icon: ''},
-        {id: 7, title: 'مبدا', placeHolder: '(تهران-ایران)', icon: <KeyboardArrowDownIcon/>},
-        {id: 8, title: 'مقصد', placeHolder: '(تهران-ایران)', icon: <KeyboardArrowDownIcon/>},
-        {id: 9, title: 'محموله چند مسیره است؟', placeHolder: 'تک مسیر', icon: <KeyboardArrowDownIcon/>},
-        {id: 10, title: 'درجه خطرپذیری کالا', placeHolder: '(سطح یک)', icon: <KeyboardArrowDownIcon/>},
-        {id: 11, title: 'نوع بسته بندی', placeHolder: '(کارتن)', icon: <KeyboardArrowDownIcon/>},
+        {
+            id: 1,
+            title: 'نام و نام خانوادگی',
+            placeHolder: '',
+            icon: '',
+            DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
+            drop: false,
+            value:''
+        },
+        {
+            id: 2,
+            title: 'شماره تماس',
+            placeHolder: '',
+            icon: '',
+            DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
+            drop: false,
+            value:''
+        },
+        {
+            id: 3,
+            title: 'ایمیل',
+            placeHolder: '',
+            icon: '',
+            DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
+            drop: false,
+            value:''
+        },
+        {
+            id: 4,
+            title: 'نام محموله',
+            placeHolder: '',
+            icon: '',
+            DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
+            drop: false,
+            value:''
+        },
+        {
+            id: 5,
+            title: 'HS Code',
+            placeHolder: '',
+            icon: '',
+            DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
+            drop: false,
+            value:''
+        },
+        {
+            id: 6,
+            title: 'تناژ محموله',
+            placeHolder: '',
+            icon: '',
+            DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
+            drop: false,
+            value:''
+        },
+        {
+            id: 7,
+            title: 'مبدا',
+            placeHolder: '(تهران-ایران)',
+            icon: <KeyboardArrowDownIcon/>,
+            DropDown: [{id: 1, title: 'تهران-ایران'}, {id: 2, title: 'اصفهان-ایران'}, {id: 3, title: 'تبریز-ایران'}],
+            drop: true,
+            value:''
+        },
+        {
+            id: 8,
+            title: 'مقصد',
+            placeHolder: '(تهران-ایران)',
+            icon: <KeyboardArrowDownIcon/>,
+            DropDown: [{id: 1, title: 'تهران-ایران'}, {id: 2, title: 'اصفهان-ایران'}, {id: 3, title: 'تبریز-ایران'}],
+            drop: true,
+            value:''
+        },
+        {
+            id: 9,
+            title: 'محموله چند مسیره است؟',
+            placeHolder: 'تک مسیر',
+            icon: <KeyboardArrowDownIcon/>,
+            DropDown: [{id: 1, title: 'تک مسیر'}, {id: 2, title: 'دو مسیر'}, {id: 3, title: 'سه مسیر'}],
+            drop: true,
+            value:''
+        },
+        {
+            id: 10,
+            title: 'درجه خطرپذیری کالا',
+            placeHolder: '(سطح یک)',
+            icon: <KeyboardArrowDownIcon/>,
+            DropDown: [{id: 1, title: 'سطح یک'}, {id: 2, title: 'سطح دو'}, {id: 3, title: 'سطح سه'}],
+            drop: true,
+            value:''
+        },
+        {
+            id: 11,
+            title: 'نوع بسته بندی',
+            placeHolder: '(کارتن)',
+            icon: <KeyboardArrowDownIcon/>,
+            DropDown: [{id: 1, title: 'کارتن'}, {id: 2, title: 'مقوا'}, {id: 3, title: 'پلاستیک'}],
+            drop: true,
+            value:''
+        },
     ]
 
 
@@ -48,19 +140,39 @@ const Price = () => {
 
     let variant = 'subtitle1';
 
+    let firstVariant = 'h5'
+
     let variantSecond = 'subtitle2';
 
     let varintThird = 'h5'
 
     if (isXs) {
         variant = 'subtitle1';
+        firstVariant = 'h5'
         variantSecond = 'subtitle2'
         varintThird = 'h5'
     } else if (isMd) {
         variant = 'h3';
+        firstVariant = 'subtitle2'
         variantSecond = 'subtitle1'
         varintThird = 'subtitle1'
     }
+
+
+    useEffect(() => {
+        function handleOutsideClick(event) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setActiveInputId(null);  // اگر کلیک خارج از Grid اتفاق افتاد، Grid را مخفی کنید
+            }
+        }
+
+        document.addEventListener('mousedown', handleOutsideClick);  // اضافه کردن event listener به document
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);  // پاک کردن event listener زمانی که کامپوننت unmount می‌شود
+        };
+    }, []);
+
 
     return (
         <Grid>
@@ -74,7 +186,7 @@ const Price = () => {
                     </Grid>
                     <Grid bgcolor={'white'} px={{xs: '40px', md: '80px'}} py={{xs: '35px', md: '44px'}}
                           border={'1px solid rgba(255, 191, 63, 1)'} borderRadius={'0px 0px 20px 20px'}>
-                        <form style={{paddingBottom: '24px'}}>
+                        <form style={{paddingBottom: '57px'}}>
                             <Grid display={'flex'} flexWrap={'wrap'} justifyContent={{md: 'space-between'}}
                                   flexDirection={{xs: 'column', md: 'row'}} gap={{xs: '24px', md: '112px'}}>
                                 {
@@ -94,14 +206,51 @@ const Price = () => {
                                                         top: '50%',
                                                         transform: 'translateY(-50%)'
                                                     }}>{item.icon}</Icon>
-                                                    <input id={item.id} placeholder={item.placeHolder} style={{
+                                                    <input id={item.id} placeholder={item.placeHolder}
+                                                           readOnly={item.drop === true} onClick={() => {
+                                                        if (activeInputId === item.id) {
+                                                            setActiveInputId(null);  // Close the dropdown if it's already open
+                                                        } else {
+                                                            setActiveInputId(item.id);  // Set the active input's ID
+                                                        }
+                                                    }} style={{
                                                         backgroundColor: 'rgba(255, 245, 224, 1)',
                                                         border: '1px solid rgba(255, 191, 63, 1)',
                                                         padding: '5px',
                                                         borderRadius: '5px',
-                                                        width: '100%'
+                                                        width: '100%',
+                                                        cursor: item.drop === true ? 'pointer' : 'text',
                                                     }}/>
+                                                    <Grid position={'absolute'} zIndex={10}
+                                                          ref={dropdownRef}
+                                                          bgcolor={'rgb(255, 245, 224)'}
+                                                          border={item.drop === true ? '1px solid rgb(255, 191, 63)' :''} top={32} right={0}
+                                                          width={'100%'} borderRadius={' 5px'}
+                                                          display={activeInputId === item.id ? 'flex' : 'none'}
+                                                          flexDirection={'column'} gap={'10px'}
+                                                          p={item.drop === true ? '10px' : '0px'}
+                                                    >
+                                                        {
+                                                            item.DropDown.map(
+                                                                (drop , index) =>
+                                                                    <Grid
+                                                                        key={item.id}
+                                                                        style={{cursor: 'pointer'}}
+                                                                        display={item.drop === true ? 'block' : 'none'}
+                                                                    >
+                                                                        <Typography variant={firstVariant}
+                                                                                    fontWeight={hoveredItem === index ? 900 : 500}
+                                                                                    onMouseEnter={() => setHoveredItem(index)}
+                                                                                    onMouseLeave={() => setHoveredItem(null)} >
+                                                                            {drop.title}
+                                                                        </Typography>
+
+                                                                    </Grid>
+                                                            )
+                                                        }
+                                                    </Grid>
                                                 </Grid>
+
                                             </Grid>
                                     )
                                 }
@@ -111,51 +260,46 @@ const Price = () => {
                             <Typography pb={{xs: '16px'}} variant={variantSecond} fontWeight={500}>آیا محموله اظهار شده
                                 است؟</Typography>
                             <Grid>
-                                {/*<form style={{display: 'flex', alignItems: 'center', gap: '40px'}}>*/}
-                                {/*    <Grid style={{display: 'flex', alignItems: 'center', gap: '4px'}}>*/}
-                                {/*        <label htmlFor={"yes"}>*/}
-                                {/*            <Typography variant={variantSecond} fontWeight={500}>بلی</Typography>*/}
-                                {/*        </label>*/}
-                                {/*        <input type={'radio'} id="yes" name="fav_language" value="بله"/>*/}
-                                {/*    </Grid>*/}
-                                {/*    <Grid style={{display: 'flex', alignItems: 'center', gap: '4px'}}>*/}
-                                {/*        <label htmlFor={'no'}>*/}
-                                {/*            <Typography variant={variantSecond} fontWeight={500}>خیر</Typography>*/}
-                                {/*        </label>*/}
-                                {/*        <input type={'radio'} id="no" name="fav_language" value="خیر"/>*/}
-                                {/*    </Grid>*/}
-                                {/*</form>*/}
-
-                                <div style={{display: 'flex', alignItems: 'center', gap: '40px'}}>
-                                    <div onClick={() => handleClick('yes')}
-                                         style={{display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer'}}>
+                                <Grid style={{display: 'flex', alignItems: 'center', gap: '40px'}}>
+                                    <Grid onClick={() => handleClick('yes')}
+                                          style={{
+                                              display: 'flex',
+                                              alignItems: 'center',
+                                              gap: '4px',
+                                              cursor: 'pointer'
+                                          }}>
                                         <Typography variant={variantSecond} fontWeight={500}>بلی</Typography>
-                                        <div style={{
+                                        <Grid style={{
                                             width: '20px',
                                             height: '20px',
                                             backgroundColor: selected === 'yes' ? 'rgba(255, 191, 63, 1)' : 'white',
                                             border: '1px solid rgba(255, 191, 63, 1)',
-                                            borderRadius:'3px'
-                                        }}></div>
-                                    </div>
-                                    <div onClick={() => handleClick('no')}
-                                         style={{display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer'}}>
+                                            borderRadius: '3px'
+                                        }}></Grid>
+                                    </Grid>
+                                    <Grid onClick={() => handleClick('no')}
+                                          style={{
+                                              display: 'flex',
+                                              alignItems: 'center',
+                                              gap: '4px',
+                                              cursor: 'pointer'
+                                          }}>
                                         <Typography variant={variantSecond} fontWeight={500}>خیر</Typography>
-                                        <div style={{
+                                        <Grid style={{
                                             width: '20px',
                                             height: '20px',
                                             backgroundColor: selected === 'no' ? 'rgba(255, 191, 63, 1)' : 'white',
                                             border: '1px solid rgba(255, 191, 63, 1)',
-                                            borderRadius:'3px'
-                                        }}></div>
-                                    </div>
-                                </div>
+                                            borderRadius: '3px'
+                                        }}></Grid>
+                                    </Grid>
+                                </Grid>
 
                             </Grid>
                         </Grid>
                         <Grid pb={{xs: '32px', md: '48px'}} display={'flex'} justifyContent={'end'}
                               width={{xs: '50%', md: '30%', lg: '15%'}} mr={{xs: '50%', md: '70%', lg: '85%'}}>
-                            <Button variant={'contained'} style={{width: '100%'}}>
+                            <Button variant={'contained'} style={{width: '100%'}} disabled={selected === 'no'}>
                                 <Typography variant={'subtitle1'} fontWeight={900}>ارسال</Typography>
                             </Button>
                         </Grid>
