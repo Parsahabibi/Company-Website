@@ -19,20 +19,10 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const Price = () => {
 
+    const [selected, setSelected] = useState(null);
 
-    const [selectedValue, setSelectedValue] = useState('option1');
-
-    const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-        console.log(selectedValue)
-
-    };
-
-    const squareStyle = {
-        borderRadius: '0',
-        '& > span.MuiSvgIcon-root': {
-            borderRadius: '0'
-        }
+    const handleClick = (value) => {
+        setSelected(value);
     };
 
     const InputData = [
@@ -85,12 +75,14 @@ const Price = () => {
                     <Grid bgcolor={'white'} px={{xs: '40px', md: '80px'}} py={{xs: '35px', md: '44px'}}
                           border={'1px solid rgba(255, 191, 63, 1)'} borderRadius={'0px 0px 20px 20px'}>
                         <form style={{paddingBottom: '24px'}}>
-                            <Grid display={'flex'} flexWrap={'wrap'} justifyContent={{md:'center'}}  flexDirection={{xs: 'column', md: 'row'}} gap={{xs: '24px', md: ''}}>
+                            <Grid display={'flex'} flexWrap={'wrap'} justifyContent={{md: 'space-between'}}
+                                  flexDirection={{xs: 'column', md: 'row'}} gap={{xs: '24px', md: '112px'}}>
                                 {
                                     InputData.map(
-                                        item =>
+                                        (item, index) =>
                                             <Grid key={item.id} display={'flex'} flexWrap={'wrap'}
-                                                  flexDirection={'column'} gap={'5px'}>
+                                                  flexDirection={'column'} gap={'5px'}
+                                                  ml={{xs: '0', md: index === InputData.length - 1 ? '42%' : '0%'}}>
                                                 <label htmlFor={item.id}>
                                                     <Typography variant={variantSecond}
                                                                 fontWeight={500}>{item.title}</Typography>
@@ -115,27 +107,55 @@ const Price = () => {
                                 }
                             </Grid>
                         </form>
-                        <Grid>
-                            <Typography pb={{xs:'16px'}} variant={variantSecond} fontWeight={500}>آیا محموله اظهار شده است؟</Typography>
+                        <Grid pb={{xs: '25px', md: '10px'}}>
+                            <Typography pb={{xs: '16px'}} variant={variantSecond} fontWeight={500}>آیا محموله اظهار شده
+                                است؟</Typography>
                             <Grid>
-                                <form style={{display: 'flex', alignItems: 'center', gap: '40px'}}>
-                                    <Grid style={{display: 'flex', alignItems: 'center', gap: '4px'}}>
-                                        <label htmlFor={"yes"}>
-                                            <Typography variant={variantSecond} fontWeight={500}>بلی</Typography>
-                                        </label>
-                                        <input type={'radio'} id="yes" name="fav_language" value="بله"/>
-                                    </Grid>
-                                    <Grid style={{display: 'flex', alignItems: 'center', gap: '4px'}}>
-                                        <label htmlFor={'no'}>
-                                            <Typography variant={variantSecond} fontWeight={500}>خیر</Typography>
-                                        </label>
-                                        <input type={'radio'} id="no" name="fav_language" value="خیر" />
-                                    </Grid>
-                                </form>
+                                {/*<form style={{display: 'flex', alignItems: 'center', gap: '40px'}}>*/}
+                                {/*    <Grid style={{display: 'flex', alignItems: 'center', gap: '4px'}}>*/}
+                                {/*        <label htmlFor={"yes"}>*/}
+                                {/*            <Typography variant={variantSecond} fontWeight={500}>بلی</Typography>*/}
+                                {/*        </label>*/}
+                                {/*        <input type={'radio'} id="yes" name="fav_language" value="بله"/>*/}
+                                {/*    </Grid>*/}
+                                {/*    <Grid style={{display: 'flex', alignItems: 'center', gap: '4px'}}>*/}
+                                {/*        <label htmlFor={'no'}>*/}
+                                {/*            <Typography variant={variantSecond} fontWeight={500}>خیر</Typography>*/}
+                                {/*        </label>*/}
+                                {/*        <input type={'radio'} id="no" name="fav_language" value="خیر"/>*/}
+                                {/*    </Grid>*/}
+                                {/*</form>*/}
+
+                                <div style={{display: 'flex', alignItems: 'center', gap: '40px'}}>
+                                    <div onClick={() => handleClick('yes')}
+                                         style={{display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer'}}>
+                                        <Typography variant={variantSecond} fontWeight={500}>بلی</Typography>
+                                        <div style={{
+                                            width: '20px',
+                                            height: '20px',
+                                            backgroundColor: selected === 'yes' ? 'rgba(255, 191, 63, 1)' : 'white',
+                                            border: '1px solid rgba(255, 191, 63, 1)',
+                                            borderRadius:'3px'
+                                        }}></div>
+                                    </div>
+                                    <div onClick={() => handleClick('no')}
+                                         style={{display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer'}}>
+                                        <Typography variant={variantSecond} fontWeight={500}>خیر</Typography>
+                                        <div style={{
+                                            width: '20px',
+                                            height: '20px',
+                                            backgroundColor: selected === 'no' ? 'rgba(255, 191, 63, 1)' : 'white',
+                                            border: '1px solid rgba(255, 191, 63, 1)',
+                                            borderRadius:'3px'
+                                        }}></div>
+                                    </div>
+                                </div>
+
                             </Grid>
                         </Grid>
-                        <Grid pb={{xs: '32px', md: '48px'}} display={'flex'} justifyContent={'end'}>
-                            <Button variant={'contained'} style={{width: '50%'}}>
+                        <Grid pb={{xs: '32px', md: '48px'}} display={'flex'} justifyContent={'end'}
+                              width={{xs: '50%', md: '30%', lg: '15%'}} mr={{xs: '50%', md: '70%', lg: '85%'}}>
+                            <Button variant={'contained'} style={{width: '100%'}}>
                                 <Typography variant={'subtitle1'} fontWeight={900}>ارسال</Typography>
                             </Button>
                         </Grid>
