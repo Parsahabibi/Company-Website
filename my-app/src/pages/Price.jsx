@@ -177,16 +177,16 @@ const Price = () => {
                 dropdownRefs.current[activeInputId] &&
                 !dropdownRefs.current[activeInputId].current.contains(event.target))
             {
-                setActiveInputId(null);  // اگر کلیک خارج از Grid اتفاق افتاد، Grid را مخفی کنید
+                setActiveInputId(null);
             }
         }
 
-        document.addEventListener('mousedown', handleOutsideClick);  // اضافه کردن event listener به document
+        document.addEventListener('mousedown', handleOutsideClick);
 
         return () => {
-            document.removeEventListener('mousedown', handleOutsideClick);  // پاک کردن event listener زمانی که کامپوننت unmount می‌شود
+            document.removeEventListener('mousedown', handleOutsideClick);
         };
-    }, []);
+    }, [activeInputId, dropdownRefs]);
 
 
     return (
