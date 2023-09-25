@@ -1,4 +1,4 @@
-import React, {useState , useEffect , useRef} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import {
@@ -22,22 +22,21 @@ const Price = () => {
 
     const dropdownRef = useRef(null);
 
+    const dropdownRefs = useRef({});
 
 
     const [inputValues, setInputValues] = useState({});
 
+
     const handleDropdownClick = (id, value) => {
+        console.log(id, value)
+
         setInputValues(prevValues => ({
             ...prevValues,
             [id]: value
         }));
-        console.log(inputValues)
-
         setActiveInputId(null);
     };
-
-
-
 
 
     const handleClick = (value) => {
@@ -53,7 +52,7 @@ const Price = () => {
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-            value:''
+
         },
         {
             id: 2,
@@ -62,7 +61,7 @@ const Price = () => {
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-            value:''
+
         },
         {
             id: 3,
@@ -71,7 +70,7 @@ const Price = () => {
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-            value:''
+
         },
         {
             id: 4,
@@ -80,7 +79,7 @@ const Price = () => {
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-            value:''
+
         },
         {
             id: 5,
@@ -89,7 +88,7 @@ const Price = () => {
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-            value:''
+
         },
         {
             id: 6,
@@ -98,7 +97,7 @@ const Price = () => {
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-            value:''
+
         },
         {
             id: 7,
@@ -107,7 +106,7 @@ const Price = () => {
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'تهران-ایران'}, {id: 2, title: 'اصفهان-ایران'}, {id: 3, title: 'تبریز-ایران'}],
             drop: true,
-            value:''
+
         },
         {
             id: 8,
@@ -116,7 +115,7 @@ const Price = () => {
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'تهران-ایران'}, {id: 2, title: 'اصفهان-ایران'}, {id: 3, title: 'تبریز-ایران'}],
             drop: true,
-            value:''
+
         },
         {
             id: 9,
@@ -125,7 +124,7 @@ const Price = () => {
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'تک مسیر'}, {id: 2, title: 'دو مسیر'}, {id: 3, title: 'سه مسیر'}],
             drop: true,
-            value:''
+
         },
         {
             id: 10,
@@ -134,7 +133,7 @@ const Price = () => {
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'سطح یک'}, {id: 2, title: 'سطح دو'}, {id: 3, title: 'سطح سه'}],
             drop: true,
-            value:''
+
         },
         {
             id: 11,
@@ -143,7 +142,6 @@ const Price = () => {
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'کارتن'}, {id: 2, title: 'مقوا'}, {id: 3, title: 'پلاستیک'}],
             drop: true,
-            value:''
         },
     ]
 
@@ -177,7 +175,10 @@ const Price = () => {
 
     useEffect(() => {
         function handleOutsideClick(event) {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            if (activeInputId !== null &&
+                dropdownRefs.current[activeInputId] &&
+                !dropdownRefs.current[activeInputId].current.contains(event.target))
+            {
                 setActiveInputId(null);  // اگر کلیک خارج از Grid اتفاق افتاد، Grid را مخفی کنید
             }
         }
@@ -208,108 +209,112 @@ const Price = () => {
                                 {
                                     InputData.map(
                                         (item, index) =>
-                                            <Grid key={item.id} display={'flex'} flexWrap={'wrap'}
-                                                  flexDirection={'column'} gap={'5px'}
-                                                  ml={{xs: '0', md: index === InputData.length - 1 ? '42%' : '0%'}}>
-                                                <label htmlFor={item.id}>
-                                                    <Typography variant={variantSecond}
-                                                                fontWeight={500}>{item.title}</Typography>
-                                                </label>
-                                                <Grid position={'relative'}>
-                                                    <Icon style={{
-                                                        position: 'absolute',
-                                                        left: '15px',
-                                                        top: '50%',
-                                                        transform: 'translateY(-50%)'
-                                                    }}>{item.icon}</Icon>
+                                            (
+                                                dropdownRefs.current[item.id] = dropdownRefs.current[item.id] || React.createRef(),
+                                                    <Grid key={index} display={'flex'} flexWrap={'wrap'}
+                                                          flexDirection={'column'} gap={'5px'}
+                                                          ml={{
+                                                              xs: '0',
+                                                              md: index === InputData.length - 1 ? '42%' : '0%'
+                                                          }}>
+                                                        <label htmlFor={item.id}>
+                                                            <Typography variant={variantSecond}
+                                                                        fontWeight={500}>{item.title}</Typography>
+                                                        </label>
+                                                        <Grid position={'relative'}>
+                                                            <Icon style={{
+                                                                position: 'absolute',
+                                                                left: '15px',
+                                                                top: '50%',
+                                                                transform: 'translateY(-50%)'
+                                                            }}>{item.icon}</Icon>
 
-                                                    {/*{*/}
-                                                    {/*    item.drop ? (*/}
-                                                    {/*            <Select*/}
-                                                    {/*                placeholder={item.placeHolder}*/}
-                                                    {/*                options={item.DropDown.map(drop => ({ value: drop.title, label: drop.title }))}*/}
-                                                    {/*                isSearchable={true}*/}
-                                                    {/*                onChange={selectedOption => setValue(selectedOption.label)}*/}
-                                                    {/*                styles={{*/}
-                                                    {/*                    control: (provided) => ({*/}
-                                                    {/*                        ...provided,*/}
-                                                    {/*                        backgroundColor: 'rgba(255, 245, 224, 1)',*/}
-                                                    {/*                        border: '1px solid rgba(255, 191, 63, 1)',*/}
-                                                    {/*                        paddingLeft:'10px',*/}
-                                                    {/*                        borderRadius: '5px',*/}
-                                                    {/*                        width: '100%',*/}
-                                                    {/*                        cursor: 'pointer',*/}
-                                                    {/*                    }),*/}
-                                                    {/*                    indicatorSeparator: () => ({}),*/}
-                                                    {/*                }}*/}
-                                                    {/*            />*/}
-                                                    {/*    ):*/}
-                                                    {/*        (*/}
-                                                    {/*            <input id={item.id} placeholder={item.placeHolder}*/}
-                                                    {/*                   readOnly={item.drop === true} onClick={() => {*/}
-                                                    {/*                if (activeInputId === item.id) {*/}
-                                                    {/*                    setActiveInputId(null);  // Close the dropdown if it's already open*/}
-                                                    {/*                } else {*/}
-                                                    {/*                    setActiveInputId(item.id);  // Set the active input's ID*/}
-                                                    {/*                }*/}
-                                                    {/*            }} style={{*/}
-                                                    {/*                backgroundColor: 'rgba(255, 245, 224, 1)',*/}
-                                                    {/*                border: '1px solid rgba(255, 191, 63, 1)',*/}
-                                                    {/*                padding: '5px',*/}
-                                                    {/*                borderRadius: '5px',*/}
-                                                    {/*                width: '100%',*/}
-                                                    {/*                cursor: item.drop === true ? 'pointer' : 'text',*/}
-                                                    {/*            }}/>*/}
-                                                    {/*        )*/}
-                                                    {/*}*/}
+                                                            {/*{*/}
+                                                            {/*    item.drop ? (*/}
+                                                            {/*            <Select*/}
+                                                            {/*                placeholder={item.placeHolder}*/}
+                                                            {/*                options={item.DropDown.map(drop => ({ value: drop.title, label: drop.title }))}*/}
+                                                            {/*                isSearchable={true}*/}
+                                                            {/*                onChange={selectedOption => setValue(selectedOption.label)}*/}
+                                                            {/*                styles={{*/}
+                                                            {/*                    control: (provided) => ({*/}
+                                                            {/*                        ...provided,*/}
+                                                            {/*                        backgroundColor: 'rgba(255, 245, 224, 1)',*/}
+                                                            {/*                        border: '1px solid rgba(255, 191, 63, 1)',*/}
+                                                            {/*                        paddingLeft:'10px',*/}
+                                                            {/*                        borderRadius: '5px',*/}
+                                                            {/*                        width: '100%',*/}
+                                                            {/*                        cursor: 'pointer',*/}
+                                                            {/*                    }),*/}
+                                                            {/*                    indicatorSeparator: () => ({}),*/}
+                                                            {/*                }}*/}
+                                                            {/*            />*/}
+                                                            {/*    ):*/}
+                                                            {/*        (*/}
+                                                            {/*            <input id={item.id} placeholder={item.placeHolder}*/}
+                                                            {/*                   readOnly={item.drop === true} onClick={() => {*/}
+                                                            {/*                if (activeInputId === item.id) {*/}
+                                                            {/*                    setActiveInputId(null);  // Close the dropdown if it's already open*/}
+                                                            {/*                } else {*/}
+                                                            {/*                    setActiveInputId(item.id);  // Set the active input's ID*/}
+                                                            {/*                }*/}
+                                                            {/*            }} style={{*/}
+                                                            {/*                backgroundColor: 'rgba(255, 245, 224, 1)',*/}
+                                                            {/*                border: '1px solid rgba(255, 191, 63, 1)',*/}
+                                                            {/*                padding: '5px',*/}
+                                                            {/*                borderRadius: '5px',*/}
+                                                            {/*                width: '100%',*/}
+                                                            {/*                cursor: item.drop === true ? 'pointer' : 'text',*/}
+                                                            {/*            }}/>*/}
+                                                            {/*        )*/}
+                                                            {/*}*/}
 
-                                                    <input id={item.id} placeholder={item.placeHolder}
-                                                           readOnly={item.drop === true} onClick={() => {
-                                                        if (activeInputId === item.id) {
-                                                            setActiveInputId(null);  // Close the dropdown if it's already open
-                                                        } else {
-                                                            setActiveInputId(item.id);  // Set the active input's ID
-                                                        }
-                                                    }} style={{
-                                                        backgroundColor: 'rgba(255, 245, 224, 1)',
-                                                        border: '1px solid rgba(255, 191, 63, 1)',
-                                                        padding: '5px',
-                                                        borderRadius: '5px',
-                                                        width: '100%',
-                                                        cursor: item.drop === true ? 'pointer' : 'text',
-                                                    }}/>
+                                                            <input id={item.id} placeholder={item.placeHolder}
+                                                                   value={inputValues[item.id] || ''}
+                                                                   readOnly={item.drop === true} onClick={() => {
+                                                                setActiveInputId(item.drop ? item.id : null);
+                                                            }} style={{
+                                                                backgroundColor: 'rgba(255, 245, 224, 1)',
+                                                                border: '1px solid rgba(255, 191, 63, 1)',
+                                                                padding: '5px',
+                                                                borderRadius: '5px',
+                                                                width: '100%',
+                                                                cursor: item.drop === true ? 'pointer' : 'text',
+                                                            }}/>
 
-                                                    <Grid position={'absolute'} zIndex={10}
-                                                          ref={dropdownRef}
-                                                          bgcolor={'rgb(255, 245, 224)'}
-                                                          border={item.drop === true ? '1px solid rgb(255, 191, 63)' :''} top={32} right={0}
-                                                          width={'100%'} borderRadius={' 5px'}
-                                                          display={activeInputId === item.id ? 'flex' : 'none'}
-                                                          flexDirection={'column'} gap={'10px'}
-                                                          p={item.drop === true ? '10px' : '0px'}
-                                                    >
-                                                        {
-                                                            item.DropDown.map(
-                                                                (drop , index) =>
-                                                                    <Grid
-                                                                        onClick={() => handleDropdownClick(drop.id, drop.title)}
-                                                                        key={item.id}
-                                                                        style={{cursor: 'pointer'}}
-                                                                        display={item.drop === true ? 'block' : 'none'}
-                                                                    >
-                                                                        <Typography variant={firstVariant}
-                                                                                    fontWeight={hoveredItem === index ? 900 : 500}
-                                                                                    onMouseEnter={() => setHoveredItem(index)}
-                                                                                    onMouseLeave={() => setHoveredItem(null)} >
-                                                                            {drop.title}
-                                                                        </Typography>
+                                                            <Grid position={'absolute'} zIndex={10}
+                                                                  ref={dropdownRefs.current[item.id]}
+                                                                  bgcolor={'rgb(255, 245, 224)'}
+                                                                  border={item.drop === true ? '1px solid rgb(255, 191, 63)' : ''}
+                                                                  top={32} right={0}
+                                                                  width={'100%'} borderRadius={' 5px'}
+                                                                  display={activeInputId === item.id ? 'flex' : 'none'}
+                                                                  flexDirection={'column'} gap={'10px'}
+                                                                  p={item.drop === true ? '10px' : '0px'}
+                                                            >
+                                                                {
+                                                                    item.DropDown.map(
+                                                                        (drop, index) =>
+                                                                            <Grid
+                                                                                onClick={() => handleDropdownClick(item.id, drop.title)}
+                                                                                key={index}
+                                                                                style={{cursor: 'pointer'}}
+                                                                                display={item.drop === true ? 'block' : 'none'}
+                                                                            >
+                                                                                <Typography variant={firstVariant}
+                                                                                            fontWeight={hoveredItem === index ? 900 : 500}
+                                                                                            onMouseEnter={() => setHoveredItem(index)}
+                                                                                            onMouseLeave={() => setHoveredItem(null)}>
+                                                                                    {drop.title}
+                                                                                </Typography>
 
-                                                                    </Grid>
-                                                            )
-                                                        }
+                                                                            </Grid>
+                                                                    )
+                                                                }
+                                                            </Grid>
+                                                        </Grid>
                                                     </Grid>
-                                                </Grid>
-                                            </Grid>
+                                            )
                                     )
                                 }
                             </Grid>
