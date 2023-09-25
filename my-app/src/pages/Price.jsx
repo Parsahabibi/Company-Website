@@ -175,8 +175,7 @@ const Price = () => {
         function handleOutsideClick(event) {
             if (activeInputId !== null &&
                 dropdownRefs.current[activeInputId] &&
-                !dropdownRefs.current[activeInputId].current.contains(event.target))
-            {
+                !dropdownRefs.current[activeInputId].current.contains(event.target)) {
                 setActiveInputId(null);
             }
         }
