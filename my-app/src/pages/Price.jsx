@@ -10,7 +10,6 @@ import {
 import {useTheme} from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import Select from 'react-select';
 
 const Price = () => {
 
@@ -20,7 +19,6 @@ const Price = () => {
 
     const [hoveredItem, setHoveredItem] = useState(null);
 
-    const dropdownRef = useRef(null);
 
     const dropdownRefs = useRef({});
 
