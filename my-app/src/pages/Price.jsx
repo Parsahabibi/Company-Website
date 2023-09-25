@@ -10,8 +10,13 @@ import {
 import {useTheme} from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import {useForm} from "react-hook-form";
+import * as yup from 'yup'
+import {yupResolver} from '@hookform/resolvers/yup'
 
 const Price = () => {
+
+    const [isFormComplete, setIsFormComplete] = useState(false);
 
     const [selected, setSelected] = useState(null);
 
@@ -19,129 +24,164 @@ const Price = () => {
 
     const [hoveredItem, setHoveredItem] = useState(null);
 
-
     const dropdownRefs = useRef({});
-
 
     const [inputValues, setInputValues] = useState({});
 
 
-    const handleDropdownClick = (id, value) => {
-        console.log(id, value)
-
-        setInputValues(prevValues => ({
-            ...prevValues,
-            [id]: value
-        }));
-        setActiveInputId(null);
-    };
+    const formRef = useRef(null);
 
 
-    const handleClick = (value) => {
-        setSelected(value);
-    };
 
 
     const InputData = [
         {
             id: 1,
             title: 'نام و نام خانوادگی',
+            EnTitle: 'name',
             placeHolder: '',
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-
+            type: 'text'
         },
         {
             id: 2,
             title: 'شماره تماس',
+            EnTitle: 'phone',
             placeHolder: '',
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-
+            type: 'number'
         },
         {
             id: 3,
             title: 'ایمیل',
+            EnTitle: 'email',
             placeHolder: '',
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-
+            type: 'email'
         },
         {
             id: 4,
             title: 'نام محموله',
+            EnTitle: 'Product',
             placeHolder: '',
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-
+            type: 'text'
         },
         {
             id: 5,
             title: 'HS Code',
+            EnTitle: 'code',
             placeHolder: '',
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-
+            type: 'text'
         },
         {
             id: 6,
             title: 'تناژ محموله',
+            EnTitle: 'tonnage',
             placeHolder: '',
             icon: '',
             DropDown: [{id: 1, title: ''}, {id: 2, title: ''}, {id: 3, title: ''}],
             drop: false,
-
+            type: 'number'
         },
         {
             id: 7,
             title: 'مبدا',
+            EnTitle: 'origin',
             placeHolder: '(تهران-ایران)',
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'تهران-ایران'}, {id: 2, title: 'اصفهان-ایران'}, {id: 3, title: 'تبریز-ایران'}],
             drop: true,
-
+            type: 'text'
         },
         {
             id: 8,
             title: 'مقصد',
+            EnTitle: 'destination',
             placeHolder: '(تهران-ایران)',
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'تهران-ایران'}, {id: 2, title: 'اصفهان-ایران'}, {id: 3, title: 'تبریز-ایران'}],
             drop: true,
-
+            type: 'text'
         },
         {
             id: 9,
             title: 'محموله چند مسیره است؟',
+            EnTitle: 'road',
             placeHolder: 'تک مسیر',
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'تک مسیر'}, {id: 2, title: 'دو مسیر'}, {id: 3, title: 'سه مسیر'}],
             drop: true,
-
+            type: 'text'
         },
         {
             id: 10,
             title: 'درجه خطرپذیری کالا',
+            EnTitle: 'grade',
             placeHolder: '(سطح یک)',
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'سطح یک'}, {id: 2, title: 'سطح دو'}, {id: 3, title: 'سطح سه'}],
             drop: true,
-
+            type: 'text'
         },
         {
             id: 11,
             title: 'نوع بسته بندی',
+            EnTitle: 'type',
             placeHolder: '(کارتن)',
             icon: <KeyboardArrowDownIcon/>,
             DropDown: [{id: 1, title: 'کارتن'}, {id: 2, title: 'مقوا'}, {id: 3, title: 'پلاستیک'}],
             drop: true,
+            type: 'text'
         },
     ]
+
+
+    const validation = yup.object().shape(
+        {
+            name: yup.string().required(),
+            phone: yup.number().required(),
+            email: yup.string().email('ایمیل نا معتبر است').required('پر کردن این فیلد اجباری است'),
+            Product: yup.string().required(),
+            code: yup.string().required(),
+            tonnage: yup.number().required(),
+            origin: yup.string().required(),
+            destination: yup.string().required(),
+            road: yup.string().required(),
+            grade: yup.string().required(),
+            type: yup.string().required()
+        }
+    )
+
+
+    const {register, handleSubmit, formState: {errors} , watch , setValue , reset } = useForm({resolver: yupResolver(validation)}) // for react-hook-form
+
+
+    const watchedValues = watch();
+
+
+    const onSubmitForm = (data) => {
+        if(isFormComplete) {
+            console.log('hello');
+            console.log(data);
+            reset();
+            setInputValues({});
+            setSelected(null);
+        } else {
+            console.log('Form is not complete.');
+        }
+    };
 
 
     const theme = useTheme();
@@ -171,6 +211,22 @@ const Price = () => {
     }
 
 
+    const handleDropdownClick = (EnTitle, value) => {
+
+        setInputValues(prevValues => ({
+            ...prevValues,
+            [EnTitle]: value
+        }));
+        setValue(EnTitle, value);
+        setActiveInputId(null);
+    };
+
+
+    const handleClick = (value) => {
+        setSelected(value);
+    };
+
+
     useEffect(() => {
         function handleOutsideClick(event) {
             if (activeInputId !== null &&
@@ -188,6 +244,16 @@ const Price = () => {
     }, [activeInputId, dropdownRefs]);
 
 
+    useEffect(() => {
+        if (Object.keys(watchedValues).length === InputData.length) {
+            setIsFormComplete(true);
+        } else {
+            setIsFormComplete(false);
+        }
+    }, [watchedValues]);
+
+
+
     return (
         <Grid>
             <Header DesktopId={3} MobileId={3}/>
@@ -200,7 +266,7 @@ const Price = () => {
                     </Grid>
                     <Grid bgcolor={'white'} px={{xs: '40px', md: '80px'}} py={{xs: '35px', md: '44px'}}
                           border={'1px solid rgba(255, 191, 63, 1)'} borderRadius={'0px 0px 20px 20px'}>
-                        <form style={{paddingBottom: '57px'}}>
+                        <form style={{paddingBottom: '57px'}} onSubmit={handleSubmit(onSubmitForm)} ref={formRef}>
                             <Grid display={'flex'} flexWrap={'wrap'} justifyContent={{md: 'space-between'}}
                                   flexDirection={{xs: 'column', md: 'row'}} gap={{xs: '24px', md: '112px'}}>
                                 {
@@ -225,59 +291,35 @@ const Price = () => {
                                                                 top: '50%',
                                                                 transform: 'translateY(-50%)'
                                                             }}>{item.icon}</Icon>
+                                                            <input
+                                                                id={item.id}
+                                                                name={item.EnTitle}
+                                                                placeholder={item.placeHolder}
+                                                                {...register(item.EnTitle)}
+                                                                type={item.type}
+                                                                readOnly={item.drop === true}
+                                                                onClick={() => {
+                                                                    setActiveInputId(item.drop ? item.id : null);
+                                                                }}
 
-                                                            {/*{*/}
-                                                            {/*    item.drop ? (*/}
-                                                            {/*            <Select*/}
-                                                            {/*                placeholder={item.placeHolder}*/}
-                                                            {/*                options={item.DropDown.map(drop => ({ value: drop.title, label: drop.title }))}*/}
-                                                            {/*                isSearchable={true}*/}
-                                                            {/*                onChange={selectedOption => setValue(selectedOption.label)}*/}
-                                                            {/*                styles={{*/}
-                                                            {/*                    control: (provided) => ({*/}
-                                                            {/*                        ...provided,*/}
-                                                            {/*                        backgroundColor: 'rgba(255, 245, 224, 1)',*/}
-                                                            {/*                        border: '1px solid rgba(255, 191, 63, 1)',*/}
-                                                            {/*                        paddingLeft:'10px',*/}
-                                                            {/*                        borderRadius: '5px',*/}
-                                                            {/*                        width: '100%',*/}
-                                                            {/*                        cursor: 'pointer',*/}
-                                                            {/*                    }),*/}
-                                                            {/*                    indicatorSeparator: () => ({}),*/}
-                                                            {/*                }}*/}
-                                                            {/*            />*/}
-                                                            {/*    ):*/}
-                                                            {/*        (*/}
-                                                            {/*            <input id={item.id} placeholder={item.placeHolder}*/}
-                                                            {/*                   readOnly={item.drop === true} onClick={() => {*/}
-                                                            {/*                if (activeInputId === item.id) {*/}
-                                                            {/*                    setActiveInputId(null);  // Close the dropdown if it's already open*/}
-                                                            {/*                } else {*/}
-                                                            {/*                    setActiveInputId(item.id);  // Set the active input's ID*/}
-                                                            {/*                }*/}
-                                                            {/*            }} style={{*/}
-                                                            {/*                backgroundColor: 'rgba(255, 245, 224, 1)',*/}
-                                                            {/*                border: '1px solid rgba(255, 191, 63, 1)',*/}
-                                                            {/*                padding: '5px',*/}
-                                                            {/*                borderRadius: '5px',*/}
-                                                            {/*                width: '100%',*/}
-                                                            {/*                cursor: item.drop === true ? 'pointer' : 'text',*/}
-                                                            {/*            }}/>*/}
-                                                            {/*        )*/}
-                                                            {/*}*/}
+                                                                onChange={(e) => {
+                                                                    const {name, value} = e.target;
+                                                                    setInputValues(prevValues => ({
+                                                                        ...prevValues,
+                                                                        [name]: value
+                                                                    }));
+                                                                }}
+                                                                value={inputValues[item.EnTitle] || ''}
 
-                                                            <input id={item.id} placeholder={item.placeHolder}
-                                                                   value={inputValues[item.id] || ''}
-                                                                   readOnly={item.drop === true} onClick={() => {
-                                                                setActiveInputId(item.drop ? item.id : null);
-                                                            }} style={{
-                                                                backgroundColor: 'rgba(255, 245, 224, 1)',
-                                                                border: '1px solid rgba(255, 191, 63, 1)',
-                                                                padding: '5px',
-                                                                borderRadius: '5px',
-                                                                width: '100%',
-                                                                cursor: item.drop === true ? 'pointer' : 'text',
-                                                            }}/>
+
+                                                                style={{
+                                                                    backgroundColor: 'rgba(255, 245, 224, 1)',
+                                                                    border: '1px solid rgba(255, 191, 63, 1)',
+                                                                    padding: '5px',
+                                                                    borderRadius: '5px',
+                                                                    width: '100%',
+                                                                    cursor: item.drop === true ? 'pointer' : 'text',
+                                                                }}/>
 
                                                             <Grid position={'absolute'} zIndex={10}
                                                                   ref={dropdownRefs.current[item.id]}
@@ -293,7 +335,7 @@ const Price = () => {
                                                                     item.DropDown.map(
                                                                         (drop, index) =>
                                                                             <Grid
-                                                                                onClick={() => handleDropdownClick(item.id, drop.title)}
+                                                                                onClick={() => handleDropdownClick(item.EnTitle, drop.title)}
                                                                                 key={index}
                                                                                 style={{cursor: 'pointer'}}
                                                                                 display={item.drop === true ? 'block' : 'none'}
@@ -315,7 +357,7 @@ const Price = () => {
                                     )
                                 }
                             </Grid>
-                        </form>
+
                         <Grid pb={{xs: '25px', md: '10px'}}>
                             <Typography pb={{xs: '16px'}} variant={variantSecond} fontWeight={500}>آیا محموله اظهار شده
                                 است؟</Typography>
@@ -359,13 +401,15 @@ const Price = () => {
                         </Grid>
                         <Grid pb={{xs: '32px', md: '48px'}} display={'flex'} justifyContent={'end'}
                               width={{xs: '50%', md: '30%', lg: '15%'}} mr={{xs: '50%', md: '70%', lg: '85%'}}>
-                            <Button variant={'contained'} style={{width: '100%'}} disabled={selected === 'no'}>
+                            <Button type={'submit'} variant={'contained'} style={{width: '100%'}}
+                                    disabled={selected === 'no'}>
                                 <Typography variant={'subtitle1'} fontWeight={900}>ارسال</Typography>
                             </Button>
                         </Grid>
-                        <Typography variant={varintThird} fontWeight={500}>کارشناسان ما پس از بررسی های لازم با شما تماس
-                            خواهند گرفت </Typography>
-                    </Grid>
+                        </form>
+
+                    </Grid>                        <Typography variant={varintThird} fontWeight={500}>کارشناسان ما پس از بررسی های لازم با شما تماس
+                    خواهند گرفت </Typography>
                 </Grid>
             </Grid>
             <Footer/>
