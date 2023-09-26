@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import {Grid, Typography, useTheme} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import {styled, keyframes} from '@mui/system';
+import {Link} from "react-router-dom";
 
 
 
@@ -45,12 +46,12 @@ const MobileHeader = ({id}) => {
 
 
     const variable = [
-        {id: 1, title: 'صفحه اصلی'},
-        {id: 2, title: 'خدمات'},
-        {id: 3, title: 'استعلام قیمت'},
-        {id: 4, title: 'اخبار'},
-        {id: 5, title: 'درباره ما'},
-        {id: 6, title: 'تماس با ما'},
+        {id: 1, title: 'صفحه اصلی' , link:'/'},
+        {id: 2, title: 'خدمات' , link:'/Services'},
+        {id: 3, title: 'استعلام قیمت' , link:'/Price'},
+        {id: 4, title: 'اخبار' , link: '/News'},
+        {id: 5, title: 'درباره ما' , link: ''},
+        {id: 6, title: 'تماس با ما' , link: ''},
     ]
 
 
@@ -113,23 +114,23 @@ const MobileHeader = ({id}) => {
                                                                     fontWeight={500} style={{cursor:'pointer'}}>{item.title}</Typography>
                                                     :
                                                     item.id === id ?
-                                                        <>
+                                                        <Link to={item.link}>
                                                             <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
                                                                         justifyContent={'center'} py={'8px'}
                                                                         variant={'subtitle1'}
                                                                         fontWeight={900} style={{cursor:'pointer'}}>{item.title}</Typography>
                                                             <Grid  bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
                                                                   height={'1px'}></Grid>
-                                                        </>
+                                                        </Link>
                                                         :
-                                                        <>
+                                                        <Link to={item.link}>
                                                             <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
                                                                         justifyContent={'center'} py={'8px'}
                                                                         variant={'subtitle1'}
                                                                         fontWeight={500} style={{cursor:'pointer'}}>{item.title}</Typography>
                                                             <Grid bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
                                                                   height={'1px'}></Grid>
-                                                        </>
+                                                        </Link>
                                             }
 
                                         </Grid>

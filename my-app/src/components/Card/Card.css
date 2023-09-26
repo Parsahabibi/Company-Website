@@ -17,6 +17,7 @@
     height: 14px;
     display: flex;
     align-items: center;
+   justify-content: start; /* added new*/
     @media screen and (min-width: 900px) {
         height: 114px;
     }
