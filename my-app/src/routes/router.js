@@ -3,7 +3,7 @@ import Home from "../pages/Home";
 import Services from "../pages/Services";
 import Price from "../pages/Price";
 import News from "../pages/News";
-import AboutUs from "../pages/AboutUs/AboutUs";
+import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 
 
