@@ -35,8 +35,8 @@ const DesktopHeader = ({id}) => {
         {id: 2, title: 'خدمات' , link:'/Services'},
         {id: 3, title: 'استعلام قیمت' , link:'/Price'},
         {id: 4, title: 'اخبار' , link:'/News'},
-        {id: 5, title: 'درباره ما' , link:''},
-        {id: 6, title: 'تماس با ما' , link:''},
+        {id: 5, title: 'درباره ما' , link:'/AboutUS'},
+        {id: 6, title: 'تماس با ما' , link:'/ContactUs'},
     ]
 
 

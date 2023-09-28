@@ -3,6 +3,8 @@ import Home from "../pages/Home";
 import Services from "../pages/Services";
 import Price from "../pages/Price";
 import News from "../pages/News";
+import AboutUs from "../pages/AboutUs/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 
 const router = createBrowserRouter([
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
     {
         path: "/News",
         element: <News />,
+    },
+    {
+        path: "/AboutUS",
+        element: <AboutUs />,
+    },
+    {
+        path: "/ContactUs",
+        element: <ContactUs />,
     },
 ])
 export default router

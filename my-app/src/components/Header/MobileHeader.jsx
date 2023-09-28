@@ -50,8 +50,8 @@ const MobileHeader = ({id}) => {
         {id: 2, title: 'خدمات' , link:'/Services'},
         {id: 3, title: 'استعلام قیمت' , link:'/Price'},
         {id: 4, title: 'اخبار' , link: '/News'},
-        {id: 5, title: 'درباره ما' , link: ''},
-        {id: 6, title: 'تماس با ما' , link: ''},
+        {id: 5, title: 'درباره ما' , link: '/AboutUS'},
+        {id: 6, title: 'تماس با ما' , link: '/ContactUs'},
     ]
 
 
@@ -104,14 +104,19 @@ const MobileHeader = ({id}) => {
                                             {
                                                 item.id === 6 ?
                                                     item.id === id ?
-                                                        <Typography  color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
-                                                                    justifyContent={'center'} py={'8px'}
-                                                                    variant={'subtitle1'}
-                                                                    fontWeight={900} style={{cursor:'pointer'}}>{item.title}</Typography> :
-                                                        <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
-                                                                    justifyContent={'center'} py={'8px'}
-                                                                    variant={'subtitle1'}
-                                                                    fontWeight={500} style={{cursor:'pointer'}}>{item.title}</Typography>
+                                                        <Link to={item.id}>
+                                                            <Typography  color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
+                                                                         justifyContent={'center'} py={'8px'}
+                                                                         variant={'subtitle1'}
+                                                                         fontWeight={900} style={{cursor:'pointer'}}>{item.title}</Typography>
+                                                        </Link>
+                                                        :
+                                                        <Link to={item.link}>
+                                                            <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
+                                                                        justifyContent={'center'} py={'8px'}
+                                                                        variant={'subtitle1'}
+                                                                        fontWeight={500} style={{cursor:'pointer'}}>{item.title}</Typography>
+                                                        </Link>
                                                     :
                                                     item.id === id ?
                                                         <Link to={item.link}>
