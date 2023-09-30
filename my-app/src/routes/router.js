@@ -5,6 +5,7 @@ import Price from "../pages/Price";
 import News from "../pages/News";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
+import NewsInformation from "../pages/NewsInformation";
 
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
     {
         path: "/ContactUs",
         element: <ContactUs />,
+    },
+    {
+        path: "/News/Information",
+        element: <NewsInformation />,
     },
 ])
 export default router

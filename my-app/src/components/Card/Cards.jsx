@@ -1,15 +1,48 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Card, CardMedia, CardContent, Button, Grid, Typography} from '@mui/material';
 import './Card.css';
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {hover} from "@testing-library/user-event/dist/hover";
+import {Link, useNavigate} from "react-router-dom";
 
 const Cards = ({images, title, des, width, height, font, variants, state}) => {
 
     const theme = useTheme();
     const isXs = useMediaQuery(theme.breakpoints.down('xs'));
     const isMd = useMediaQuery(theme.breakpoints.up('md'));
+
+
+    const navigate = useNavigate();
+
+    const [selectedInfo, setSelectedInfo] = useState({title: '', imageSrc: ''});
+
+    // const handleButtonClick = () => {
+    //     setSelectedInfo({
+    //         title: title,
+    //         imageSrc: images
+    //     });
+    //     console.log({
+    //         title: title,
+    //         imageSrc: images
+    //     });
+    //     navigate('/News/Information', {
+    //         state: {
+    //             info: {
+    //                 title: title,
+    //                 imageSrc: images
+    //             }
+    //         }
+    //     });
+    // };
+
+    const handleButtonClick = () => {
+        const params = new URLSearchParams();
+        params.append("title", title);
+        params.append("imageSrc", images);
+
+        navigate(`/News/Information?${params.toString()}`);
+    };
 
 
     let variant = 'subtitle1';
@@ -34,7 +67,7 @@ const Cards = ({images, title, des, width, height, font, variants, state}) => {
             height: height,
             '&:hover .card-description .type': {
                 fontWeight: 900,
-                paddingBottom:{xs:state ? '110px' : '160px' , md:'25px'}
+                paddingBottom: {xs: state ? '110px' : '160px', md: '25px'}
             },
         }}>
             <CardMedia
@@ -45,14 +78,19 @@ const Cards = ({images, title, des, width, height, font, variants, state}) => {
                 title="Image title"
             />
             <Grid className="card-description"
-                         sx={{fontWeight: font, padding: {xs: state ? '30px 10px' : '25px 10px', md: '24px'} , display:'flex' , alignItems:'center'}}>
+                  sx={{
+                      fontWeight: font,
+                      padding: {xs: state ? '30px 10px' : '25px 10px', md: '24px'},
+                      display: 'flex',
+                      alignItems: 'center'
+                  }}>
                 <Typography sx={{fontWeight: font}} variant={state ? variantSecond : variant} className={'type'}
                             width={'226px'} display={'flex'}>{title}</Typography>
                 <Grid className="read-more-button">
                     <Typography textAlign={'justify'} variant={variantSecond} fontWeight={300}
                                 pb={'20px'}>{des}</Typography>
                     <Grid width={{xs: state ? '87%' : '76%', md: '51%', l: '42%', lg: '36%'}}>
-                        <Button variant={'outlinedTwo'}>بیشتر بخوانید</Button>
+                        <Button variant={'outlinedTwo'} onClick={handleButtonClick}>بیشتر بخوانید</Button>
                     </Grid>
                 </Grid>
             </Grid>

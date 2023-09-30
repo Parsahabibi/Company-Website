@@ -53,7 +53,7 @@ const DesktopHeader = ({id}) => {
                 <Grid position={'absolute'} top={0} right={{md: '48px', lg: '128px'}}
                       bgcolor={theme.palette.secondary.one} px={'43px'}
                       py={'19px'}>
-                    <img src={'assets/images/AltynLogo.svg'} alt={''}/>
+                    <img src={'../assets/images/AltynLogo.svg'} alt={''}/>
                 </Grid>
                 <Grid display={'flex'} alignItems={'center'} gap={'24px'}
                       pr={{md: '250px', l: '310px', lg: '400px', xl: '454'}}

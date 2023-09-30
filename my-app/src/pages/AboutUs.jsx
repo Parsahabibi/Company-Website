@@ -56,7 +56,7 @@ const AboutUs = () => {
                     bottom: 0,
                     zIndex: -10,
                     backgroundImage: {
-                        xs: 'url(path/to/imageXs.jpg)',
+                        xs: 'url(assets/Images/MobileAboutUsBackGround.svg)',
                         md: 'url(assets/Images/BackAboutUs.svg)'
                     },
                     backgroundSize: 'cover',

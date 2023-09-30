@@ -147,7 +147,7 @@ const MobileHeader = ({id}) => {
                 }
             </Grid>
             <Grid>
-                <img src={'assets/images/Altyn.svg'}/>
+                <img src={'../assets/images/Altyn.svg'} alt={''}/>
             </Grid>
         </Grid>
     )

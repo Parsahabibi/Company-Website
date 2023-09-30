@@ -61,23 +61,23 @@ const MobileFooter = () => {
                 {/*    }*/}
                 {/*</Grid>*/}
                 <Grid pb={'40px'} display={'flex'} alignItems={'center'} justifyContent={'center'} >
-                    <img src={'assets/images/AltynGroup.svg'} alt={''} />
+                    <img src={'../assets/images/AltynGroup.svg'} alt={''} />
                 </Grid>
                 <Grid display={'flex'} alignItems={'center'} gap={'8px'} pb={'32px'} >
-                    <img src={'assets/images/locationIcon.svg'} alt={''} />
+                    <img src={'../assets/images/locationIcon.svg'} alt={''} />
                     <Typography variant={'subtitle1'} fontWeight={500} color={'white'}>گلستان، گرگان، خیابان بهارستان</Typography>
                 </Grid>
                 <Grid display={'flex'} flexWrap={'wrap'} flexDirection={{xs:'column' , xxs:'row'}} alignItems={{xs:'start' , xxs:'center'}} justifyContent={{xs:'start' , xxs:'space-between'}} gap={{xs:'40px' , xxs:'40px'}}>
                     <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
-                        <img src={'assets/images/WhatsApp.svg'} alt={''}/>
+                        <img src={'../assets/images/WhatsApp.svg'} alt={''}/>
                         <Typography variant={'subtitle1'} fontWeight={500} color={'white'}>0911-2222-321</Typography>
                     </Grid>
                     <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
-                        <img src={'assets/images/Instagram.svg'} alt={''}/>
+                        <img src={'../assets/images/Instagram.svg'} alt={''}/>
                         <Typography variant={'subtitle1'} fontWeight={500} color={'white'}>altyngroup.com</Typography>
                     </Grid>
                     <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
-                        <img src={'assets/images/email.svg'} alt={''}/>
+                        <img src={'../assets/images/email.svg'} alt={''}/>
                         <Typography variant={'subtitle1'} fontWeight={500} color={'white'}>altyngroup@gmail.com</Typography>
                     </Grid>
                 </Grid>

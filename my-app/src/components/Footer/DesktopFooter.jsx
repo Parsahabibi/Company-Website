@@ -40,25 +40,25 @@ const DesktopFooter = () => {
                    </Grid>
                </Grid>
                <Grid>
-                   <img src={'assets/images/YellowAltyn.svg'} alt={''}/>
+                   <img src={'../assets/images/YellowAltyn.svg'} alt={''}/>
                </Grid>
                <Grid display={'flex'} flexDirection={'column'} gap={'40px'} >
                    <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
-                       <img src={'assets/images/locationIcon.svg'} alt={''}/>
+                       <img src={'../assets/images/locationIcon.svg'} alt={''}/>
                        <Typography variant={'subtitle1'} color={'white'}>گلستان، گرگان، خیابان بهارستان</Typography>
                    </Grid>
                    <Grid display={'flex'} alignItems={'center'} gap={'24px'}>
                        <Grid display={'flex'} alignItems={'flex-start'} gap={'8px'}>
-                           <img src={'assets/images/WhatsApp.svg'} alt={''}/>
+                           <img src={'../assets/images/WhatsApp.svg'} alt={''}/>
                            <Typography variant={'subtitle1'} color={'white'}>۰۹۱۱-2222-321</Typography>
                        </Grid>
                        <Grid display={'flex'} alignItems={'flex-start'} gap={'8px'}>
-                           <img src={'assets/images/Instagram.svg'} alt={''}/>
+                           <img src={'../assets/images/Instagram.svg'} alt={''}/>
                            <Typography variant={'subtitle1'} color={'white'}>altyngroup.com</Typography>
                        </Grid>
                    </Grid>
                    <Grid display={'flex'} alignItems={'flex-start'} gap={'8px'}>
-                       <img src={'assets/images/email.svg'} alt={''}/>
+                       <img src={'../assets/images/email.svg'} alt={''}/>
                        <Typography variant={'subtitle1'} color={'white'}>altyngroup@gmail.com</Typography>
                    </Grid>
                </Grid>
