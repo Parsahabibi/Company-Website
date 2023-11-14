@@ -2,6 +2,7 @@ import React , { useLayoutEffect, useState } from 'react'
 import {Grid} from "@mui/material";
 import DesktopHeader from "./DesktopHeader";
 import MobileHeader from "./MobileHeader";
+import ScrollToTop from "../Commons/ScrollToTop";
 
 const Header = ({MobileId , DesktopId}) => {
 
@@ -26,6 +27,7 @@ const Header = ({MobileId , DesktopId}) => {
 
     return (
         <Grid>
+            <ScrollToTop />
             {ComponentToShow}
         </Grid>
     )
