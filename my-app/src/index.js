@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Theme from "./Theme/Theme";
 import { ToastContainer } from 'react-toastify';
+import I18n from "./i18n";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +16,7 @@ root.render(
             <ThemeProvider theme={Theme}>
                 <ToastContainer />
                 <CssBaseline/>
-                <App/>
+                <I18n render={(setLocal, locale) => <App onLocaleChanged={setLocal} locale={locale} />} />
             </ThemeProvider>
      </React.StrictMode>
 );
