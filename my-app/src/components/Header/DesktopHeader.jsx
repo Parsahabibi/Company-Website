@@ -1,17 +1,32 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Button, Grid, Typography, useTheme} from "@mui/material";
-import {textTransform} from "@mui/system";
 import {Link} from "react-router-dom";
+import {useLanguage} from "../../LanguageContext";
+import {useIntl} from "react-intl";
+
 
 const DesktopHeader = ({id}) => {
+
+
+    const {locale, changeLocale} = useLanguage();
+
+    console.log(locale)
+
+    const intl = useIntl();
 
 
     const [activeButton, setActiveButton] = useState(1);
 
 
-    const handleButtonClick = (buttonNumber) => {
+    const handleButtonClick = (buttonNumber , lang ) => {
         setActiveButton(buttonNumber);
+        changeLocale(lang)
     };
+
+
+
+    console.log(activeButton)
+
 
     const buttonStyle = (buttonNumber) => ({
         backgroundColor: activeButton === buttonNumber ? 'rgba(68, 74, 93, 1)' : 'rgba(255, 191, 63, 1)',
@@ -31,20 +46,23 @@ const DesktopHeader = ({id}) => {
     const theme = useTheme()
 
     const variable = [
-        {id: 1, title: 'صفحه اصلی' , link:'/'},
-        {id: 2, title: 'خدمات' , link:'/Services'},
-        {id: 3, title: 'استعلام قیمت' , link:'/Price'},
-        {id: 4, title: 'اخبار' , link:'/News'},
-        {id: 5, title: 'درباره ما' , link:'/AboutUS'},
-        {id: 6, title: 'تماس با ما' , link:'/ContactUs'},
+        {id: 1, title: 'صفحه اصلی', link: '/', TitleLang: 'HeaderMainPage'},
+        {id: 2, title: 'خدمات', link: '/Services', TitleLang: 'HeaderServices'},
+        {id: 3, title: 'استعلام قیمت', link: '/Price', TitleLang: 'HeaderPrice'},
+        {id: 4, title: 'اخبار', link: '/News', TitleLang: 'HeaderNews'},
+        {id: 5, title: 'درباره ما', link: '/AboutUS', TitleLang: 'HeaderAboutUs'},
+        {id: 6, title: 'تماس با ما', link: '/ContactUs', TitleLang: 'HeaderConcatUs'},
     ]
 
 
     const lang = [
-        {id: 1, title: 'فا'},
-        {id: 2, title: 'EN'},
-        {id: 3, title: 'RU'},
+        {id:1 , title:"فا" , symbol:'fa'},
+        {id:2 , title:"en" , symbol:'en'},
+        {id:3 , title:"ru" , symbol:'ru'},
     ]
+
+
+
 
     return (
         <Grid position={'fixed'} top={0} left={0} right={0} zIndex={10}>
@@ -63,35 +81,34 @@ const DesktopHeader = ({id}) => {
                             item =>
                                 <Grid key={item.id}>
                                     {
-                                        item.id === id ?<Link to={item.link}>
-                                            <Typography style={{cursor:'pointer'}} variant={'h3'} color={theme.palette.secondary.one}
-                                                        fontWeight={900}>
-
-                                                    {item.title}
-
-                                            </Typography> </Link>
+                                        item.id === id ?
+                                            <Link to={item.link}>
+                                                <Typography style={{cursor: 'pointer'}} variant={'h3'}
+                                                            color={theme.palette.secondary.one}
+                                                            fontWeight={900}>
+                                                    {intl.$t({id: item.TitleLang})}
+                                                </Typography>
+                                            </Link>
                                             :
                                             <Link to={item.link}>
                                                 <Typography style={{cursor: 'pointer'}} variant={'h3'}
                                                             color={theme.palette.secondary.one}
-                                                            fontWeight={500}>{item.title}</Typography>
+                                                            fontWeight={500}>
+                                                    {intl.$t({id: item.TitleLang})}
+                                                </Typography>
                                             </Link>
-
                                     }
                                 </Grid>
                         )
                     }
                 </Grid>
                 <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
-                    <Button style={buttonStyle(1)} onClick={() => handleButtonClick(1)}>
-                        فا
-                    </Button>
-                    <Button style={buttonStyle(2)} onClick={() => handleButtonClick(2)}>
-                        EN
-                    </Button>
-                    <Button style={buttonStyle(3)} onClick={() => handleButtonClick(3)}>
-                        RU
-                    </Button>
+                    {
+                        lang.map(
+                            item=>
+                                <Button style={buttonStyle(item.id)} onClick={()=>handleButtonClick(item.id , item.symbol)}>{item.title}</Button>
+                        )
+                    }
                 </Grid>
             </Grid>
         </Grid>
