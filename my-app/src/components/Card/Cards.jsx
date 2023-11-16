@@ -5,8 +5,23 @@ import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {hover} from "@testing-library/user-event/dist/hover";
 import {Link, useNavigate} from "react-router-dom";
+import {useLanguage} from "../../LanguageContext";
+import {useIntl} from "react-intl";
+import {ReadMore} from "@mui/icons-material";
 
 const Cards = ({images, title, des, width, height, font, variants, state}) => {
+
+    // console.log(state ? title.props.values.title : "")
+    //
+    // state ? intl.$t({id: `${title.props.values.title}`}) :
+
+
+    const {locale, changeLocale} = useLanguage();
+
+    console.log(locale)
+
+    const intl = useIntl();
+
 
     const theme = useTheme();
     const isXs = useMediaQuery(theme.breakpoints.down('xs'));
@@ -17,24 +32,6 @@ const Cards = ({images, title, des, width, height, font, variants, state}) => {
 
     const [selectedInfo, setSelectedInfo] = useState({title: '', imageSrc: ''});
 
-    // const handleButtonClick = () => {
-    //     setSelectedInfo({
-    //         title: title,
-    //         imageSrc: images
-    //     });
-    //     console.log({
-    //         title: title,
-    //         imageSrc: images
-    //     });
-    //     navigate('/News/Information', {
-    //         state: {
-    //             info: {
-    //                 title: title,
-    //                 imageSrc: images
-    //             }
-    //         }
-    //     });
-    // };
 
     const handleButtonClick = () => {
         const params = new URLSearchParams();
@@ -85,12 +82,15 @@ const Cards = ({images, title, des, width, height, font, variants, state}) => {
                       alignItems: 'center'
                   }}>
                 <Typography sx={{fontWeight: font}} variant={state ? variantSecond : variant} className={'type'}
-                            width={'226px'} display={'flex'}>{title}</Typography>
+                            width={'226px'}
+                            display={'flex'}>{ intl.$t({id: `${title}`})}</Typography>
                 <Grid className="read-more-button">
-                    <Typography textAlign={'justify'} variant={variantSecond} fontWeight={300}
-                                pb={'20px'}>{des}</Typography>
+                    <Typography display={!state ? 'block' : 'none'} textAlign={'justify'} variant={variantSecond}
+                                fontWeight={300}
+                                pb={'20px'}> {intl.$t({id: `${des}`})}</Typography>
                     <Grid width={{xs: state ? '87%' : '76%', md: '51%', l: '42%', lg: '36%'}}>
-                        <Button variant={'outlinedTwo'} onClick={handleButtonClick}>بیشتر بخوانید</Button>
+                        <Button variant={'outlinedTwo'}
+                                onClick={handleButtonClick}>{intl.$t({id: "ReadMore"})}</Button>
                     </Grid>
                 </Grid>
             </Grid>

@@ -1,28 +1,24 @@
 import React from 'react'
 import {Grid, Typography, useTheme} from "@mui/material";
+import {useLanguage} from "../../LanguageContext";
+import {useIntl} from "react-intl";
 
 const MobileFooter = () => {
 
+
+    const {locale, changeLocale} = useLanguage();
+
+    console.log(locale)
+
+    const intl = useIntl();
+
     const variableOriginal = [
-        {id: 1, title: 'صفحه اصلی'},
-        {id: 2, title: 'خدمات'},
-        {id: 3, title: 'استعلام قیمت'},
-        {id: 4, title: 'اخبار'},
-        {id: 5, title: 'درباره ما'},
-        {id: 6, title: 'تماس با ما'},
-    ]
-
-    const variable = [
-        {id: 1, title: 'صفحه اصلی'},
-        {id: 2, title: 'خدمات'},
-        {id: 3, title: 'استعلام قیمت'},
-    ]
-
-
-    const variable1 = [
-        {id: 1, title: 'اخبار'},
-        {id: 2, title: 'درباره ما'},
-        {id: 3, title: 'تماس با ما'},
+        {id: 1, title: 'HeaderMainPage'},
+        {id: 2, title: 'HeaderServices'},
+        {id: 3, title: 'HeaderPrice'},
+        {id: 4, title: 'HeaderNews'},
+        {id: 5, title: 'HeaderAboutUs'},
+        {id: 6, title: 'HeaderConcatUs'},
     ]
 
     const theme = useTheme();
@@ -35,37 +31,17 @@ const MobileFooter = () => {
                         variableOriginal.map(
                             item=>
                                 <Typography color={'white'} variant={'subtitle1'} fontWeight={500}  key={item.id}>
-                                    {item.title}
+                                    {intl.$t({id: item.title})}
                                 </Typography>
                         )
                     }
                 </Grid>
-                {/*<Grid pb={'41px'} display={'flex'} flexWrap={'wrap'} alignItems={'center'} justifyContent={'space-between'} gap={'39px'} >*/}
-                {/*    {*/}
-                {/*        variable.map(*/}
-                {/*            item=>*/}
-                {/*                <Typography color={'white'} variant={'subtitle1'} fontWeight={500}  key={item.id}>*/}
-                {/*                    {item.title}*/}
-                {/*                </Typography>*/}
-                {/*        )*/}
-                {/*    }*/}
-                {/*</Grid>*/}
-                {/*<Grid pb={'41px'} display={'flex'} flexWrap={'wrap'} alignItems={'center'} justifyContent={'space-between'} gap={'39px'} >*/}
-                {/*    {*/}
-                {/*        variable1.map(*/}
-                {/*            item=>*/}
-                {/*                <Typography color={'white'} variant={'subtitle1'} fontWeight={500}  key={item.id}>*/}
-                {/*                    {item.title}*/}
-                {/*                </Typography>*/}
-                {/*        )*/}
-                {/*    }*/}
-                {/*</Grid>*/}
                 <Grid pb={'40px'} display={'flex'} alignItems={'center'} justifyContent={'center'} >
                     <img src={'../assets/images/AltynGroup.svg'} alt={''} />
                 </Grid>
                 <Grid display={'flex'} alignItems={'center'} gap={'8px'} pb={'32px'} >
                     <img src={'../assets/images/locationIcon.svg'} alt={''} />
-                    <Typography variant={'subtitle1'} fontWeight={500} color={'white'}>گلستان، گرگان، خیابان بهارستان</Typography>
+                    <Typography variant={'subtitle1'} fontWeight={500} color={'white'}> {intl.$t({id: "CompanyLocation"})}</Typography>
                 </Grid>
                 <Grid display={'flex'} flexWrap={'wrap'} flexDirection={{xs:'column' , xxs:'row'}} alignItems={{xs:'start' , xxs:'center'}} justifyContent={{xs:'start' , xxs:'space-between'}} gap={{xs:'40px' , xxs:'40px'}}>
                     <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
@@ -84,8 +60,8 @@ const MobileFooter = () => {
             </Grid>
             <Grid bgcolor={theme.palette.info.four} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'} gap={'8px'} py={'14px'} >
                 <Typography color={'white'} fontSize={'12px'} fontWeight={500}>altyngroup - 2023    Ⓒ    Copyright </Typography>
-                <Typography color={'white'} fontSize={'12px'} fontWeight={500}>کليه حقوق اين سايت متعلق به گروه آلتن می‌باشد</Typography>
-                <Typography color={'white'} fontSize={'12px'} fontWeight={500}>طراحی و توسعه توسط  altyngroup</Typography>
+                <Typography color={'white'} fontSize={'12px'} fontWeight={500}> {intl.$t({id:"AlertSubFooter"})}</Typography>
+                <Typography color={'white'} fontSize={'12px'} fontWeight={500}> {intl.$t({id:"DesignBySubFooter"})}</Typography>
             </Grid>
         </Grid>
     )

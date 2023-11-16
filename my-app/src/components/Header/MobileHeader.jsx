@@ -3,10 +3,18 @@ import {Grid, Typography, useTheme} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import {styled, keyframes} from '@mui/system';
 import {Link} from "react-router-dom";
+import {useLanguage} from "../../LanguageContext";
+import {useIntl} from "react-intl";
 
 
 
 const MobileHeader = ({id}) => {
+
+    const {locale, changeLocale} = useLanguage();
+
+    console.log(locale)
+
+    const intl = useIntl();
 
 
     const [open, setOpen] = useState(false)
@@ -46,12 +54,12 @@ const MobileHeader = ({id}) => {
 
 
     const variable = [
-        {id: 1, title: 'صفحه اصلی' , link:'/'},
-        {id: 2, title: 'خدمات' , link:'/Services'},
-        {id: 3, title: 'استعلام قیمت' , link:'/Price'},
-        {id: 4, title: 'اخبار' , link: '/News'},
-        {id: 5, title: 'درباره ما' , link: '/AboutUS'},
-        {id: 6, title: 'تماس با ما' , link: '/ContactUs'},
+        {id: 1, title: 'صفحه اصلی', link: '/', TitleLang: 'HeaderMainPage'},
+        {id: 2, title: 'خدمات', link: '/Services', TitleLang: 'HeaderServices'},
+        {id: 3, title: 'استعلام قیمت', link: '/Price', TitleLang: 'HeaderPrice'},
+        {id: 4, title: 'اخبار', link: '/News', TitleLang: 'HeaderNews'},
+        {id: 5, title: 'درباره ما', link: '/AboutUS', TitleLang: 'HeaderAboutUs'},
+        {id: 6, title: 'تماس با ما', link: '/ContactUs', TitleLang: 'HeaderConcatUs'},
     ]
 
 
@@ -108,14 +116,14 @@ const MobileHeader = ({id}) => {
                                                             <Typography  color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
                                                                          justifyContent={'center'} py={'8px'}
                                                                          variant={'subtitle1'}
-                                                                         fontWeight={900} style={{cursor:'pointer'}}>{item.title}</Typography>
+                                                                         fontWeight={900} style={{cursor:'pointer'}}> {intl.$t({id: item.TitleLang})}</Typography>
                                                         </Link>
                                                         :
                                                         <Link to={item.link}>
                                                             <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
                                                                         justifyContent={'center'} py={'8px'}
                                                                         variant={'subtitle1'}
-                                                                        fontWeight={500} style={{cursor:'pointer'}}>{item.title}</Typography>
+                                                                        fontWeight={500} style={{cursor:'pointer'}}> {intl.$t({id: item.TitleLang})}</Typography>
                                                         </Link>
                                                     :
                                                     item.id === id ?
@@ -123,7 +131,7 @@ const MobileHeader = ({id}) => {
                                                             <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
                                                                         justifyContent={'center'} py={'8px'}
                                                                         variant={'subtitle1'}
-                                                                        fontWeight={900} style={{cursor:'pointer'}}>{item.title}</Typography>
+                                                                        fontWeight={900} style={{cursor:'pointer'}}> {intl.$t({id: item.TitleLang})}</Typography>
                                                             <Grid  bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
                                                                   height={'1px'}></Grid>
                                                         </Link>
@@ -132,7 +140,7 @@ const MobileHeader = ({id}) => {
                                                             <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
                                                                         justifyContent={'center'} py={'8px'}
                                                                         variant={'subtitle1'}
-                                                                        fontWeight={500} style={{cursor:'pointer'}}>{item.title}</Typography>
+                                                                        fontWeight={500} style={{cursor:'pointer'}}> {intl.$t({id: item.TitleLang})}</Typography>
                                                             <Grid bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
                                                                   height={'1px'}></Grid>
                                                         </Link>
