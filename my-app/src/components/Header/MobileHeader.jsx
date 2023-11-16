@@ -85,7 +85,7 @@ const MobileHeader = ({id}) => {
     return (
         <Grid position={'fixed'} top={0} left={0} right={0} zIndex={10}  bgcolor={theme.palette.primary.one} py={'21px'} px={'16px'} display={'flex'} alignItems={'center'}
               justifyContent={'space-between'}>
-            <Grid>
+            <Grid display={locale === 'fa' ? 'block' :'none'}>
                 <MenuIcon fontSize={'large'} style={{position: 'relative', top: 0, right: 0 , cursor:'pointer'}} onClick={() => {
                     setClosing(false);
                     setOpen(true);
@@ -133,7 +133,76 @@ const MobileHeader = ({id}) => {
                                                                         variant={'subtitle1'}
                                                                         fontWeight={900} style={{cursor:'pointer'}}> {intl.$t({id: item.TitleLang})}</Typography>
                                                             <Grid  bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
+                                                                   height={'1px'}></Grid>
+                                                        </Link>
+                                                        :
+                                                        <Link to={item.link}>
+                                                            <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
+                                                                        justifyContent={'center'} py={'8px'}
+                                                                        variant={'subtitle1'}
+                                                                        fontWeight={500} style={{cursor:'pointer'}}> {intl.$t({id: item.TitleLang})}</Typography>
+                                                            <Grid bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
                                                                   height={'1px'}></Grid>
+                                                        </Link>
+                                            }
+
+                                        </Grid>
+                                )
+                            }
+                        </AnimatedGrid>
+                        :
+                        <></>
+                }
+            </Grid>
+            <Grid display={locale === 'fa' ? 'none' :'block'}>
+                <MenuIcon fontSize={'large'} style={{position: 'relative', top: 0, right: 0 , cursor:'pointer'}} onClick={() => {
+                    setClosing(false);
+                    setOpen(true);
+                }}/>
+                {
+                    open === true ?
+                        <AnimatedGrid
+                            position={'absolute'}
+                            style={{boxShadow: '0px 2px 10px 0px rgba(0, 0, 0, 0.25)'}}
+                            borderRadius={'0 0 0 20px'}
+                            top={32}
+                            left={18}
+                            zIndex={10}
+                            ref={menuRef}
+                            bgcolor={theme.palette.primary.one}
+                            border={'none'}
+                            isClosing={closing}
+                            p={'24px 32px 16px 32px'}
+                        >
+                            {
+                                variable.map(
+                                    item =>
+                                        <Grid key={item.id} >
+                                            {
+                                                item.id === 6 ?
+                                                    item.id === id ?
+                                                        <Link to={item.id}>
+                                                            <Typography  color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
+                                                                         justifyContent={'center'} py={'8px'}
+                                                                         variant={'subtitle1'}
+                                                                         fontWeight={900} style={{cursor:'pointer'}}> {intl.$t({id: item.TitleLang})}</Typography>
+                                                        </Link>
+                                                        :
+                                                        <Link to={item.link}>
+                                                            <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
+                                                                        justifyContent={'center'} py={'8px'}
+                                                                        variant={'subtitle1'}
+                                                                        fontWeight={500} style={{cursor:'pointer'}}> {intl.$t({id: item.TitleLang})}</Typography>
+                                                        </Link>
+                                                    :
+                                                    item.id === id ?
+                                                        <Link to={item.link}>
+                                                            <Typography color={theme.palette.secondary.one} px={'30px'} display={'flex'} alignItems={'center'}
+                                                                        justifyContent={'center'} py={'8px'}
+                                                                        variant={'subtitle1'}
+                                                                        fontWeight={900} style={{cursor:'pointer'}}> {intl.$t({id: item.TitleLang})}</Typography>
+                                                            <Grid  bgcolor={'rgba(68, 74, 93, 0.50)'} width={'100%'}
+                                                                   height={'1px'}></Grid>
                                                         </Link>
                                                         :
                                                         <Link to={item.link}>

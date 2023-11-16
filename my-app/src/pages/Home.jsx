@@ -66,7 +66,7 @@ const Home = () => {
     ]
 
     return (
-        <Grid>
+        <Grid dir={locale === 'fa' ? 'rtl' : 'ltr'}>
             <Header DesktopId={1} MobileId={1}/>
             <Grid bgcolor={'rgba(255, 251, 242, 1)'} mt={{xs: '83px', md: '73px'}} width={'100%'}>
                 <Grid pb={'40px'}>

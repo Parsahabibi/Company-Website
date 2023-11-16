@@ -8,6 +8,8 @@ import {useIntl} from "react-intl";
 const DesktopHeader = ({id}) => {
 
 
+
+
     const {locale, changeLocale} = useLanguage();
 
     console.log(locale)
@@ -68,12 +70,17 @@ const DesktopHeader = ({id}) => {
         <Grid position={'fixed'} top={0} left={0} right={0} zIndex={10}>
             <Grid position={'relative'} top={0} left={0} right={0} bgcolor={theme.palette.primary.one} width={'100%'}
                   py={'25px'} display={'flex'} alignItems={'center'} boxShadow={5}>
-                <Grid position={'absolute'} top={0} right={{md: '48px', lg: '128px'}}
+                <Grid display={locale === 'fa' ? 'block':'none'}  position={'absolute'} top={0} right={{md: '48px', lg: '128px'}}
                       bgcolor={theme.palette.secondary.one} px={'43px'}
                       py={'19px'}>
                     <img src={'../assets/images/AltynLogo.svg'} alt={''}/>
                 </Grid>
-                <Grid display={'flex'} alignItems={'center'} gap={'24px'}
+                <Grid display={locale === 'fa' ? 'none':'block'} position={'absolute'} top={0} left={{md: '48px', lg: '128px'}}
+                      bgcolor={theme.palette.secondary.one} px={'43px'}
+                      py={'19px'}>
+                    <img src={'../assets/images/AltynLogo.svg'} alt={''}/>
+                </Grid>
+                <Grid display={locale === 'fa' ? 'flex' : 'none'} alignItems={'center'} gap={'24px'}
                       pr={{md: '250px', l: '310px', lg: '400px', xl: '454'}}
                       pl={{md: '48px', l: '120px', lg: '120px', xl: '287px'}}>
                     {
@@ -92,6 +99,35 @@ const DesktopHeader = ({id}) => {
                                             :
                                             <Link to={item.link}>
                                                 <Typography style={{cursor: 'pointer'}} variant={'h3'}
+                                                            color={theme.palette.secondary.one}
+                                                            fontWeight={500}>
+                                                    {intl.$t({id: item.TitleLang})}
+                                                </Typography>
+                                            </Link>
+                                    }
+                                </Grid>
+                        )
+                    }
+                </Grid>
+                <Grid display={locale === 'fa' ? 'none' : 'flex'} alignItems={'center'} gap={'24px'}
+                      pl={{md: '250px', l: '310px', lg: '400px', xl: '454'}}
+                      pr={{md: '10px', l: '120px', lg: '120px', xl: '287px'}}>
+                    {
+                        variable.map(
+                            item =>
+                                <Grid key={item.id}>
+                                    {
+                                        item.id === id ?
+                                            <Link to={item.link}>
+                                                <Typography style={{cursor: 'pointer'}} variant={locale === 'en' ? 'h3' :'subtitle2'}
+                                                            color={theme.palette.secondary.one}
+                                                            fontWeight={900}>
+                                                    {intl.$t({id: item.TitleLang})}
+                                                </Typography>
+                                            </Link>
+                                            :
+                                            <Link to={item.link}>
+                                                <Typography style={{cursor: 'pointer'}} variant={locale === 'en' ? 'h3' :'subtitle2'}
                                                             color={theme.palette.secondary.one}
                                                             fontWeight={500}>
                                                     {intl.$t({id: item.TitleLang})}
