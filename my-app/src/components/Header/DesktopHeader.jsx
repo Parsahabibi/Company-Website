@@ -11,24 +11,31 @@ const DesktopHeader = ({id}) => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
-
     const intl = useIntl();
 
 
     const [activeButton, setActiveButton] = useState(1);
 
 
-    const handleButtonClick = (buttonNumber, lang) => {
-        setActiveButton(buttonNumber);
-        changeLocale(lang)
+
+    const handleButtonClick = (event , buttonNumber, lang) => {
+        event.preventDefault();
+        if (activeButton !== buttonNumber) {
+            setActiveButton(buttonNumber);
+            changeLocale(lang);
+        }
     };
+
+
+
 
 
     console.log(activeButton)
 
 
-    const buttonStyle = (buttonNumber) => ({
+    const buttonStyle = (buttonNumber) => (
+    {
+
         backgroundColor: activeButton === buttonNumber ? 'rgba(68, 74, 93, 1)' : 'rgba(255, 191, 63, 1)',
         color: activeButton === buttonNumber ? 'white' : 'rgba(68, 74, 93, 1)',
         border: activeButton === buttonNumber ? 'none' : "1px solid rgba(68, 74, 93, 1)",
@@ -46,7 +53,7 @@ const DesktopHeader = ({id}) => {
     const theme = useTheme()
 
     const variable = [
-        {id: 1, title: 'صفحه اصلی', link: '/', TitleLang: 'HeaderMainPage'},
+        {id: 1, title: 'صفحه اصلی', link: '', TitleLang: 'HeaderMainPage'},
         {id: 2, title: 'خدمات', link: '/Services', TitleLang: 'HeaderServices'},
         {id: 3, title: 'استعلام قیمت', link: '/Price', TitleLang: 'HeaderPrice'},
         {id: 4, title: 'اخبار', link: '/News', TitleLang: 'HeaderNews'},
@@ -63,7 +70,7 @@ const DesktopHeader = ({id}) => {
 
 
     const isMd = useMediaQuery(theme.breakpoints.between('md', 'lg'));
-    const isXl = useMediaQuery(theme.breakpoints.between('lg' , 'g'));
+    const isXl = useMediaQuery(theme.breakpoints.between('lg', 'g'));
 
     const isG = useMediaQuery(theme.breakpoints.up('g'));
 
@@ -93,7 +100,7 @@ const DesktopHeader = ({id}) => {
                     <img src={'../assets/images/AltynLogo.svg'} alt={''}/>
                 </Grid>
                 <Grid display={locale === 'fa' ? 'none' : 'block'} position={'absolute'} top={0}
-                      left={{md: '48px', lg: '128px'}}
+                      left={{md: '48px', lg: '70px', g: '128px'}}
                       bgcolor={theme.palette.secondary.one} px={'43px'}
                       py={'19px'}>
                     <img src={'../assets/images/AltynLogo.svg'} alt={''}/>
@@ -128,7 +135,7 @@ const DesktopHeader = ({id}) => {
                     }
                 </Grid>
                 <Grid display={locale === 'fa' ? 'none' : 'flex'} alignItems={'center'} gap={'24px'}
-                      pl={{md: '250px', l: '310px', lg: '400px', xl: '454'}}
+                      pl={{md: '250px', l: '270px', lg: '330px', g: '400px', xl: '454'}}
                       pr={{md: '10px', l: '120px', lg: '120px', xl: '287px'}}>
                     {
                         variable.map(
@@ -163,7 +170,7 @@ const DesktopHeader = ({id}) => {
                         lang.map(
                             item =>
                                 <Button style={buttonStyle(item.id)}
-                                        onClick={() => handleButtonClick(item.id, item.symbol)}>{item.title}</Button>
+                                        onClick={(event) => handleButtonClick(event, item.id, item.symbol)} key={item.id}>{item.title}</Button>
                         )
                     }
                 </Grid>

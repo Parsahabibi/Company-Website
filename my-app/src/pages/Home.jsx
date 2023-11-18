@@ -95,7 +95,7 @@ const Home = () => {
                                         textAlign={'justify'}>
                                 {intl.$t({id: "Lorem100"})}
                             </Typography>
-                            <Grid width={{
+                            <Grid width={locale === 'fa' ? {
                                 xs: '42%',
                                 xxs: '35%',
                                 s: '20%',
@@ -103,7 +103,15 @@ const Home = () => {
                                 l: '20%',
                                 lg: '15%',
                                 xl: '10%'
-                            }}><Button variant={'outlinedTwo'}> {intl.$t({id: "MoreDetailsButton"})}</Button></Grid>
+                            } : {
+                                xs: '45%',
+                                xxs: '43%',
+                                s: '25%',
+                                md: '40%',
+                                l: '26%',
+                                lg: '20%',
+                                xl: '13%'
+                            }}><Button variant={'outlinedTwo'} sx={{pt:'10px'}}> {intl.$t({id: "MoreDetailsButton"})}</Button></Grid>
                         </Grid>
                     </Grid>
                     <Typography variant={'subtitle1'} fontWeight={500} display={'flex'} alignItems={'center'}

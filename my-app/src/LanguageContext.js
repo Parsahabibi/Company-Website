@@ -8,7 +8,11 @@ export const LanguageProvider = ({ children }) => {
 
 
     const changeLocale = (newLocale) => {
-        setLocale(newLocale);
+        try {
+            setLocale(newLocale);
+        } catch (error) {
+            console.error("Error in changeLocale:", error);
+        }
     };
 
 
