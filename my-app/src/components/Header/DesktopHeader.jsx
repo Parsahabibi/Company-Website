@@ -3,11 +3,10 @@ import {Button, Grid, Typography, useTheme} from "@mui/material";
 import {Link} from "react-router-dom";
 import {useLanguage} from "../../LanguageContext";
 import {useIntl} from "react-intl";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 const DesktopHeader = ({id}) => {
-
-
 
 
     const {locale, changeLocale} = useLanguage();
@@ -20,11 +19,10 @@ const DesktopHeader = ({id}) => {
     const [activeButton, setActiveButton] = useState(1);
 
 
-    const handleButtonClick = (buttonNumber , lang ) => {
+    const handleButtonClick = (buttonNumber, lang) => {
         setActiveButton(buttonNumber);
         changeLocale(lang)
     };
-
 
 
     console.log(activeButton)
@@ -58,24 +56,44 @@ const DesktopHeader = ({id}) => {
 
 
     const lang = [
-        {id:1 , title:"فا" , symbol:'fa'},
-        {id:2 , title:"en" , symbol:'en'},
-        {id:3 , title:"ru" , symbol:'ru'},
+        {id: 1, title: "فا", symbol: 'fa'},
+        {id: 2, title: "en", symbol: 'en'},
+        {id: 3, title: "ru", symbol: 'ru'},
     ]
 
 
+    const isMd = useMediaQuery(theme.breakpoints.between('md', 'lg'));
+    const isXl = useMediaQuery(theme.breakpoints.between('lg' , 'g'));
+
+    const isG = useMediaQuery(theme.breakpoints.up('g'));
+
+
+    console.log(isXl)
+
+
+    let variant;
+
+    if (isMd) {
+        variant = 'subtitle2'
+    } else if (isXl) {
+        variant = 'subtitle1'
+    } else if (isG) {
+        variant = 'h3'
+    }
 
 
     return (
         <Grid position={'fixed'} top={0} left={0} right={0} zIndex={10}>
             <Grid position={'relative'} top={0} left={0} right={0} bgcolor={theme.palette.primary.one} width={'100%'}
                   py={'25px'} display={'flex'} alignItems={'center'} boxShadow={5}>
-                <Grid display={locale === 'fa' ? 'block':'none'}  position={'absolute'} top={0} right={{md: '48px', lg: '128px'}}
+                <Grid display={locale === 'fa' ? 'block' : 'none'} position={'absolute'} top={0}
+                      right={{md: '48px', lg: '128px'}}
                       bgcolor={theme.palette.secondary.one} px={'43px'}
                       py={'19px'}>
                     <img src={'../assets/images/AltynLogo.svg'} alt={''}/>
                 </Grid>
-                <Grid display={locale === 'fa' ? 'none':'block'} position={'absolute'} top={0} left={{md: '48px', lg: '128px'}}
+                <Grid display={locale === 'fa' ? 'none' : 'block'} position={'absolute'} top={0}
+                      left={{md: '48px', lg: '128px'}}
                       bgcolor={theme.palette.secondary.one} px={'43px'}
                       py={'19px'}>
                     <img src={'../assets/images/AltynLogo.svg'} alt={''}/>
@@ -119,7 +137,8 @@ const DesktopHeader = ({id}) => {
                                     {
                                         item.id === id ?
                                             <Link to={item.link}>
-                                                <Typography style={{cursor: 'pointer'}} variant={locale === 'en' ? 'h3' :'subtitle2'}
+                                                <Typography style={{cursor: 'pointer'}}
+                                                            variant={locale === 'en' ? 'h3' : variant}
                                                             color={theme.palette.secondary.one}
                                                             fontWeight={900}>
                                                     {intl.$t({id: item.TitleLang})}
@@ -127,7 +146,8 @@ const DesktopHeader = ({id}) => {
                                             </Link>
                                             :
                                             <Link to={item.link}>
-                                                <Typography style={{cursor: 'pointer'}} variant={locale === 'en' ? 'h3' :'subtitle2'}
+                                                <Typography style={{cursor: 'pointer'}}
+                                                            variant={locale === 'en' ? 'h3' : variant}
                                                             color={theme.palette.secondary.one}
                                                             fontWeight={500}>
                                                     {intl.$t({id: item.TitleLang})}
@@ -141,8 +161,9 @@ const DesktopHeader = ({id}) => {
                 <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
                     {
                         lang.map(
-                            item=>
-                                <Button style={buttonStyle(item.id)} onClick={()=>handleButtonClick(item.id , item.symbol)}>{item.title}</Button>
+                            item =>
+                                <Button style={buttonStyle(item.id)}
+                                        onClick={() => handleButtonClick(item.id, item.symbol)}>{item.title}</Button>
                         )
                     }
                 </Grid>
