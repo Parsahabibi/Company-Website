@@ -12,11 +12,19 @@ import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 // import toast from "react-hot-toast";
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import {useLanguage} from "../LanguageContext";
+import {useIntl} from "react-intl";
 
 
 const Price = () => {
+
+    const {locale, changeLocale} = useLanguage();
+
+    console.log(locale)
+
+    const intl = useIntl();
 
     const [isFormComplete, setIsFormComplete] = useState(false);
 
@@ -38,7 +46,7 @@ const Price = () => {
 
     const InputData = [{
         id: 1,
-        title: 'نام و نام خانوادگی',
+        title: intl.$t({id: "FirstAndLastNameInputLabel"}),
         EnTitle: 'name',
         placeHolder: '',
         icon: '',
@@ -47,7 +55,7 @@ const Price = () => {
         type: 'text'
     }, {
         id: 2,
-        title: 'شماره تماس',
+        title: intl.$t({id: "PhoneNumberInputLabel"}),
         EnTitle: 'phone',
         placeHolder: '',
         icon: '',
@@ -56,7 +64,7 @@ const Price = () => {
         type: 'text'
     }, {
         id: 3,
-        title: 'ایمیل',
+        title: intl.$t({id: "EmailInputLabel"}),
         EnTitle: 'email',
         placeHolder: '',
         icon: '',
@@ -65,7 +73,7 @@ const Price = () => {
         type: 'email'
     }, {
         id: 4,
-        title: 'نام محموله',
+        title: intl.$t({id: "CargoNameInputLabel"}),
         EnTitle: 'Product',
         placeHolder: '',
         icon: '',
@@ -74,7 +82,7 @@ const Price = () => {
         type: 'text'
     }, {
         id: 5,
-        title: 'HS Code',
+        title: intl.$t({id: "HsCodeInputLabel"}),
         EnTitle: 'code',
         placeHolder: '',
         icon: '',
@@ -83,7 +91,7 @@ const Price = () => {
         type: 'text'
     }, {
         id: 6,
-        title: 'تناژ محموله',
+        title: intl.$t({id: "CargoTonnageInputLabel"}),
         EnTitle: 'tonnage',
         placeHolder: '',
         icon: '',
@@ -92,65 +100,80 @@ const Price = () => {
         type: 'text'
     }, {
         id: 7,
-        title: 'مبدا',
+        title: intl.$t({id: "OriginInputLabel"}),
         EnTitle: 'origin',
-        placeHolder: '(تهران-ایران)',
+        placeHolder: intl.$t({id: "TehranIranTitle"}),
         icon: <KeyboardArrowDownIcon/>,
-        DropDown: [{id: 1, title: 'تهران-ایران'}, {id: 2, title: 'اصفهان-ایران'}, {id: 3, title: 'تبریز-ایران'}],
+        DropDown: [{id: 1, title: intl.$t({id: "TehranIranTitle"})}, {
+            id: 2,
+            title: intl.$t({id: "EsfehanIranTitle"})
+        }, {id: 3, title: intl.$t({id: "TabrizIranTitle"})}],
         drop: true,
         type: 'text'
     }, {
         id: 8,
-        title: 'مقصد',
+        title: intl.$t({id: "DestinationInputLabel"}),
         EnTitle: 'destination',
-        placeHolder: '(تهران-ایران)',
+        placeHolder: intl.$t({id: "TehranIranTitle"}),
         icon: <KeyboardArrowDownIcon/>,
-        DropDown: [{id: 1, title: 'تهران-ایران'}, {id: 2, title: 'اصفهان-ایران'}, {id: 3, title: 'تبریز-ایران'}],
+        DropDown: [{id: 1, title: intl.$t({id: "TehranIranTitle"})}, {
+            id: 2,
+            title: intl.$t({id: "EsfehanIranTitle"})
+        }, {id: 3, title: intl.$t({id: "TabrizIranTitle"})}],
         drop: true,
         type: 'text'
     }, {
         id: 9,
-        title: 'محموله چند مسیره است؟',
+        title: intl.$t({id: "MultiRouteInputLabel"}),
         EnTitle: 'road',
-        placeHolder: 'تک مسیر',
+        placeHolder: intl.$t({id: "LevelOne"}),
         icon: <KeyboardArrowDownIcon/>,
-        DropDown: [{id: 1, title: 'تک مسیر'}, {id: 2, title: 'دو مسیر'}, {id: 3, title: 'سه مسیر'}],
+        DropDown: [{id: 1, title: intl.$t({id: "LevelOne"})}, {id: 2, title: intl.$t({id: "LevelTwo"})}, {
+            id: 3,
+            title: intl.$t({id: "LevelThree"})
+        }],
         drop: true,
         type: 'text'
     }, {
         id: 10,
-        title: 'درجه خطرپذیری کالا',
+        title: intl.$t({id: "DegreeOfRiskOfTheGoodsInputLabel"}),
         EnTitle: 'grade',
-        placeHolder: '(سطح یک)',
+        placeHolder: intl.$t({id: "LevelOne"}),
         icon: <KeyboardArrowDownIcon/>,
-        DropDown: [{id: 1, title: 'سطح یک'}, {id: 2, title: 'سطح دو'}, {id: 3, title: 'سطح سه'}],
+        DropDown: [{id: 1, title: intl.$t({id: "LevelOne"})}, {id: 2, title: intl.$t({id: "LevelTwo"})}, {
+            id: 3,
+            title: intl.$t({id: "LevelThree"})
+        }],
         drop: true,
         type: 'text'
     }, {
         id: 11,
-        title: 'نوع بسته بندی',
+        title: intl.$t({id: "PackageTypeInput"}),
         EnTitle: 'type',
-        placeHolder: '(کارتن)',
+        placeHolder: intl.$t({id: "Carton"}),
         icon: <KeyboardArrowDownIcon/>,
-        DropDown: [{id: 1, title: 'کارتن'}, {id: 2, title: 'مقوا'}, {id: 3, title: 'پلاستیک'}],
+        DropDown: [{id: 1, title: intl.$t({id: "Carton"})}, {id: 2, title: intl.$t({id: "CardBoard"})}, {
+            id: 3,
+            title: intl.$t({id: "Plastic"})
+        }],
         drop: true,
         type: 'text'
     },]
 
 
     const validation = yup.object().shape({
-        name: yup.string().required('نام و نام خانوادگی الزامی است.'),
-        phone: yup.string().typeError('شماره تلفن باید عددی باشد.').length(11, 'شماره تلفن باید دقیقاً ۱۱ کاراکتر  باشد.')
-            .matches(/^[0-9]+$/, 'شماره تلفن باید عددی باشد.').required('شماره تلفن الزامی است.'),
-        email: yup.string().email('ایمیل نا معتبر است').required('پر کردن ایمیل اجباری است'),
-        Product: yup.string().required('نام محموله الزامی است.'),
-        code: yup.string().required('کد HS الزامی است.'),
-        tonnage: yup.number().typeError('تناژ باید عددی باشد.').required('تناژ محموله الزامی است.'),
-        origin: yup.string().required('مبدا الزامی است.'),
-        destination: yup.string().required('مقصد الزامی است.'),
-        road: yup.string().required('نوع مسیر الزامی است.'),
-        grade: yup.string().required('درجه خطرپذیری الزامی است.'),
-        type: yup.string().required('نوع بسته‌بندی الزامی است.')
+        name: yup.string().required( intl.$t({id: "NameYup"})),
+        phone: yup.string().typeError( intl.$t({id: "PhoneYupNumber"})).length(11, intl.$t({id: "PhoneYupCh"}) )
+            .matches(/^[0-9]+$/,  intl.$t({id: "PhoneYupNumber"})).required( intl.$t({id: "PhoneYup"})),
+        email: yup.string().email( intl.$t({id: "EmailYup"})).required( intl.$t({id: "EmailYupIN"})),
+        Product: yup.string().required( intl.$t({id: "ProductYup"})),
+        code: yup.string().required( intl.$t({id: "CodeYup"})),
+        tonnage: yup.number().typeError( intl.$t({id: "TonnageYupNumber"})).required( intl.$t({id: "TonnageYup"})),
+        origin: yup.string().required( intl.$t({id: "OriginYup"})),
+        destination: yup.string().required( intl.$t({id: "DestinationYup"})),
+        road: yup.string().required( intl.$t({id: "RoadYup"})),
+        grade: yup.string().required(    intl.$t({id: "GradeYup"})),
+        type: yup.string().required( intl.$t({id: "TypeYup"}))
     })
 
 
@@ -162,9 +185,15 @@ const Price = () => {
     const watchedValues = watch();
 
 
-    const CustomToast = ({ closeToast, message }) => {
+    const CustomToast = ({closeToast, message}) => {
         return (
-            <Grid display={"flex"} alignItems={'start'} justifyContent={'end'} gap={'5px'}  style={{ backgroundColor: 'white', color: 'green', fontSize: '16px' , padding:'15px 10px' , fontWeight:900 , }}>
+            <Grid display={"flex"} alignItems={'start'} justifyContent={'end'} gap={'5px'} style={{
+                backgroundColor: 'white',
+                color: 'green',
+                fontSize: '16px',
+                padding: '15px 10px',
+                fontWeight: 900,
+            }}>
                 <CheckCircleIcon fontSize={'large'}/>
                 {message}
             </Grid>
@@ -172,10 +201,9 @@ const Price = () => {
     };
 
 
-
     const onSubmitForm = (data) => {
         if (isFormComplete) {
-            toast(<CustomToast message="فرم با موفقیت ارسال شد" />);
+            toast(<CustomToast message="فرم با موفقیت ارسال شد"/>);
             console.log('hello');
             console.log(data);
 
@@ -258,106 +286,107 @@ const Price = () => {
     }, [watchedValues]);
 
 
-    return (<Grid>
+    return (
+        <Grid dir={locale === 'fa' ? 'rtl' : 'ltr'}>
             <Header DesktopId={3} MobileId={3}/>
             <Grid bgcolor={'rgba(255, 245, 224, 1)'} mt={{xs: '83px', md: '80px'}} pb={{xs: '32px', md: ''}}>
                 <Grid pt={{xs: '35px', md: '80px'}} px={{xs: '40px', md: '210px'}}>
                     <Grid bgcolor={theme.palette.primary.three} display={'flex'} alignItems={'center'}
                           justifyContent={'center'} py={{xs: '20px', md: '17px'}} borderRadius={'20px 20px 0px 0px'}>
-                        <Typography color={theme.palette.secondary.one} variant={variant} fontWeight={900}>ورود اطلاعات
-                            جهت استعلام قیمت </Typography>
+                        <Typography color={theme.palette.secondary.one} variant={variant}
+                                    fontWeight={900}>{intl.$t({id: "EnterInformationToInquireAboutThePrice"})}</Typography>
                     </Grid>
-                    <Grid bgcolor={'white'} px={{xs: '40px', md: '80px'}} py={{xs: '35px', md: '44px'}}
+                    <Grid bgcolor={'white'} px={{xs: '40px', md: '29px' , lg:'80px'}} py={{xs: '35px', md: '44px'}}
                           border={'1px solid rgba(255, 191, 63, 1)'} borderRadius={'0px 0px 20px 20px'}>
                         <form onSubmit={handleSubmit(onSubmitForm)} ref={formRef}>
                             <Grid display={'flex'} flexWrap={'wrap'} justifyContent={{md: 'space-between'}}
-                                  flexDirection={{xs: 'column', md: 'row'}} gap={{xs: '24px', md: '112px'}}
+                                  flexDirection={{xs: 'column', md: 'row'}} gap={{xs: '24px', md:'80px' ,  lg:'112px'}}
                                   pb={{xs: '24px', md: '57px'}}>
                                 {InputData.map((item, index) => (dropdownRefs.current[item.id] = dropdownRefs.current[item.id] || React.createRef(),
-                                        <Grid key={index} display={'flex'} flexWrap={'wrap'}
-                                              flexDirection={'column'} gap={'5px'}
-                                              ml={{
-                                                  xs: '0', md: index === InputData.length - 1 ? '42%' : '0%'
-                                              }}>
-                                            <label htmlFor={item.id}>
-                                                <Typography variant={variantSecond}
-                                                            fontWeight={500}>{item.title}</Typography>
-                                            </label>
-                                            <Grid position={'relative'}>
-                                                <Icon style={{
-                                                    position: 'absolute',
-                                                    left: '15px',
-                                                    top: '50%',
-                                                    transform: 'translateY(-50%)'
-                                                }}>{item.icon}</Icon>
-                                                <input
-                                                    id={item.id}
-                                                    name={item.EnTitle}
-                                                    placeholder={item.placeHolder}
-                                                    {...register(item.EnTitle)}
-                                                    type={item.type}
-                                                    readOnly={item.drop === true}
-                                                    onClick={() => {
-                                                        setActiveInputId(item.drop ? item.id : null);
-                                                    }}
+                                    <Grid key={index} display={'flex'} flexWrap={'wrap'}
+                                          flexDirection={'column'} gap={'5px'}
+                                          // ml={{
+                                          //     xs: '0', md: index === InputData.length - 1 ? '42%' : '0%'
+                                          // }}
+                                    >
+                                        <label htmlFor={item.id}>
+                                            <Typography variant={variantSecond}
+                                                        fontWeight={500}>{item.title}</Typography>
+                                        </label>
+                                        <Grid position={'relative'}>
+                                            <Icon style={{
+                                                position: 'absolute',
+                                                left: locale === 'fa' ? '10px' : '',
+                                                right: locale === 'fa' ? '' : '10px',
+                                                top: '50%',
+                                                transform: 'translateY(-50%)'
+                                            }}>{item.icon}</Icon>
+                                            <input
+                                                id={item.id}
+                                                name={item.EnTitle}
+                                                placeholder={item.placeHolder}
+                                                {...register(item.EnTitle)}
+                                                type={item.type}
+                                                readOnly={item.drop === true}
+                                                onClick={() => {
+                                                    setActiveInputId(item.drop ? item.id : null);
+                                                }}
 
-                                                    onChange={(e) => {
-                                                        const {name, value} = e.target;
-                                                        setInputValues(prevValues => ({
-                                                            ...prevValues, [name]: value
-                                                        }));
-                                                    }}
-                                                    value={inputValues[item.EnTitle] || ''}
+                                                onChange={(e) => {
+                                                    const {name, value} = e.target;
+                                                    setInputValues(prevValues => ({
+                                                        ...prevValues, [name]: value
+                                                    }));
+                                                }}
+                                                value={inputValues[item.EnTitle] || ''}
 
 
-                                                    style={{
-                                                        backgroundColor: 'rgba(255, 245, 224, 1)',
-                                                        border: '1px solid rgba(255, 191, 63, 1)',
-                                                        padding: '5px',
-                                                        borderRadius: '5px',
-                                                        width: '100%',
-                                                        cursor: item.drop === true ? 'pointer' : 'text',
-                                                    }}/>
-                                                <Grid position={'absolute'} right={0} top={'110%'}>
-                                                    {errors[item.EnTitle] && (
-                                                        <Typography fontWeight={700} color='#F24C3D'
-                                                                    variant={varintValidation}>{errors[item.EnTitle].message}</Typography>)}
-                                                </Grid>
-                                                <Grid position={'absolute'} zIndex={10}
-                                                      ref={dropdownRefs.current[item.id]}
-                                                      bgcolor={'rgb(255, 245, 224)'}
-                                                      border={item.drop === true ? '1px solid rgb(255, 191, 63)' : ''}
-                                                      top={32} right={0}
-                                                      width={'100%'} borderRadius={' 5px'}
-                                                      display={activeInputId === item.id ? 'flex' : 'none'}
-                                                      flexDirection={'column'} gap={'10px'}
-                                                      p={item.drop === true ? '10px' : '0px'}
-                                                >
-                                                    {item.DropDown.map((drop, index) => <Grid
-                                                        onClick={() => handleDropdownClick(item.EnTitle, drop.title)}
-                                                        key={index}
-                                                        style={{cursor: 'pointer'}}
-                                                        display={item.drop === true ? 'block' : 'none'}
-                                                    >
-                                                        <Typography
-                                                            variant={firstVariant}
-                                                            fontWeight={hoveredItem === index ? 900 : 500}
-                                                            onMouseEnter={() => setHoveredItem(index)}
-                                                            onMouseLeave={() => setHoveredItem(null)}>
-                                                            {drop.title}
-                                                        </Typography>
-
-                                                    </Grid>)}
-                                                </Grid>
+                                                style={{
+                                                    backgroundColor: 'rgba(255, 245, 224, 1)',
+                                                    border: '1px solid rgba(255, 191, 63, 1)',
+                                                    padding: '5px',
+                                                    borderRadius: '5px',
+                                                    width: '100%',
+                                                    cursor: item.drop === true ? 'pointer' : 'text',
+                                                }}/>
+                                            <Grid position={'absolute'} right={locale === 'fa' ? '0px' :''}  left={locale === 'fa' ? '' :'0px'} top={'110%'}>
+                                                {errors[item.EnTitle] && (
+                                                    <Typography fontWeight={700} color='#F24C3D'
+                                                                variant={varintValidation}>{errors[item.EnTitle].message}</Typography>)}
                                             </Grid>
-                                        </Grid>))}
+                                            <Grid position={'absolute'} zIndex={10}
+                                                  ref={dropdownRefs.current[item.id]}
+                                                  bgcolor={'rgb(255, 245, 224)'}
+                                                  border={item.drop === true ? '1px solid rgb(255, 191, 63)' : ''}
+                                                  top={32} right={0}
+                                                  width={'100%'} borderRadius={' 5px'}
+                                                  display={activeInputId === item.id ? 'flex' : 'none'}
+                                                  flexDirection={'column'} gap={'10px'}
+                                                  p={item.drop === true ? '10px' : '0px'}
+                                            >
+                                                {item.DropDown.map((drop, index) => <Grid
+                                                    onClick={() => handleDropdownClick(item.EnTitle, drop.title)}
+                                                    key={index}
+                                                    style={{cursor: 'pointer'}}
+                                                    display={item.drop === true ? 'block' : 'none'}
+                                                >
+                                                    <Typography
+                                                        variant={firstVariant}
+                                                        fontWeight={hoveredItem === index ? 900 : 500}
+                                                        onMouseEnter={() => setHoveredItem(index)}
+                                                        onMouseLeave={() => setHoveredItem(null)}>
+                                                        {drop.title}
+                                                    </Typography>
+
+                                                </Grid>)}
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>))}
                             </Grid>
 
                             <Grid pb={{xs: '25px', md: '10px'}}>
                                 <Typography pb={{xs: '16px'}} variant={variantSecond}
-                                            fontWeight={500}>آیا محموله اظهار
-                                    شده
-                                    است؟</Typography>
+                                            fontWeight={500}>{intl.$t({id: "IsTheShipmentDeclared"})}</Typography>
                                 <Grid>
                                     <Grid style={{
                                         display: 'flex', alignItems: 'center', gap: '40px'
@@ -367,7 +396,7 @@ const Price = () => {
                                                   display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer'
                                               }}>
                                             <Typography variant={variantSecond}
-                                                        fontWeight={500}>بلی</Typography>
+                                                        fontWeight={500}>{intl.$t({id: "Yes"})}</Typography>
                                             <Grid style={{
                                                 width: '20px',
                                                 height: '20px',
@@ -381,7 +410,7 @@ const Price = () => {
                                                   display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer'
                                               }}>
                                             <Typography variant={variantSecond}
-                                                        fontWeight={500}>خیر</Typography>
+                                                        fontWeight={500}>{intl.$t({id: "No"})}</Typography>
                                             <Grid style={{
                                                 width: '20px',
                                                 height: '20px',
@@ -394,22 +423,22 @@ const Price = () => {
                                 </Grid>
                             </Grid>
                             <Grid pb={{xs: '32px', md: '48px'}} display={'flex'}
-                                  justifyContent={'end'}
+                                  justifyContent={locale === 'fa' ? 'end' : 'flex-start'}
                                   width={{xs: '50%', md: '30%', lg: '15%'}}
-                                  mr={{xs: '50%', md: '70%', lg: '85%'}}>
+                                  mr={locale === 'fa' ? {xs: '50%', md: '70%', lg: '85%'} : ''}
+                                  ml={locale === 'fa' ? ''  : {xs: '50%', md: '70%', lg: '85%'}}
+                            >
                                 <Button onClick={() => {
                                     setShow(!show)
                                 }} type={'submit'} variant={'contained'}
                                         style={{width: '100%'}}
                                         disabled={selected === 'no'}>
                                     <Typography variant={'subtitle1'}
-                                                fontWeight={900}>ارسال</Typography>
+                                                fontWeight={900}>{intl.$t({id: "SendButtonTitle"})}</Typography>
                                 </Button>
                             </Grid>
-                            <Typography variant={varintThird} fontWeight={500}>کارشناسان ما
-                                پس از بررسی های لازم با شما
-                                تماس
-                                خواهند گرفت </Typography>
+                            <Typography variant={varintThird}
+                                        fontWeight={500}>{intl.$t({id: "AlertPricePage"})}</Typography>
                         </form>
                     </Grid>
                 </Grid>

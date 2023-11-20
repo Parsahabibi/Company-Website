@@ -73,6 +73,22 @@ export const messages = {
     Carton: "Carton",
     CardBoard: "Cardboard",
     Plastic: "Plastic",
+    NameYup: 'Full name is required.',
+    PhoneYupNumber: 'Phone number must be numeric.',
+    PhoneYupCh: 'Phone number must be exactly 11 characters.',
+    PhoneYup: 'Phone number is required.',
+    EmailYup: 'Invalid email address.',
+    EmailYupIN: 'Email address is required.',
+    ProductYup: 'Product name is required.',
+    CodeYup: 'HS code is required.',
+    TonnageYup: 'Tonnage of the shipment is required.',
+    TonnageYupNumber: 'Tonnage must be numeric.',
+    OriginYup: 'Origin is required.',
+    DestinationYup: 'Destination is required.',
+    RoadYup: 'Type of route is required.',
+    GradeYup: 'Risk level is required.',
+    TypeYup: 'Packaging type is required.',
+
 
     //end price page
 

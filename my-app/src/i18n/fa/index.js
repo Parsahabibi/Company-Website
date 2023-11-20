@@ -71,6 +71,21 @@ export const messages = {
     Carton:"کارتن",
     CardBoard:"مقوا",
     Plastic:"پلاستیک",
+    NameYup:'نام و نام خانوادگی الزامی است.',
+    PhoneYupNumber:'شماره تلفن باید عددی باشد',
+    PhoneYupCh:'شماره تلفن باید دقیقاً ۱۱ کاراکتر  باشد.',
+    PhoneYup:'شماره تلفن الزامی است.',
+    EmailYup:'ایمیل نا معتبر است',
+    EmailYupIN:'پر کردن ایمیل اجباری است',
+    ProductYup:'نام محموله الزامی است.',
+    CodeYup:'کد HS الزامی است',
+    TonnageYup:'تناژ محموله الزامی است',
+    TonnageYupNumber:'تناژ باید عددی باشد',
+    OriginYup:'مبدا الزامی است.',
+    DestinationYup:'مقصد الزامی است.',
+    RoadYup:'نوع مسیر الزامی است.',
+    GradeYup:'درجه خطرپذیری الزامی است',
+    TypeYup:'نوع بسته‌بندی الزامی است.',
 
     //end price page
 
