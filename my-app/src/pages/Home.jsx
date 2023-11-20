@@ -11,7 +11,6 @@ const Home = () => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
 
     const intl = useIntl();
 

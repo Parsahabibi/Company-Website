@@ -4,8 +4,17 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import {useTheme} from "@mui/material/styles";
 import ServicesAltyn from "../components/Services/ServicesAltyn";
+import {useLanguage} from "../LanguageContext";
+import {useIntl} from "react-intl";
 
 const Services = () => {
+
+    const {locale, changeLocale} = useLanguage();
+
+    console.log(locale)
+
+    const intl = useIntl();
+
 
     const [active, setActive] = useState(1)
 
@@ -13,51 +22,54 @@ const Services = () => {
 
     const trainMin = 'assets/Images/ServicesMin.svg'
 
-    const des = 'لورم ای سوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد '
+    const des = intl.$t({id: "Lorem100"})
 
-    const items = ['لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی', 'لورم ایپسوم متن ساختگی']
+    const items = [intl.$t({id: "LoremTitle"}), intl.$t({id: "LoremTitle"}), intl.$t({id: "LoremTitle"}), intl.$t({id: "LoremTitle"}), intl.$t({id: "LoremTitle"}), intl.$t({id: "LoremTitle"})]
 
 
     const NavBar = [
         {
             id: 1,
-            component: <ServicesAltyn image={train} title={'سرویس حمل و نقل ریلی آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس حمل و نقل ریلی آلتن'} items={items}
+            component: <ServicesAltyn image={train} title={intl.$t({id: "RailroadTransportationCardTitle"})} dec={des}
+                                      titleItem={intl.$t({id: "AltynRailTransportServiceCapacities"})} items={items}
                                       imageMin={trainMin}/>,
-            title: 'حمل و نقل ریلی'
+            title: intl.$t({id: "RailroadTransportationCardTitle"})
         },
         {
             id: 2,
-            component: <ServicesAltyn image={train} title={'سرویس حمل و نقل جاده ای آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس حمل و نقل جاده ای آلتن'} items={items}
+            component: <ServicesAltyn image={train} title={intl.$t({id: "RoadTransportationCardTitle"})} dec={des}
+                                      titleItem={intl.$t({id: "AltenRoadTransportServiceCapacities"})} items={items}
                                       imageMin={trainMin}/>,
-            title: 'حمل و نقل جاده ای'
+            title: intl.$t({id: "RoadTransportationCardTitle"})
         },
         {
             id: 3,
-            component: <ServicesAltyn image={train} title={'سرویس حمل و نقل دریایی آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس حمل و نقل دریایی آلتن'} items={items}
+            component: <ServicesAltyn image={train} title={intl.$t({id: "MaritimeTransportationCardTitle"})} dec={des}
+                                      titleItem={intl.$t({id: "CapacitiesofAltenSeaTransportationService"})}
+                                      items={items}
                                       imageMin={trainMin}/>,
-            title: 'حمل و نقل دریایی'
+            title: intl.$t({id: "MaritimeTransportationCardTitle"})
         },
         {
             id: 4,
-            component: <ServicesAltyn image={train} title={'سرویس حمل و نقل هوایی آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس حمل و نقل هوایی آلتن'} items={items}
+            component: <ServicesAltyn image={train} title={intl.$t({id: "AirTransportationTitleServices"})} dec={des}
+                                      titleItem={intl.$t({id: "CapacitiesOfAltenAirTransportService"})} items={items}
                                       imageMin={trainMin}/>,
-            title: 'حمل و نقل هوایی'
+            title: intl.$t({id: "AirTransportationTitleServices"})
         },
         {
             id: 5,
-            component: <ServicesAltyn image={train} title={'واردات و صادرات آلتن'} dec={des}
-                                      titleItem={'ظرفیت های واردات و صادرات آلتن'} items={items} imageMin={trainMin}/>,
-            title: 'واردات و صادرات'
+            component: <ServicesAltyn image={train} title={intl.$t({id: "ImportsAndExportsTitleServices"})} dec={des}
+                                      titleItem={intl.$t({id: "AltenImportAndExportServiceCapacities"})} items={items}
+                                      imageMin={trainMin}/>,
+            title: intl.$t({id: "ImportsAndExportsTitleServices"})
         },
         {
             id: 6,
-            component: <ServicesAltyn image={train} title={'سرویس ترخیص کالا آلتن'} dec={des}
-                                      titleItem={'ظرفیت های سرویس ترخیص کالا آلتن'} items={items} imageMin={trainMin}/>,
-            title: 'ترخیص کالا'
+            component: <ServicesAltyn image={train} title={intl.$t({id: "ClearanceTitleServices"})} dec={des}
+                                      titleItem={intl.$t({id: "AltenClearanceServiceCapacities"})} items={items}
+                                      imageMin={trainMin}/>,
+            title: intl.$t({id: "ClearanceTitleServices"})
         },
     ]
 
@@ -65,7 +77,7 @@ const Services = () => {
 
 
     return (
-        <Grid>
+        <Grid dir={locale === 'fa' ? 'rtl' : 'ltr'}>
             <Header DesktopId={2} MobileId={2}/>
             <Grid mt={{xs: '83px'}} display={{xs: 'flex', md: 'none'}} alignItems={'center'}
                   justifyContent={'space-between'} mb={{xs: '27px', md: '0px'}} width={'100%'}
@@ -102,9 +114,12 @@ const Services = () => {
                                 <Grid width={'100%'} onClick={() => {
                                     setActive(item.id)
                                 }} bgcolor={active === item.id ? theme.palette.primary.one : 'transparent'}
-                                      borderRadius={item.id === 1 ? '0px 18px 18px 0px' : '0px' && item.id === 6 ? '18px 0px 0px 18px' : '0px'}
+                                      borderRadius={locale === 'fa' ? item.id === 1 ? '0px 18px 18px 0px' : '0px' && item.id === 6 ? '18px 0px 0px 18px' : '0px' :
+                                          item.id === 1 ? '18px 0px 0px 18px' : '0px' && item.id === 6 ? '0px 18px 18px 0px' : '0px'}
+                                      py={locale === 'fa' ? '0px' : '5px'}
                                 >
-                                    <Typography display={'flex'} alignItems={'center'} justifyContent={'center'}
+                                    <Typography display={locale === 'fa' ? 'flex' : 'none'} alignItems={'center'}
+                                                justifyContent={'center'}
                                                 borderRight={item.id === 1 ? 'none' : '1px solid white'}
                                                 style={{cursor: 'pointer'}}
                                                 color={active === item.id ? theme.palette.info.one : 'white'}
@@ -117,7 +132,33 @@ const Services = () => {
                                                     xl: item.id === 1 || item.id === 6 ? '62px' : '48px'
                                                 }}
                                                 py={{xs: '', md: '5px'}}>
-                                        {item.title}
+                                        {intl.$t({id: item.title})}
+                                    </Typography>
+                                    <Typography display={locale === 'fa' ? 'none' : 'flex'} alignItems={'center'}
+                                                justifyContent={'center'}
+                                                borderRight={item.id === 1 ? '1px solid white' : '1px solid white'}
+                                                style={{cursor: 'pointer'}}
+                                                color={active === item.id ? theme.palette.info.one : 'white'}
+                                                variant={'subtitle1'} fontWeight={500}
+                                                // pt={'5px'}
+                                                px={{
+                                                    xs: '',
+                                                    md: item.id === 1 || item.id === 6 ? '10px' : '0px',
+                                                    l: '',
+                                                    lg: item.id === 1 || item.id === 6 ? '40px' : '23px',
+                                                    xl: item.id === 1 || item.id === 6 ? '62px' : '48px'
+                                                }}
+                                                py={locale === 'en' ? {
+                                                    xs: '',
+                                                    md: '5px'
+                                                } : locale === 'ru' ? item.id === 4 || item.id === 5 ? {
+                                                    xs: '',
+                                                    md: '19px'
+                                                } :{
+                                                    xs: '',
+                                                    md: '5px'
+                                                } : ''}>
+                                        {intl.$t({id: item.title})}
                                     </Typography>
                                 </Grid>
                         )

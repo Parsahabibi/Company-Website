@@ -53,7 +53,7 @@ const DesktopHeader = ({id}) => {
     const theme = useTheme()
 
     const variable = [
-        {id: 1, title: 'صفحه اصلی', link: '', TitleLang: 'HeaderMainPage'},
+        {id: 1, title: 'صفحه اصلی', link: '/', TitleLang: 'HeaderMainPage'},
         {id: 2, title: 'خدمات', link: '/Services', TitleLang: 'HeaderServices'},
         {id: 3, title: 'استعلام قیمت', link: '/Price', TitleLang: 'HeaderPrice'},
         {id: 4, title: 'اخبار', link: '/News', TitleLang: 'HeaderNews'},

@@ -29,8 +29,16 @@ export const messages = {
     ImportsAndExportsTitleServices: "واردات و صادرات",
     ClearanceTitleServices: "ترخیص کالا",
     TitleOfTheTransportsServices: "سرویس {title} آلتن ",
-    CapacityOfAltenTransportationServices: "ظرفیت های  سرویس {title} آلتن",
+    // CapacityOfAltenTransportationServices: "ظرفیت های  سرویس {title} آلتن",
+
+    AltynRailTransportServiceCapacities:'ظرفیت های سرویس حمل و نقل ریلی آلتن',
+    AltenRoadTransportServiceCapacities:'ظرفیت های سرویس حمل و نقل چاده ای آلتن',
+    CapacitiesOfAltenAirTransportService:'ظرفیت های سرویس حمل و نقل هوایی آلتن',
+    CapacitiesofAltenSeaTransportationService:'ظرفیت های سرویس حمل و نقل دریایی آلتن',
+    AltenImportAndExportServiceCapacities:'ظرفیت های سرویس صادرات و واردات آلتن',
+    AltenClearanceServiceCapacities:'ظرفیت های سرویس ترخیص کالا آلتن',
     CapacityOfAltenTransportationServicesTitle: "{title}",
+    LoremTitle:'لورم ایپسوم متن ساختگی',
 
     //end Services Page
 

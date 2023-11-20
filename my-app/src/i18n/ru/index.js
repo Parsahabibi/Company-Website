@@ -33,6 +33,14 @@ export const messages = {
     TitleOfTheTransportsServices: "Сервис {title} от Alten",
     CapacityOfAltenTransportationServices: "Емкость сервиса {title} от Alten",
     CapacityOfAltenTransportationServicesTitle: "{title}",
+    AltynRailTransportServiceCapacities:' Емкость железнодорожных транспортных услуг Altyn',
+    AltenRoadTransportServiceCapacities:' Емкость дорожных транспортных услуг Altyn',
+    CapacitiesofAltenAirTransportService:'Емкость авиационных транспортных услуг Altyn',
+    AltenImportAndExportServiceCapacities:' Емкость услуг по импорту и экспорту Altyn',
+    AltenClearanceServiceCapacities:'Емкость услуг по таможенному оформлению Altyn',
+    CapacitiesofAltenSeaTransportationService:'Емкость морских транспортных услуг Altyn',
+    LoremTitle:'Lorem Ipsum вымышленный текст.',
+
 
     // конец страницы услуг
 

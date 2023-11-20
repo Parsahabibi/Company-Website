@@ -1,4 +1,3 @@
-
 export const messages = {
     HeaderMainPage: "MainPage",
     HeaderServices: "Services",
@@ -8,13 +7,13 @@ export const messages = {
     HeaderConcatUs: "ContactUs",
     AboutUsTitleMainPage: "AboutUs",
     Lorem100: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    Lorem10:"Lorem Epsom is a fictional text produced with incomprehensible simplicity from the printing industry, and using graphic designers, printers and texts but also newspapers and graphics.",
+    Lorem10: "Lorem Epsom is a fictional text produced with incomprehensible simplicity from the printing industry, and using graphic designers, printers and texts but also newspapers and graphics.",
     MoreDetailsButton: 'More Details',
     ServicesTitleMainPage: "Services",
     RailroadTransportationCardTitle: "Rail Transportation",
     MaritimeTransportationCardTitle: "Maritime Transportation",
     RoadTransportationCardTitle: "Road Transportation",
-    ReadMore:"Read More",
+    ReadMore: "Read More",
     AltenBenefitsTitleMainPage: "Alten Benefits",
     AltenBenefitsCardTitle: "High-speed Transportation",
     LastNewsTitleMainPage: "Latest News",
@@ -24,6 +23,8 @@ export const messages = {
     CompanyLocation: "Golestan, Gorgan, Baharestan Street",
     AlertSubFooter: "All rights reserved by Alten Group",
     DesignBySubFooter: "Designed and Developed by Altyngroup",
+    LoremTitle:'Lorem Ipsum is a fictional text',
+
 
     //main page ended
 
@@ -33,6 +34,13 @@ export const messages = {
     TitleOfTheTransportsServices: "{title} Service by Alten",
     CapacityOfAltenTransportationServices: "Capacities of {title} Service by Alten",
     CapacityOfAltenTransportationServicesTitle: "{title}",
+    AltynRailTransportServiceCapacities: ' Capacity of Altyn Rail Transport Service',
+    AltenRoadTransportServiceCapacities: 'Capacity of Altyn Road Transport Service',
+    CapacitiesOfAltenAirTransportService: ' Capacity of Altyn Air Transport Service',
+    AltenImportAndExportServiceCapacities: ' Capacity of Altyn Import and Export Service',
+    AltenClearanceServiceCapacities: ' Capacity of Altyn Clearance Service',
+    CapacitiesofAltenSeaTransportationService:'Capacities of Alten Sea Transportation Service',
+
 
     //end Services Page
 
