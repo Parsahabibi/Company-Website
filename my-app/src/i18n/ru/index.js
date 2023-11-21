@@ -103,7 +103,7 @@ export const messages = {
 
 
     // конец страницы "О нас"
-
+    ContactUs:"Свяжитесь с нами",
     PhoneNumbers: "Телефоны:",
     WhatsAppAndTelegram: "WhatsApp и Telegram:",
     SocialMedia: "Социальные сети:",

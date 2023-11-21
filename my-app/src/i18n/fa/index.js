@@ -103,6 +103,8 @@ export const messages = {
     //end AboutUs Page
 
 
+
+    ContactUs:'با ما در ارتباط باشید',
     PhoneNumbers:"شماره های تماس:" ,
     WhatsAppAndTelegram:"واتسپ و تلگرام:",
     SocialMedia:"شبکه های اجتماعی:",

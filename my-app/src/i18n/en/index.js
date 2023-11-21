@@ -103,6 +103,7 @@ export const messages = {
 
 
     //end AboutUs Page
+    ContactUs:'Contact Us',
 
     PhoneNumbers: "Phone Numbers:",
     WhatsAppAndTelegram: "WhatsApp and Telegram:",
