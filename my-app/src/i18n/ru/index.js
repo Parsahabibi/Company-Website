@@ -99,6 +99,8 @@ export const messages = {
     TitleAboutUsPage: "О группе транспорта Alten",
     SubcategoriesOfAltenGroup: "Подкатегории группы Alten",
     ViewServicesButton: "Просмотреть услуги",
+    AltenHeritage:'Альтен Наследие',
+
 
     // конец страницы "О нас"
 

@@ -98,6 +98,7 @@ export const messages = {
     TitleAboutUsPage:"درباره گروه حمل و نقل آلتن",
     SubcategoriesOfAltenGroup:"زیرمجموعه های گروه آلتن",
     ViewServicesButton:"مشاهده خدمات",
+    AltenHeritage:'آلتن میراث',
 
     //end AboutUs Page
 

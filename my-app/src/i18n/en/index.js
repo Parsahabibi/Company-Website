@@ -99,6 +99,8 @@ export const messages = {
     TitleAboutUsPage: "About Alten Transportation Group",
     SubcategoriesOfAltenGroup: "Subcategories of Alten Group",
     ViewServicesButton: "View Services",
+    AltenHeritage:'Alten Heritage',
+
 
     //end AboutUs Page
 
