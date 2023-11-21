@@ -110,4 +110,9 @@ export const messages = {
     SocialMedia: "Social Media:",
     mapLocation: "Alten Headquarters Location on Map / Click here",
 
+    //end Contact us
+
+    HomeAndNews:  "Home/News/",
+    Pm:'P.m',
+    Am:'A.m'
 }

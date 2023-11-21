@@ -9,7 +9,7 @@ import {useLanguage} from "../../LanguageContext";
 import {useIntl} from "react-intl";
 import {ReadMore} from "@mui/icons-material";
 
-const Cards = ({images, title, des, width, height, font, variants, state}) => {
+const Cards = ({images, title, des, width, height, font, variants, state , TranslateId}) => {
 
     // console.log(state ? title.props.values.title : "")
     //
@@ -36,6 +36,7 @@ const Cards = ({images, title, des, width, height, font, variants, state}) => {
         const params = new URLSearchParams();
         params.append("title", title);
         params.append("imageSrc", images);
+        params.append("TranslateId", TranslateId);
 
         navigate(`/News/Information?${params.toString()}`);
     };

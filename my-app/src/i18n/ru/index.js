@@ -109,4 +109,11 @@ export const messages = {
     SocialMedia: "Социальные сети:",
     mapLocation: "Местоположение штаб-квартиры Alten на карте / Нажмите здесь",
 
+
+    //end Contact us
+
+    HomeAndNews:"Дом/Новости/",
+    Pm:"п.п." ,
+    Am:"д.п."
+
 }
