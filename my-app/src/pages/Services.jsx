@@ -148,7 +148,7 @@ const Services = () => {
                                                     lg: item.id === 1 || item.id === 6 ? '40px' : '23px',
                                                     xl: item.id === 1 || item.id === 6 ? '62px' : '48px'
                                                 }}
-                                                pl={{md:locale === 'ru' ? item.id === 1 ? '25px' :'10px' : '' , lg:locale === 'ru'?item.id === 1 || item.id === 6 ? '40px' : '23px':''}}
+                                                pl={{md:locale === 'ru' ? item.id === 1 ? '25px' :'10px' : '10px' , lg:locale === 'ru'? item.id === 1 || item.id === 6 ? '40px' : '23px':locale === 'en'? item.id === 1 || item.id === 6 ? '40px' : '23px' :''}}
                                                 py={locale === 'en' ? {
                                                     xs: '',
                                                     md: '5px'

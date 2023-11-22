@@ -11,20 +11,25 @@ const DesktopHeader = ({id}) => {
 
     const {locale, changeLocale} = useLanguage();
 
+
     const intl = useIntl();
 
 
-    const [activeButton, setActiveButton] = useState(1);
+    const initialActiveButton = localStorage.getItem("activeButton")
+        ? parseInt(localStorage.getItem("activeButton"))
+        : 1;
+
+    const [activeButton, setActiveButton] = useState(initialActiveButton);
 
 
 
-    const handleButtonClick = (event , buttonNumber, lang) => {
-        event.preventDefault();
-        if (activeButton !== buttonNumber) {
-            setActiveButton(buttonNumber);
-            changeLocale(lang);
-        }
-    };
+    // const handleButtonClick = (event , buttonNumber, lang) => {
+    //     event.preventDefault();
+    //     if (activeButton !== buttonNumber) {
+    //         setActiveButton(buttonNumber);
+    //         changeLocale(lang);
+    //     }
+    // };
 
 
 
@@ -35,7 +40,6 @@ const DesktopHeader = ({id}) => {
 
     const buttonStyle = (buttonNumber) => (
     {
-
         backgroundColor: activeButton === buttonNumber ? 'rgba(68, 74, 93, 1)' : 'rgba(255, 191, 63, 1)',
         color: activeButton === buttonNumber ? 'white' : 'rgba(68, 74, 93, 1)',
         border: activeButton === buttonNumber ? 'none' : "1px solid rgba(68, 74, 93, 1)",
@@ -87,6 +91,11 @@ const DesktopHeader = ({id}) => {
     } else if (isG) {
         variant = 'h3'
     }
+
+
+    useEffect(() => {
+        localStorage.setItem("activeButton", activeButton.toString());
+    }, [activeButton]);
 
 
     return (
@@ -171,7 +180,9 @@ const DesktopHeader = ({id}) => {
                         lang.map(
                             item =>
                                 <Button style={buttonStyle(item.id)}
-                                        onClick={(event) => handleButtonClick(event, item.id, item.symbol)} key={item.id}>{item.title}</Button>
+                                        onClick={() => { setActiveButton(item.id); changeLocale(item.symbol) ;
+                                            console.log(activeButton , 'ac')
+                                        }} key={item.id}>{item.title}</Button>
                         )
                     }
                 </Grid>

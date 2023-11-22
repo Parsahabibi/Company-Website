@@ -26,8 +26,7 @@ function I18n({ render }) {
         // to re-render its children on locale change.
         <IntlProvider
             messages={messages[locale]}
-            locale={locale}
-            key={locale}>
+            locale={locale}>
             {render(changeLocale, locale)}
         </IntlProvider>
     );
