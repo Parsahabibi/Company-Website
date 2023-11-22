@@ -114,8 +114,8 @@ const Services = () => {
                                 <Grid width={'100%'} onClick={() => {
                                     setActive(item.id)
                                 }} bgcolor={active === item.id ? theme.palette.primary.one : 'transparent'}
-                                      borderRadius={locale === 'fa' ? item.id === 1 ? '0px 18px 18px 0px' : '0px' && item.id === 6 ? '18px 0px 0px 18px' : '0px' :
-                                          item.id === 1 ? '18px 0px 0px 18px' : '0px' && item.id === 6 ? '0px 18px 18px 0px' : '0px'}
+                                      borderRadius={locale === 'fa' ? item.id === 1 ? '0px 30px 30px 0px' : '0px' && item.id === 6 ? '30px 0px 0px 30px' : '0px' :
+                                          item.id === 1 ? '30px 0px 0px 30px' : '0px' && item.id === 6 ? '0px 30px 30px 0px' : '0px'}
                                       py={locale === 'fa' ? '0px' : '5px'}
                                 >
                                     <Typography display={locale === 'fa' ? 'flex' : 'none'} alignItems={'center'}
@@ -139,15 +139,16 @@ const Services = () => {
                                                 borderRight={item.id === 1 ? '1px solid white' : '1px solid white'}
                                                 style={{cursor: 'pointer'}}
                                                 color={active === item.id ? theme.palette.info.one : 'white'}
-                                                variant={'subtitle1'} fontWeight={500}
-                                                // pt={'5px'}
+                                                variant={'subtitle2'} fontWeight={500}
+                                                whiteSpace={locale === 'en' ? 'nowrap' : 'wrap'}
                                                 px={{
                                                     xs: '',
-                                                    md: item.id === 1 || item.id === 6 ? '10px' : '0px',
+                                                    md: item.id === 1 || item.id === 6 ? '10px' : '10px',
                                                     l: '',
                                                     lg: item.id === 1 || item.id === 6 ? '40px' : '23px',
                                                     xl: item.id === 1 || item.id === 6 ? '62px' : '48px'
                                                 }}
+                                                pl={{md:locale === 'ru' ? item.id === 1 ? '25px' :'10px' : '' , lg:locale === 'ru'?item.id === 1 || item.id === 6 ? '40px' : '23px':''}}
                                                 py={locale === 'en' ? {
                                                     xs: '',
                                                     md: '5px'
@@ -156,7 +157,7 @@ const Services = () => {
                                                     md: '19px'
                                                 } :{
                                                     xs: '',
-                                                    md: '5px'
+                                                    md: '8px'
                                                 } : ''}>
                                         {intl.$t({id: item.title})}
                                     </Typography>
