@@ -135,6 +135,7 @@ const DesktopHeader = ({id}) => {
                     }
                 </Grid>
                 <Grid display={locale === 'fa' ? 'none' : 'flex'} alignItems={'center'} gap={'24px'}
+                      pt={locale === 'en' ? '5px' : '4px'}
                       pl={{md: '250px', l: '270px', lg: '330px', g: '400px', xl: '454'}}
                       pr={{md: '10px', l: '120px', lg: '120px', xl: '287px'}}>
                     {

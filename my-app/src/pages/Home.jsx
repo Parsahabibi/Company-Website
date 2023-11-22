@@ -32,21 +32,24 @@ const Home = () => {
             title: 'RailroadTransportationCardTitle',
             des: 'Lorem10',
             image: Train,
-            LangTitle: 'RailroadTransportationCardTitle'
+            LangTitle: 'RailroadTransportationCardTitle',
+            TranslateId:'RailroadTransportationCardTitle'
         },
         {
             id: 2,
             title: 'MaritimeTransportationCardTitle',
             des: 'Lorem10',
             image: Sea,
-            LangTitle: 'MaritimeTransportationCardTitle'
+            LangTitle: 'MaritimeTransportationCardTitle',
+            TranslateId:'MaritimeTransportationCardTitle'
         },
         {
             id: 3,
             title: 'RoadTransportationCardTitle',
             des: 'Lorem10',
             image: road,
-            LangTitle: 'RoadTransportationCardTitle'
+            LangTitle: 'RoadTransportationCardTitle',
+            TranslateId:'RoadTransportationCardTitle'
         },
     ]
 
@@ -60,8 +63,8 @@ const Home = () => {
 
 
     const lastNews = [
-        {id: 1, image: abrisham, title: 'TitleInformationCardNewsRoad'},
-        {id: 2, image: Airplane, title: 'TitleInformationCardNewsAirPlane'},
+        {id: 1, image: abrisham, title: 'TitleInformationCardNewsRoad' , TranslateId:'TitleInformationCardNewsRoad'},
+        {id: 2, image: Airplane, title: 'TitleInformationCardNewsAirPlane' , TranslateId:'TitleInformationCardNewsAirPlane'},
     ]
 
     return (
@@ -128,7 +131,7 @@ const Home = () => {
                                         l: '260px',
                                         lg: '310px',
                                         xl: '336px'
-                                    }} height={{xs: '217px', md: '480px'}} font={900} variants={'h2'}/>
+                                    }} height={{xs: '217px', md: '480px'}} font={900} variants={'h2'} TranslateId={item.TranslateId}/>
                             )
                         }
                     </Grid>
@@ -168,6 +171,7 @@ const Home = () => {
                                     variants={'h3'}
                                     font={500}
                                     state={true}
+                                    TranslateId={item.TranslateId}
                                 />
                         )
                     }
