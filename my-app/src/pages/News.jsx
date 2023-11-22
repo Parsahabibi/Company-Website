@@ -24,12 +24,12 @@ const News = () => {
     const Abrisham = '/assets/Images/Abrisham.svg'
 
     const data = [
-        {id: 1, title: intl.$t({id: "TitleInformationCardNewsAirPlane"}), image: Airplane, des: ''},
-        {id: 2, title:intl.$t({id: "TitleInformationCardNewsRoad"}), image: Abrisham, des: ''},
-        {id: 3, title:intl.$t({id: "TitleInformationCardNewsAirPlane"}), image: Airplane, des: ''},
-        {id: 4, title:intl.$t({id: "TitleInformationCardNewsRoad"}), image: Abrisham, des: ''},
-        {id: 5, title:intl.$t({id: "TitleInformationCardNewsAirPlane"}), image: Airplane, des: ''},
-        {id: 6, title:intl.$t({id: "TitleInformationCardNewsRoad"}), image: Abrisham, des: ''},
+        {id: 1, title: intl.$t({id: "TitleInformationCardNewsAirPlane"}), image: Airplane, des: '' , TranslateId:'TitleInformationCardNewsAirPlane'},
+        {id: 2, title:intl.$t({id: "TitleInformationCardNewsRoad"}), image: Abrisham, des: '' , TranslateId:'TitleInformationCardNewsRoad'},
+        {id: 3, title:intl.$t({id: "TitleInformationCardNewsAirPlane"}), image: Airplane, des: '' , TranslateId:'TitleInformationCardNewsAirPlane'},
+        {id: 4, title:intl.$t({id: "TitleInformationCardNewsRoad"}), image: Abrisham, des: '' , TranslateId:'TitleInformationCardNewsRoad'},
+        {id: 5, title:intl.$t({id: "TitleInformationCardNewsAirPlane"}), image: Airplane, des: '' , TranslateId:'TitleInformationCardNewsAirPlane'},
+        {id: 6, title:intl.$t({id: "TitleInformationCardNewsRoad"}), image: Abrisham, des: '' , TranslateId:'TitleInformationCardNewsRoad'},
     ]
 
     let variant = 'subtitle2'
@@ -60,6 +60,7 @@ const News = () => {
                                        width={{xs: '128px', xxs: '152px', md: '300px'}}
                                        height={{xs: '212px', md: '420px'}} state={{xs: true, md: false}}
                                        font={{xs: 500, md: 900}} variants={'h3'}
+                                       TranslateId={item.TranslateId}
                                 />
                         )
                     }

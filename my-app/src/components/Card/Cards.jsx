@@ -37,7 +37,6 @@ const Cards = ({images, title, des, width, height, font, variants, state , Trans
         params.append("title", title);
         params.append("imageSrc", images);
         params.append("TranslateId", TranslateId);
-
         navigate(`/News/Information?${params.toString()}`);
     };
 

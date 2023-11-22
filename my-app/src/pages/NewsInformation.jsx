@@ -1,4 +1,4 @@
-import React, {useEffect , useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Grid, Typography} from "@mui/material";
 import {Link, useLocation} from "react-router-dom";
 import Header from "../components/Header/Header";
@@ -6,6 +6,7 @@ import Footer from "../components/Footer/Footer";
 import {useTheme} from "@mui/material/styles";
 import {useLanguage} from "../LanguageContext";
 import {useIntl} from "react-intl";
+import moment from 'jalali-moment'
 
 
 const NewsInformation = () => {
@@ -21,12 +22,100 @@ const NewsInformation = () => {
     const [timeInRussian, setTimeInRussian] = useState('');
     const timeInEnglish = '1:09 PM';
 
-    const PersianDate ='۲۷ خرداد ۱۴۰۱'
+
+    const convertToEnglish = (persianString) => {
+        const persianToEnglishMap = {
+            '۰': '0',
+            '۱': '1',
+            '۲': '2',
+            '۳': '3',
+            '۴': '4',
+            '۵': '5',
+            '۶': '6',
+            '۷': '7',
+            '۸': '8',
+            '۹': '9',
+        };
+
+        let convertedString = '';
+        for (let i = 0; i < persianString.length; i++) {
+            const char = persianString[i];
+            convertedString += persianToEnglishMap[char] || char;
+        }
+
+        return convertedString;
+    };
+
+
+    const persianDate = '۲۷ خرداد ۱۴۰۱';
+
+    const PersianDateSplit = persianDate.split(' ');
+
+    const convertedNumberDay = convertToEnglish(PersianDateSplit[0]);
+    const PersianMonth = PersianDateSplit[1];
+    let PersianMonthNumber
+    const convertedNumberYear = convertToEnglish(PersianDateSplit[2]);
+
+
+
+    const ConvertMonthToNumber = () => {
+        if (PersianMonth === 'فروردین') {
+            PersianMonthNumber = 1
+        } else if (PersianMonth === 'اردیبهشت') {
+            PersianMonthNumber = 2
+
+        } else if (PersianMonth === 'خرداد') {
+            PersianMonthNumber = 3
+
+        } else if (PersianMonth === 'تیر') {
+            PersianMonthNumber = 4
+
+        } else if (PersianMonth === 'مرداد') {
+            PersianMonthNumber = 5
+
+        } else if (PersianMonth === 'شهریور') {
+            PersianMonthNumber = 6
+
+        } else if (PersianMonth === 'مهر') {
+            PersianMonthNumber = 7
+
+        } else if (PersianMonth === 'آبان') {
+            PersianMonthNumber = 8
+
+        } else if (PersianMonth === 'آذر') {
+            PersianMonthNumber = 9
+
+        } else if (PersianMonth === 'دی') {
+            PersianMonthNumber = 10
+
+        } else if (PersianMonth === 'بهمن') {
+            PersianMonthNumber = 11
+
+        } else {
+            PersianMonthNumber = 12
+
+        }
+    }
+
+    ConvertMonthToNumber()
+
+    const PersianDateConvertToEnglish = `${convertedNumberYear}/${PersianMonthNumber}/${convertedNumberDay}`
+
+
+
+    const EnglishDate = moment.from(PersianDateConvertToEnglish, 'fa', 'YYYY/M/D')
+        .format('YYYY/M/D');
+
+
+
 
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const pageTitle = params.get("title");
     const pageImageSrc = params.get("imageSrc");
+    const TranslateId = params.get("TranslateId")
+
+
 
     const theme = useTheme();
 
@@ -38,8 +127,6 @@ const NewsInformation = () => {
     ]
 
     const Description = intl.$t({id: "Lorem100"})
-
-
 
 
     const convertToPersian = (time) => {
@@ -57,7 +144,6 @@ const NewsInformation = () => {
     };
 
 
-
     // useEffect(() => {
     //     // هنگام رندر اولیه، مقداردهی اولیه به زمان انگلیسی را انجام دهید
     //     // می‌توانید از یک تابع گرفتن زمان فعلی استفاده کنید
@@ -66,42 +152,10 @@ const NewsInformation = () => {
     // }, []);
 
 
-    const convertToEnglishDate = (persianDate) => {
-        const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
-        const englishDigits = '0123456789';
-        const toEnglishDigits = (str) => str.replace(/[۰-۹]/g, (digit) => persianDigits.indexOf(digit));
-
-        const englishDateStr = toEnglishDigits(persianDate);
-        const parts = englishDateStr.split(' ');
-        const day = parts[0];
-        const month = parts[1];
-        const year = parts[2];
-
-        const englishDate = new Date(`${year}-${month}-${day}`);
-
-
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return englishDate.toLocaleDateString('en-US', options);
-    };
-
-    const convertToRussianDate = (persianDate) => {
-        const englishDate = convertToEnglishDate(persianDate);
-
-        const russianDate = new Date(englishDate).toLocaleDateString('ru-RU');
-
-        return russianDate;
-    };
-
-
-    const englishDate = convertToEnglishDate(PersianDate);
-    const russianDate = convertToRussianDate(PersianDate);
-
-
     useEffect(() => {
         convertToPersian(timeInEnglish);
         convertToRussian(timeInEnglish);
     }, [locale]);
-
 
 
     return (
@@ -111,24 +165,25 @@ const NewsInformation = () => {
                   px={{xs: '12px', xxs: '16px', md: '50px', lg: '128px'}}>
                 <Grid className={'mobile'} pb={{xs: '21px'}} display={{xs: 'block', md: 'none'}}>
                     <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-start'}>
-                        <Typography variant={'h5'} color={theme.palette.secondary.one}
-                                    borderBottom={'1px solid rgba(68, 74, 93, 1)'} pb={'8px'}
-                                    mb={'12px'}>{intl.$t({id: "HomeAndNews"})}
+                        <Typography variant={'h5'} color={theme.palette.secondary.one} pb={'8px'}>
+                            {intl.$t({id: "HomeAndNews"})}
                         </Typography>
-                        <Typography variant={'h5'} color={theme.palette.secondary.one}
-                                    borderBottom={'1px solid rgba(68, 74, 93, 1)'} pb={'8px'}
-                                    mb={'12px'}>{intl.$t({id: "HomeAndNews"})}
+                        <Typography variant={'h5'} color={theme.palette.secondary.one} pb={'8px'}>
+                            {intl.$t({id: TranslateId})}
                         </Typography>
                     </Grid>
+                    <Grid display={{xs: 'block', md: 'none'}} width={'100%'} height={'1px'} bgcolor={theme.palette.secondary.main} mb={'12px'}></Grid>
                     <Grid display={'flex'} alignItems={'baseline'} justifyContent={'space-between'}>
                         <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
                             <Grid display={'flex'} alignItems={'end'} gap={'8px'}>
                                 <img src={'../assets/Images/calendar.svg'} alt={''}/>
-                                <Typography fontSize={'10px'} fontWeight={500}>{locale === 'fa' ? PersianDate : locale === 'en' ? englishDate : russianDate}</Typography>
+                                <Typography fontSize={'10px'}
+                                            fontWeight={500}>{locale === 'fa' ? persianDate : EnglishDate}</Typography>
                             </Grid>
                             <Grid display={'flex'} alignItems={'end'} gap={'8px'}>
                                 <img src={'../assets/Images/pie-chart.svg'} alt={''}/>
-                                <Typography fontSize={'10px'} fontWeight={500}>{locale === 'fa' ? timeInPersian : locale === 'en' ? timeInEnglish : timeInRussian}</Typography>
+                                <Typography fontSize={'10px'}
+                                            fontWeight={500}>{locale === 'fa' ? timeInPersian : locale === 'en' ? timeInEnglish : timeInRussian}</Typography>
                             </Grid>
                         </Grid>
                         <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
@@ -149,7 +204,7 @@ const NewsInformation = () => {
                                     pb={'8px'}>{intl.$t({id: "HomeAndNews"})}
                         </Typography>
                         <Typography variant={'h5'} color={theme.palette.secondary.one}
-                                    pb={'8px'}>{pageTitle}
+                                    pb={'8px'}>{intl.$t({id: TranslateId})}
                         </Typography>
                     </Grid>
                     <Grid display={'flex'} alignItems={'center'} justifyContent={'space-between'} gap={'32px'}
@@ -166,15 +221,17 @@ const NewsInformation = () => {
                             }
                         </Grid>
                     </Grid>
-                    <Typography variant={'h3'} color={theme.palette.secondary.one} pb={'16px'}>{pageTitle}</Typography>
+                    <Typography variant={'h3'} color={theme.palette.secondary.one} pb={'16px'}>{intl.$t({id: TranslateId})}</Typography>
                     <Grid display={'flex'} alignItems={'center'} gap={'8px'} pb={'30px'}>
                         <Grid display={'flex'} alignItems={'end'} gap={'8px'}>
                             <img src={'../assets/Images/calendar.svg'} alt={''}/>
-                            <Typography fontSize={'10px'} fontWeight={500}>{locale === 'fa' ? PersianDate : locale === 'en' ? englishDate : russianDate}</Typography>
+                            <Typography fontSize={'10px'}
+                                        fontWeight={500}>{locale === 'fa' ? persianDate : EnglishDate}</Typography>
                         </Grid>
                         <Grid display={'flex'} alignItems={'end'} gap={'8px'}>
                             <img src={'../assets/Images/pie-chart.svg'} alt={''}/>
-                            <Typography fontSize={'10px'} fontWeight={500}>{locale === 'fa' ? timeInPersian : locale === 'en' ? timeInEnglish : timeInRussian}</Typography>
+                            <Typography fontSize={'10px'}
+                                        fontWeight={500}>{locale === 'fa' ? timeInPersian : locale === 'en' ? timeInEnglish : timeInRussian}</Typography>
                         </Grid>
                     </Grid>
                 </Grid>
