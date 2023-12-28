@@ -12,7 +12,7 @@ const MobileHeader = ({id}) => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
+    // console.log(locale)
 
     const intl = useIntl();
 

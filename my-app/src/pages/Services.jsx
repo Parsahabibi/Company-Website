@@ -11,16 +11,16 @@ const Services = () => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
+    // console.log(locale)
 
     const intl = useIntl();
 
 
     const [active, setActive] = useState(1)
 
-    const train = 'assets/Images/ServicesImage.svg'
+    const train = 'assets/images/ServicesImage.svg'
 
-    const trainMin = 'assets/Images/ServicesMin.svg'
+    const trainMin = 'assets/images/ServicesMin.svg'
 
     const des = intl.$t({id: "Lorem100"})
 

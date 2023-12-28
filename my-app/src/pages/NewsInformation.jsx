@@ -13,7 +13,7 @@ const NewsInformation = () => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
+    // console.log(locale)
 
     const intl = useIntl();
 
@@ -120,10 +120,10 @@ const NewsInformation = () => {
     const theme = useTheme();
 
     const data = [
-        {id: 1, image: '../assets/Images/telegram.svg', link: ''},
-        {id: 2, image: '../assets/Images/twitter.svg', link: ''},
-        {id: 3, image: '../assets/Images/instagrams.svg', link: ''},
-        {id: 3, image: '../assets/Images/whatsapps.svg', link: ''},
+        {id: 1, image: '../assets/images/telegram.svg', link: ''},
+        {id: 2, image: '../assets/images/twitter.svg', link: ''},
+        {id: 3, image: '../assets/images/instagrams.svg', link: ''},
+        {id: 3, image: '../assets/images/whatsapps.svg', link: ''},
     ]
 
     const Description = intl.$t({id: "Lorem100"})
@@ -176,12 +176,12 @@ const NewsInformation = () => {
                     <Grid display={'flex'} alignItems={'baseline'} justifyContent={'space-between'}>
                         <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
                             <Grid display={'flex'} alignItems={'end'} gap={'8px'}>
-                                <img src={'../assets/Images/calendar.svg'} alt={''}/>
+                                <img src={'../assets/images/calendar.svg'} alt={''}/>
                                 <Typography fontSize={'10px'}
                                             fontWeight={500}>{locale === 'fa' ? persianDate : EnglishDate}</Typography>
                             </Grid>
                             <Grid display={'flex'} alignItems={'end'} gap={'8px'}>
-                                <img src={'../assets/Images/pie-chart.svg'} alt={''}/>
+                                <img src={'../assets/images/pie-chart.svg'} alt={''}/>
                                 <Typography fontSize={'10px'}
                                             fontWeight={500}>{locale === 'fa' ? timeInPersian : locale === 'en' ? timeInEnglish : timeInRussian}</Typography>
                             </Grid>
@@ -224,12 +224,12 @@ const NewsInformation = () => {
                     <Typography variant={'h3'} color={theme.palette.secondary.one} pb={'16px'}>{intl.$t({id: TranslateId})}</Typography>
                     <Grid display={'flex'} alignItems={'center'} gap={'8px'} pb={'30px'}>
                         <Grid display={'flex'} alignItems={'end'} gap={'8px'}>
-                            <img src={'../assets/Images/calendar.svg'} alt={''}/>
+                            <img src={'../assets/images/calendar.svg'} alt={''}/>
                             <Typography fontSize={'10px'}
                                         fontWeight={500}>{locale === 'fa' ? persianDate : EnglishDate}</Typography>
                         </Grid>
                         <Grid display={'flex'} alignItems={'end'} gap={'8px'}>
-                            <img src={'../assets/Images/pie-chart.svg'} alt={''}/>
+                            <img src={'../assets/images/pie-chart.svg'} alt={''}/>
                             <Typography fontSize={'10px'}
                                         fontWeight={500}>{locale === 'fa' ? timeInPersian : locale === 'en' ? timeInEnglish : timeInRussian}</Typography>
                         </Grid>

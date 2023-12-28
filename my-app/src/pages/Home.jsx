@@ -14,17 +14,17 @@ const Home = () => {
 
     const intl = useIntl();
 
-    const road = '/assets/Images/Road.svg'
+    const road = '/assets/images/Road.svg'
 
-    const Sea = '/assets/Images/Sea.svg'
+    const Sea = '/assets/images/Sea.svg'
 
-    const Train = '/assets/Images/Train.svg'
+    const Train = '/assets/images/Train.svg'
 
-    const bus = '/assets/Images/benefits.svg'
+    const bus = '/assets/images/benefits.svg'
 
-    const abrisham = '/assets/Images/Abrisham.svg'
+    const abrisham = '/assets/images/Abrisham.svg'
 
-    const Airplane = '/assets/Images/Airplane.svg'
+    const Airplane = '/assets/images/Airplane.svg'
 
     const data = [
         {
@@ -72,9 +72,9 @@ const Home = () => {
             <Header DesktopId={1} MobileId={1}/>
             <Grid bgcolor={'rgba(255, 251, 242, 1)'} mt={{xs: '83px', md: '73px'}} width={'100%'}>
                 <Grid pb={'40px'}>
-                    {/*<img width={'100%'} src={'assets/Images/HomePageImage.svg'} alt={''}/>*/}
+                    {/*<img width={'100%'} src={'assets/images/HomePageImage.svg'} alt={''}/>*/}
                     <video width="100%" height="100%" autoPlay muted loop>
-                        <source src="/assets/Video/althin_webmotion_03.mp4" type="video/mp4"/>
+                        <source src="/assets/video/althin_webmotion_03.mp4" type="video/mp4"/>
                     </video>
                 </Grid>
                 <Grid px={{xs: '10px', xxs: '32px', md: '103px'}}>
@@ -86,10 +86,10 @@ const Home = () => {
                           gap={{xs: '16px', md: '72px'}} border={'2px solid rgba(255, 191, 63, 1)'}
                           borderRadius={'20px'}>
                         <Grid display={{xs: 'none', md: 'block'}}>
-                            <img src={'assets/Images/AboutUSImage.svg'} alt={''}/>
+                            <img src={'assets/images/AboutUSImage.svg'} alt={''}/>
                         </Grid>
                         <Grid display={{xs: 'block', md: 'none'}}>
-                            <img src={'assets/Images/AboutUS.svg'} alt={''}/>
+                            <img src={'assets/images/AboutUS.svg'} alt={''}/>
                         </Grid>
                         <Grid display={'flex'} flexDirection={'column'} justifyContent={{xs: 'center', md: 'end'}}
                               alignItems={{xs: 'center', md: 'start'}} gap={'16px'}>

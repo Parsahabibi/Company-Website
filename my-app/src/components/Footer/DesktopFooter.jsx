@@ -11,7 +11,7 @@ const DesktopFooter = () => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
+    // console.log(locale)
 
     const intl = useIntl();
 

@@ -22,7 +22,7 @@ const Price = () => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
+    // console.log(locale)
 
     const intl = useIntl();
 
@@ -204,14 +204,14 @@ const Price = () => {
     const onSubmitForm = (data) => {
         if (isFormComplete) {
             toast(<CustomToast message="فرم با موفقیت ارسال شد"/>);
-            console.log('hello');
-            console.log(data);
+            // console.log('hello');
+            // console.log(data);
 
             reset();
             setInputValues({});
             setSelected(null);
         } else {
-            console.log('Form is not complete.');
+            // console.log('Form is not complete.');
         }
     };
 

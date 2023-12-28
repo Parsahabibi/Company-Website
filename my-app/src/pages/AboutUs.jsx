@@ -12,7 +12,7 @@ const AboutUs = () => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
+    // console.log(locale)
 
     const intl = useIntl();
 
@@ -65,8 +65,8 @@ const AboutUs = () => {
                     bottom: 0,
                     zIndex: -10,
                     backgroundImage: {
-                        xs: 'url(assets/Images/MobileAboutUsBackGround.svg)',
-                        md: 'url(assets/Images/BackAboutUs.svg)'
+                        xs: 'url(assets/images/MobileAboutUsBackGround.svg)',
+                        md: 'url(assets/images/BackAboutUs.svg)'
                     },
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -94,7 +94,7 @@ const AboutUs = () => {
                                 item =>
                                     <Grid key={item.id}>
                                         <Grid display={'flex'} alignItems={'baseline'} gap={'5px'} pb={'16px'}>
-                                            <img src={'assets/Images/circle.svg'} alt={''}/>
+                                            <img src={'assets/images/circle.svg'} alt={''}/>
                                             <Typography variant={variant} fontWeight={900}
                                                         color={theme.palette.secondary.one}>{item.title}</Typography>
                                         </Grid>

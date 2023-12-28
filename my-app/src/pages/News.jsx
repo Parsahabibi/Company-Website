@@ -15,13 +15,13 @@ const News = () => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
+    // console.log(locale)
 
     const intl = useIntl();
 
-    const Airplane = '/assets/Images/Airplane.svg'
+    const Airplane = '/assets/images/Airplane.svg'
 
-    const Abrisham = '/assets/Images/Abrisham.svg'
+    const Abrisham = '/assets/images/Abrisham.svg'
 
     const data = [
         {id: 1, title: intl.$t({id: "TitleInformationCardNewsAirPlane"}), image: Airplane, des: '' , TranslateId:'TitleInformationCardNewsAirPlane'},

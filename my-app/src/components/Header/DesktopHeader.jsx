@@ -35,7 +35,7 @@ const DesktopHeader = ({id}) => {
 
 
 
-    console.log(activeButton)
+    // console.log(activeButton)
 
 
     const buttonStyle = (buttonNumber) => (
@@ -79,7 +79,7 @@ const DesktopHeader = ({id}) => {
     const isG = useMediaQuery(theme.breakpoints.up('g'));
 
 
-    console.log(isXl)
+    // console.log(isXl)
 
 
     let variant;
@@ -181,7 +181,7 @@ const DesktopHeader = ({id}) => {
                             item =>
                                 <Button style={buttonStyle(item.id)}
                                         onClick={() => { setActiveButton(item.id); changeLocale(item.symbol) ;
-                                            console.log(activeButton , 'ac')
+                                            // console.log(activeButton , 'ac')
                                         }} key={item.id}>{item.title}</Button>
                         )
                     }

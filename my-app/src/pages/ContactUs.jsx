@@ -12,7 +12,7 @@ const ContactUs = () => {
 
     const {locale, changeLocale} = useLanguage();
 
-    console.log(locale)
+    // console.log(locale)
 
     const intl = useIntl();
 
@@ -68,11 +68,11 @@ const ContactUs = () => {
                             <Grid display={'flex'} alignItems={'center'} justifyContent={'flex-end'} gap={{xs:'10px' , xxs:'16px' , md:'18px' , lg:'24px'}}>
                                 <Grid display={'flex'} alignItems={'center'} flexDirection={locale === 'fa' ? 'row' : 'row-reverse'} gap={'8px'}>
                                     <Typography variant={secondVariant} fontWeight={500} color={theme.palette.info.four}>altyngroup.com</Typography>
-                                    <img src={'assets/Images/Linkdin.svg'} alt={''}/>
+                                    <img src={'assets/images/Linkdin.svg'} alt={''}/>
                                 </Grid>
                                 <Grid display={'flex'} alignItems={'center'} flexDirection={locale === 'fa' ? 'row' : 'row-reverse'} gap={'8px'}>
                                     <Typography variant={secondVariant} fontWeight={500} color={theme.palette.info.four}>altyngroup.com</Typography>
-                                    <img src={'assets/Images/SecondInstagram.svg'} alt={''}/>
+                                    <img src={'assets/images/SecondInstagram.svg'} alt={''}/>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -81,10 +81,10 @@ const ContactUs = () => {
                 <Grid pb={{xs:'40px' , md:'64px'}}>
                     <Typography variant={secondVariant} fontWeight={500} color={'rgba(57, 55, 51, 1)'} pb={{xs:'16px' , md:'18px'}}>{intl.$t({id: "mapLocation"})}</Typography>
                     <Grid display={{xs:'block' , md:'none'}}>
-                        <img width={'100%'} src={'assets/Images/map.svg'} alt={''}/>
+                        <img width={'100%'} src={'assets/images/map.svg'} alt={''}/>
                     </Grid>
                     <Grid display={{xs:'none' , md:'block'}}>
-                        <img width={'100%'} src={'assets/Images/DesktopMap.svg'} alt={''}/>
+                        <img width={'100%'} src={'assets/images/DesktopMap.svg'} alt={''}/>
                     </Grid>
                 </Grid>
             </Grid>
