@@ -19,6 +19,10 @@ const Footer = () => {
     return (
         <Grid>
             {ComponentToShow}
+
+
+            {/*<div id="google_translate_element"></div>*/}
+
         </Grid>
     )
 }

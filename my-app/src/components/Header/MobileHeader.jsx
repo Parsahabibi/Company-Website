@@ -56,10 +56,11 @@ const MobileHeader = ({id}) => {
     const variable = [
         {id: 1, title: 'صفحه اصلی', link: '/', TitleLang: 'HeaderMainPage'},
         {id: 2, title: 'خدمات', link: '/Services', TitleLang: 'HeaderServices'},
-        {id: 3, title: 'استعلام قیمت', link: '/Price', TitleLang: 'HeaderPrice'},
-        {id: 4, title: 'اخبار', link: '/News', TitleLang: 'HeaderNews'},
-        {id: 5, title: 'درباره ما', link: '/AboutUS', TitleLang: 'HeaderAboutUs'},
-        {id: 6, title: 'تماس با ما', link: '/ContactUs', TitleLang: 'HeaderConcatUs'},
+        {id: 3, title: 'چارت', link: '/chart', TitleLang: 'HeaderChart'},
+        {id: 4, title: 'استعلام قیمت', link: '/Price', TitleLang: 'HeaderPrice'},
+        {id: 5, title: 'اخبار', link: '/News', TitleLang: 'HeaderNews'},
+        {id: 6, title: 'درباره ما', link: '/AboutUS', TitleLang: 'HeaderAboutUs'},
+        {id: 7, title: 'تماس با ما', link: '/ContactUs', TitleLang: 'HeaderConcatUs'},
     ]
 
 

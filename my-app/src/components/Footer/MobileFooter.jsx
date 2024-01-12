@@ -50,11 +50,11 @@ const MobileFooter = () => {
                     </Grid>
                     <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
                         <img src={'../assets/images/Instagram.svg'} alt={''}/>
-                        <Typography variant={'subtitle1'} fontWeight={500} color={'white'}>altyngroup.com</Typography>
+                        <Typography variant={'subtitle1'} fontWeight={500} color={'white'}>altyn.logistics</Typography>
                     </Grid>
                     <Grid display={'flex'} alignItems={'center'} gap={'8px'}>
                         <img src={'../assets/images/email.svg'} alt={''}/>
-                        <Typography variant={'subtitle1'} fontWeight={500} color={'white'}>altyngroup@gmail.com</Typography>
+                        <Typography variant={'subtitle1'} fontWeight={500} color={'white'}>info@altynlogistics.comm</Typography>
                     </Grid>
                 </Grid>
             </Grid>

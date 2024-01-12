@@ -1,6 +1,7 @@
 export const messages = {
     HeaderMainPage: "صفحه اصلی",
     HeaderServices: "خدمات",
+    HeaderChart: "چارت",
     HeaderPrice: "استعلام قیمت ",
     HeaderNews: "اخبار",
     HeaderAboutUs: "درباره ما",
@@ -11,15 +12,16 @@ export const messages = {
     MoreDetailsButton: 'جزئیات بیشتر',
     ServicesTitleMainPage: "خدمات",
     RailroadTransportationCardTitle: "حمل و نقل ریلی",
+    railroad_desc: "شرکت آلتن ریل گلستان به عنوان یکی از شرکتهای زیرمجموعه آلتن گروپ لجستیک، از سال 2006 میلادی، فعالیت خود را در حوزه ارائه خدمات فورواردری ریلی بین المللی آغاز نموده است و در حال حاضر با همکاری سایر شرکت های زیرمجموعه آلتن ...",
     MaritimeTransportationCardTitle: "حمل و نقل دریایی",
     RoadTransportationCardTitle: "حمل و نقل جاده ای",
     ReadMore: "بیشتر بخوانید",
-    AltenBenefitsTitleMainPage: "مزایای آلتن ",
+    AltenBenefitsTitleMainPage: "مزیت های رقابتی گروه آلتن لجستیک",
     AltenBenefitsCardTitle: "سرعت بالای حمل و نقل",
     LastNewsTitleMainPage: " آخرین اخبار ",
     TitleInformationCardNewsRoad: "نشست ملی راهبردهای مبادلات اقتصادی در مسیر جاده ابریشم",
     TitleInformationCardNewsAirPlane: "پیشنهاد واردات هواپیماهای با عمر بیش از ۲۰ سال به ایران",
-    CompanyLocation: "گلستان، گرگان، خیابان بهارستان",
+    CompanyLocation: "گلستان، گرگان، خیابان شهید بهشتی - رو به روی گرگان جدید یک",
     AlertSubFooter: "کليه حقوق اين سايت متعلق به گروه آلتن می‌باشد",
     DesignBySubFooter: "طراحی و توسعه توسط  altyngroup",
 
@@ -113,6 +115,13 @@ export const messages = {
 
     HomeAndNews: 'خانه/اخبار/',
     Pm:'ب.ظ',
-    Am:'ق.ظ'
+    Am:'ق.ظ',
+
+
+
+    AltenBenefitsCardTitle1:"سرعت بالای حمل و نقل",
+    AltenBenefitsCardTitle2:"اطمینان از سلامت حمل کالا",
+    AltenBenefitsCardTitle3:"شریکان تجاری متعدد بین لمللی",
+    AltenBenefitsCardTitle4:"تریسینگ هوشمند کالا",
 
 }

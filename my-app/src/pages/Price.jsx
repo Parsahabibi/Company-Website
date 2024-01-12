@@ -102,7 +102,7 @@ const Price = () => {
         id: 7,
         title: intl.$t({id: "OriginInputLabel"}),
         EnTitle: 'origin',
-        placeHolder: intl.$t({id: "TehranIranTitle"}),
+        placeHolder: '',
         icon: <KeyboardArrowDownIcon/>,
         DropDown: [{id: 1, title: intl.$t({id: "TehranIranTitle"})}, {
             id: 2,
@@ -114,9 +114,10 @@ const Price = () => {
         id: 8,
         title: intl.$t({id: "DestinationInputLabel"}),
         EnTitle: 'destination',
-        placeHolder: intl.$t({id: "TehranIranTitle"}),
+        placeHolder: '',
         icon: <KeyboardArrowDownIcon/>,
-        DropDown: [{id: 1, title: intl.$t({id: "TehranIranTitle"})}, {
+        DropDown: [
+            {id: 1, title: intl.$t({id: "TehranIranTitle"})}, {
             id: 2,
             title: intl.$t({id: "EsfehanIranTitle"})
         }, {id: 3, title: intl.$t({id: "TabrizIranTitle"})}],
@@ -126,7 +127,7 @@ const Price = () => {
         id: 9,
         title: intl.$t({id: "MultiRouteInputLabel"}),
         EnTitle: 'road',
-        placeHolder: intl.$t({id: "LevelOne"}),
+        placeHolder: '',
         icon: <KeyboardArrowDownIcon/>,
         DropDown: [{id: 1, title: intl.$t({id: "LevelOne"})}, {id: 2, title: intl.$t({id: "LevelTwo"})}, {
             id: 3,
@@ -138,7 +139,7 @@ const Price = () => {
         id: 10,
         title: intl.$t({id: "DegreeOfRiskOfTheGoodsInputLabel"}),
         EnTitle: 'grade',
-        placeHolder: intl.$t({id: "LevelOne"}),
+        placeHolder: '',
         icon: <KeyboardArrowDownIcon/>,
         DropDown: [{id: 1, title: intl.$t({id: "LevelOne"})}, {id: 2, title: intl.$t({id: "LevelTwo"})}, {
             id: 3,
@@ -150,7 +151,7 @@ const Price = () => {
         id: 11,
         title: intl.$t({id: "PackageTypeInput"}),
         EnTitle: 'type',
-        placeHolder: intl.$t({id: "Carton"}),
+        placeHolder: '',
         icon: <KeyboardArrowDownIcon/>,
         DropDown: [{id: 1, title: intl.$t({id: "Carton"})}, {id: 2, title: intl.$t({id: "CardBoard"})}, {
             id: 3,
@@ -203,13 +204,18 @@ const Price = () => {
 
     const onSubmitForm = (data) => {
         if (isFormComplete) {
-            toast(<CustomToast message="فرم با موفقیت ارسال شد"/>);
-            // console.log('hello');
-            // console.log(data);
+            fetch("https://api.altynlogistics.com/api/requests/price", { body: JSON.stringify(inputValues), method : 'POST'} )
+                .then(p => p.json())
+                .then(
+                    p =>{
+                        toast(<CustomToast message="فرم با موفقیت ارسال شد"/>);
+                    }
+                )
 
-            reset();
-            setInputValues({});
-            setSelected(null);
+            // console.log(inputValues)
+            // reset();
+            // setInputValues({});
+            // setSelected(null);
         } else {
             // console.log('Form is not complete.');
         }
@@ -288,7 +294,7 @@ const Price = () => {
 
     return (
         <Grid dir={locale === 'fa' ? 'rtl' : 'ltr'}>
-            <Header DesktopId={3} MobileId={3}/>
+            <Header DesktopId={4} MobileId={4}/>
             <Grid bgcolor={'rgba(255, 245, 224, 1)'} mt={{xs: '83px', md: '80px'}} pb={{xs: '32px', md: ''}}>
                 <Grid pt={{xs: '35px', md: '80px'}} px={{xs: '40px', md: '210px'}}>
                     <Grid bgcolor={theme.palette.primary.three} display={'flex'} alignItems={'center'}

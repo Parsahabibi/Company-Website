@@ -8,8 +8,9 @@ import {Link, useNavigate} from "react-router-dom";
 import {useLanguage} from "../../LanguageContext";
 import {useIntl} from "react-intl";
 import {ReadMore} from "@mui/icons-material";
+import {now} from "jalali-moment";
 
-const Cards = ({images, title, des, width, height, font, variants, state , TranslateId}) => {
+const Cards = ({images, moreLink =null, title, des, width, height, font, variants, state , TranslateId, addr=""}) => {
 
     // console.log(state ? title.props.values.title : "")
     //
@@ -32,12 +33,19 @@ const Cards = ({images, title, des, width, height, font, variants, state , Trans
     const [selectedInfo, setSelectedInfo] = useState({title: '', imageSrc: ''});
 
 
-    const handleButtonClick = () => {
-        const params = new URLSearchParams();
-        params.append("title", title);
-        params.append("imageSrc", images);
-        params.append("TranslateId", TranslateId);
-        navigate(`/News/Information?${params.toString()}`);
+    const handleButtonClick = (addr) => {
+        if(moreLink == null){
+            const params = new URLSearchParams();
+            params.append("title", title);
+            params.append("imageSrc", images);
+            params.append("TranslateId", TranslateId);
+            navigate(addr);
+        }else{
+            navigate(moreLink);
+
+        }
+
+
     };
 
 

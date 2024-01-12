@@ -6,6 +6,11 @@ import News from "../pages/News";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import NewsInformation from "../pages/NewsInformation";
+import AltynAfghanIntro from "../pages/intro/AltynAfghanIntro";
+import AltynGroup from "../pages/intro/AltynGroup";
+import Chart from "../pages/Chart";
+import CompanyAltynRail from "../companies/CompanyAltynRail";
+import NewsItem from "../pages/NewsItem";
 
 
 const router = createBrowserRouter([
@@ -37,5 +42,25 @@ const router = createBrowserRouter([
         path: "/News/Information",
         element: <NewsInformation />,
     },
+    {
+        path: "/pages/about/afghan",
+        element: <AltynAfghanIntro />,
+    },
+    {
+        path: "/pages/about/group",
+        element: <AltynGroup />,
+    },
+    {
+        path: "/chart",
+        element: <Chart />,
+    },
+    {
+        path: "/companies/altyn-rail",
+        element: <CompanyAltynRail />,
+    },
+    {
+        path: "/news-item/:newsId/*",
+        element: <NewsItem />,
+    }
 ])
 export default router

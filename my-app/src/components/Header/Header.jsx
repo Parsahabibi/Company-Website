@@ -27,7 +27,7 @@ const Header = ({MobileId , DesktopId}) => {
 
     return (
         <Grid>
-            <ScrollToTop />
+            <ScrollToTop/>
             {ComponentToShow}
         </Grid>
     )

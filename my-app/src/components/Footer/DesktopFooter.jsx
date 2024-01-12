@@ -51,16 +51,16 @@ const DesktopFooter = () => {
                     <Grid display={'flex'} alignItems={'center'} gap={'24px'}>
                         <Grid display={'flex'} alignItems={'flex-start'} gap={'8px'}>
                             <img src={'../assets/images/WhatsApp.svg'} alt={''}/>
-                            <Typography variant={'subtitle1'} color={'white'}>۰۹۱۱-2222-321</Typography>
+                            <Typography variant={'subtitle1'} color={'white'}>00989025613535</Typography>
                         </Grid>
                         <Grid display={'flex'} alignItems={'flex-start'} gap={'8px'}>
                             <img src={'../assets/images/Instagram.svg'} alt={''}/>
-                            <Typography variant={'subtitle1'} color={'white'}>altyngroup.com</Typography>
+                            <Typography variant={'subtitle1'} color={'white'}>altyn.logistics</Typography>
                         </Grid>
                     </Grid>
                     <Grid display={'flex'} alignItems={'flex-start'} gap={'8px'}>
                         <img src={'../assets/images/email.svg'} alt={''}/>
-                        <Typography variant={'subtitle1'} color={'white'}>altyngroup@gmail.com</Typography>
+                        <Typography variant={'subtitle1'} color={'white'}>info@altynlogistics.comm</Typography>
                     </Grid>
                 </Grid>
             </Grid>

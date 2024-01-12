@@ -22,6 +22,21 @@ const DesktopHeader = ({id}) => {
     const [activeButton, setActiveButton] = useState(initialActiveButton);
 
 
+    // useEffect(function (){
+    //     var la = "fa";
+    //     if(activeButton === 2) la = "en"
+    //     if(activeButton === 3) la = "ru"
+    //
+    //
+    //     // if(la == "fa") document.location.replace("/")
+    //     try {
+    //         document.location.replace("/#googtrans(" + la + ")")
+    //
+    //     }catch (e){
+    //         document.location = ("/#googtrans(" + la + ")")
+    //     }
+    // },[activeButton])
+
 
     // const handleButtonClick = (event , buttonNumber, lang) => {
     //     event.preventDefault();
@@ -35,6 +50,9 @@ const DesktopHeader = ({id}) => {
 
 
 
+
+
+
     // console.log(activeButton)
 
 
@@ -43,14 +61,16 @@ const DesktopHeader = ({id}) => {
         backgroundColor: activeButton === buttonNumber ? 'rgba(68, 74, 93, 1)' : 'rgba(255, 191, 63, 1)',
         color: activeButton === buttonNumber ? 'white' : 'rgba(68, 74, 93, 1)',
         border: activeButton === buttonNumber ? 'none' : "1px solid rgba(68, 74, 93, 1)",
-        minWidth: "14px",
-        height: '14px',
+        minWidth: "24px",
+        height: '20px',
         padding: '0px',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        borderRadius: '0px',
+        borderRadius: '3px',
         margin: 'auto',
+        fontSize:'12px',
+
 
     });
 
@@ -59,10 +79,11 @@ const DesktopHeader = ({id}) => {
     const variable = [
         {id: 1, title: 'صفحه اصلی', link: '/', TitleLang: 'HeaderMainPage'},
         {id: 2, title: 'خدمات', link: '/Services', TitleLang: 'HeaderServices'},
-        {id: 3, title: 'استعلام قیمت', link: '/Price', TitleLang: 'HeaderPrice'},
-        {id: 4, title: 'اخبار', link: '/News', TitleLang: 'HeaderNews'},
-        {id: 5, title: 'درباره ما', link: '/AboutUS', TitleLang: 'HeaderAboutUs'},
-        {id: 6, title: 'تماس با ما', link: '/ContactUs', TitleLang: 'HeaderConcatUs'},
+        {id: 3, title: 'چارت', link: '/chart', TitleLang: 'HeaderChart'},
+        {id: 4, title: 'استعلام قیمت', link: '/Price', TitleLang: 'HeaderPrice'},
+        {id: 5, title: 'اخبار', link: '/News', TitleLang: 'HeaderNews'},
+        {id: 6, title: 'درباره ما', link: '/AboutUS', TitleLang: 'HeaderAboutUs'},
+        {id: 7, title: 'تماس با ما', link: '/ContactUs', TitleLang: 'HeaderConcatUs'},
     ]
 
 
@@ -107,6 +128,8 @@ const DesktopHeader = ({id}) => {
                       bgcolor={theme.palette.secondary.one} px={'43px'}
                       py={'19px'}>
                     <img src={'../assets/images/AltynLogo.svg'} alt={''}/>
+
+
                 </Grid>
                 <Grid display={locale === 'fa' ? 'none' : 'block'} position={'absolute'} top={0}
                       left={{md: '48px', lg: '70px', g: '128px'}}
@@ -122,22 +145,14 @@ const DesktopHeader = ({id}) => {
                             item =>
                                 <Grid key={item.id}>
                                     {
-                                        item.id === id ?
-                                            <Link to={item.link}>
-                                                <Typography style={{cursor: 'pointer'}} variant={'h3'}
-                                                            color={theme.palette.secondary.one}
-                                                            fontWeight={900}>
-                                                    {intl.$t({id: item.TitleLang})}
-                                                </Typography>
-                                            </Link>
-                                            :
-                                            <Link to={item.link}>
-                                                <Typography style={{cursor: 'pointer'}} variant={'h3'}
-                                                            color={theme.palette.secondary.one}
-                                                            fontWeight={500}>
-                                                    {intl.$t({id: item.TitleLang})}
-                                                </Typography>
-                                            </Link>
+                                        <Link to={item.link}>
+                                            <Typography style={{cursor: 'pointer'}} variant={'h3'}
+                                                        color={theme.palette.secondary.one}
+                                                        fontWeight={item.id === id ? 900 : 500}>
+                                                {intl.$t({id: item.TitleLang})}
+                                            </Typography>
+                                        </Link>
+
                                     }
                                 </Grid>
                         )
@@ -179,10 +194,13 @@ const DesktopHeader = ({id}) => {
                     {
                         lang.map(
                             item =>
+
                                 <Button style={buttonStyle(item.id)}
                                         onClick={() => { setActiveButton(item.id); changeLocale(item.symbol) ;
                                             // console.log(activeButton , 'ac')
-                                        }} key={item.id}>{item.title}</Button>
+                                        }} key={item.id}>
+                                    {/*<img src={"/assets/images/flag-iran.png"} width={"12px"}/>*/}
+                                    {item.title}</Button>
                         )
                     }
                 </Grid>

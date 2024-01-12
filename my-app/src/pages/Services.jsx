@@ -6,6 +6,9 @@ import {useTheme} from "@mui/material/styles";
 import ServicesAltyn from "../components/Services/ServicesAltyn";
 import {useLanguage} from "../LanguageContext";
 import {useIntl} from "react-intl";
+import ServicesAltynRail from "../components/Services/ServicesAltynRail";
+import ServicesAltynImportExport from "../components/Services/ServicesAltynImportExport";
+import ServicesAltynFree from "../components/Services/ServicesAltynFree";
 
 const Services = () => {
 
@@ -30,43 +33,47 @@ const Services = () => {
     const NavBar = [
         {
             id: 1,
-            component: <ServicesAltyn image={train} title={intl.$t({id: "RailroadTransportationCardTitle"})} dec={des}
-                                      titleItem={intl.$t({id: "AltynRailTransportServiceCapacities"})} items={items}
-                                      imageMin={trainMin}/>,
+            component: <ServicesAltynRail
+                image={train}
+                title={intl.$t({id: "RailroadTransportationCardTitle"})}
+                dec={des}
+                titleItem={intl.$t({id: "AltynRailTransportServiceCapacities"})}
+                items={items}
+                imageMin={trainMin}/>,
             title: intl.$t({id: "RailroadTransportationCardTitle"})
         },
-        {
-            id: 2,
-            component: <ServicesAltyn image={train} title={intl.$t({id: "RoadTransportationCardTitle"})} dec={des}
-                                      titleItem={intl.$t({id: "AltenRoadTransportServiceCapacities"})} items={items}
-                                      imageMin={trainMin}/>,
-            title: intl.$t({id: "RoadTransportationCardTitle"})
-        },
-        {
-            id: 3,
-            component: <ServicesAltyn image={train} title={intl.$t({id: "MaritimeTransportationCardTitle"})} dec={des}
-                                      titleItem={intl.$t({id: "CapacitiesofAltenSeaTransportationService"})}
-                                      items={items}
-                                      imageMin={trainMin}/>,
-            title: intl.$t({id: "MaritimeTransportationCardTitle"})
-        },
-        {
-            id: 4,
-            component: <ServicesAltyn image={train} title={intl.$t({id: "AirTransportationTitleServices"})} dec={des}
-                                      titleItem={intl.$t({id: "CapacitiesOfAltenAirTransportService"})} items={items}
-                                      imageMin={trainMin}/>,
-            title: intl.$t({id: "AirTransportationTitleServices"})
-        },
+        // {
+        //     id: 2,
+        //     component: <ServicesAltyn image={train} title={intl.$t({id: "RoadTransportationCardTitle"})} dec={des}
+        //                               titleItem={intl.$t({id: "AltenRoadTransportServiceCapacities"})} items={items}
+        //                               imageMin={trainMin}/>,
+        //     title: intl.$t({id: "RoadTransportationCardTitle"})
+        // },
+        // {
+        //     id: 3,
+        //     component: <ServicesAltyn image={train} title={intl.$t({id: "MaritimeTransportationCardTitle"})} dec={des}
+        //                               titleItem={intl.$t({id: "CapacitiesofAltenSeaTransportationService"})}
+        //                               items={items}
+        //                               imageMin={trainMin}/>,
+        //     title: intl.$t({id: "MaritimeTransportationCardTitle"})
+        // },
+        // {
+        //     id: 4,
+        //     component: <ServicesAltyn image={train} title={intl.$t({id: "AirTransportationTitleServices"})} dec={des}
+        //                               titleItem={intl.$t({id: "CapacitiesOfAltenAirTransportService"})} items={items}
+        //                               imageMin={trainMin}/>,
+        //     title: intl.$t({id: "AirTransportationTitleServices"})
+        // },
         {
             id: 5,
-            component: <ServicesAltyn image={train} title={intl.$t({id: "ImportsAndExportsTitleServices"})} dec={des}
+            component: <ServicesAltynImportExport image={train} title={intl.$t({id: "ImportsAndExportsTitleServices"})} dec={des}
                                       titleItem={intl.$t({id: "AltenImportAndExportServiceCapacities"})} items={items}
                                       imageMin={trainMin}/>,
             title: intl.$t({id: "ImportsAndExportsTitleServices"})
         },
         {
             id: 6,
-            component: <ServicesAltyn image={train} title={intl.$t({id: "ClearanceTitleServices"})} dec={des}
+            component: <ServicesAltynFree image={train} title={intl.$t({id: "ClearanceTitleServices"})} dec={des}
                                       titleItem={intl.$t({id: "AltenClearanceServiceCapacities"})} items={items}
                                       imageMin={trainMin}/>,
             title: intl.$t({id: "ClearanceTitleServices"})
@@ -165,8 +172,10 @@ const Services = () => {
                         )
                     }
                 </Grid>
+
                 {NavBar.find(item => item.id === active)?.component}
             </Grid>
+
             <Footer/>
         </Grid>
     )
